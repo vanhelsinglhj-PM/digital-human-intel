@@ -406,11 +406,29 @@ a:focus-visible {
 }
 
 .card-source a {
-  color: var(--accent);
+  color: #facc15;
   text-decoration: none;
 }
 
 .card-source a:hover { text-decoration: underline; }
+
+/* 卡片展开内容内所有外部链接统一柠檬黄 */
+.card-content a,
+.detail-section a,
+.section-body a {
+  color: #facc15;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(250, 204, 21, 0.4);
+  transition: all 0.2s;
+}
+
+.card-content a:hover,
+.detail-section a:hover,
+.section-body a:hover {
+  color: #fde047;
+  border-bottom-color: #fde047;
+  text-decoration: none;
+}
 
 .card-badge {
   padding: 3px 8px;
@@ -667,7 +685,7 @@ a:focus-visible {
 }
 
 .stat-source a {
-  color: var(--accent);
+  color: #facc15;
   text-decoration: none;
 }
 
