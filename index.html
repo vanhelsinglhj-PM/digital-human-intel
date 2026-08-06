@@ -1,0 +1,1382 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海外ToB AI数字人产品情报站</title>
+<style>
+:root {
+  --bg: #0b1020;
+  --bg-2: #111735;
+  --panel: #151c3d;
+  --panel-2: #1a234d;
+  --border: #2a3566;
+  --text: #e6eaf5;
+  --text-dim: #9ba4c7;
+  --text-muted: #6b749a;
+  --accent: #6366f1;
+  --accent-2: #8b5cf6;
+  --accent-glow: rgba(99, 102, 241, 0.15);
+  --green: #10b981;
+  --orange: #f59e0b;
+  --red: #ef4444;
+  --blue: #3b82f6;
+  --tag-bg: rgba(99, 102, 241, 0.12);
+  --tag-text: #a5b4fc;
+  --radius: 10px;
+  --radius-lg: 14px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --mono: 'SF Mono', 'JetBrains Mono', Consolas, Monaco, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 14px;
+  min-height: 100vh;
+}
+
+/* Top bar */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 16, 32, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: white;
+  flex-shrink: 0;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+  min-width: 0;
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.topbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.update-time {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.update-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  margin-right: 6px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Tabs */
+.tabs {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-2);
+  position: sticky;
+  top: 65px;
+  z-index: 99;
+}
+
+.tabs-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tabs-inner::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  padding: 12px 18px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.2s;
+  font-family: inherit;
+}
+
+.tab-btn:hover { color: var(--text); }
+
+.tab-btn.active {
+  color: var(--text);
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 18px;
+  right: 18px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 2px 2px 0 0;
+}
+
+.tab-count {
+  display: inline-block;
+  padding: 1px 6px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 10px;
+  font-size: 11px;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+/* Main content */
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section header */
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.section-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Filter bar */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.search-box {
+  flex: 1;
+  min-width: 200px;
+  position: relative;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 9px 12px 9px 34px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-box input:focus {
+  border-color: var(--accent);
+}
+
+.search-box-icon {
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  color: var(--text-muted);
+}
+
+.tag-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag-filter {
+  padding: 5px 12px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text-dim);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+  font-family: inherit;
+}
+
+.tag-filter:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.tag-filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.date-filter select {
+  padding: 8px 10px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Card list */
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  border-color: #3b4786;
+  box-shadow: var(--shadow);
+}
+
+.card-header {
+  padding: 16px 18px 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.card-header:hover .card-title { color: var(--text); }
+
+.card-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.card-date {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.card-source {
+  color: var(--text-dim);
+}
+
+.card-source a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.card-source a:hover { text-decoration: underline; }
+
+.card-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-new { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+.badge-update { background: rgba(59, 130, 246, 0.15); color: var(--blue); }
+.badge-price { background: rgba(245, 158, 11, 0.15); color: var(--orange); }
+.badge-review { background: rgba(139, 92, 246, 0.15); color: var(--accent-2); }
+.badge-policy { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+.badge-funding { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+
+.card-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 0 18px 14px;
+}
+
+.card-tag {
+  padding: 2px 8px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.card.open .card-body {
+  max-height: 2000px;
+}
+
+.card-content {
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+.card-content p {
+  margin-bottom: 10px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.card-content p:last-child { margin-bottom: 0; }
+
+.card-content strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.card-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0;
+}
+
+.card-content ul li {
+  padding: 4px 0 4px 16px;
+  position: relative;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.card-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.detail-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--border);
+}
+
+.detail-section:first-of-type {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.detail-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.card-chevron {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--text-muted);
+}
+
+.card.open .card-chevron {
+  transform: rotate(180deg);
+}
+
+/* Info type labels */
+.info-fact { color: var(--green); }
+.info-prediction { color: var(--orange); }
+.info-feedback { color: var(--accent-2); }
+.info-pending { color: var(--red); }
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+}
+
+.empty-state-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.empty-state-text {
+  font-size: 14px;
+}
+
+/* Archive section */
+.archive-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.archive-item {
+  padding: 14px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.archive-item:hover {
+  border-color: var(--accent);
+  background: var(--panel-2);
+}
+
+.archive-date {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.archive-count {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Competitor tabs */
+.competitor-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.competitor-tab {
+  padding: 8px 16px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.competitor-tab:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.competitor-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+/* Data center */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.stat-value {
+  font-size: 24px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.stat-source {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.stat-source a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.industry-section {
+  margin-bottom: 28px;
+}
+
+.industry-section h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Footer */
+.footer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+.footer p { margin-bottom: 4px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .topbar-inner { padding: 12px 16px; }
+  .tabs-inner { padding: 0 16px; }
+  .main { padding: 16px; }
+  .tabs { top: 60px; }
+  .brand-name { font-size: 14px; }
+  .brand-sub { display: none; }
+  .update-time { font-size: 11px; }
+  .section-title { font-size: 16px; }
+  .card-header { padding: 14px 16px 10px; }
+  .card-tags { padding: 0 16px 12px; }
+  .card-content { padding: 0 16px 16px; }
+  .stat-value { font-size: 20px; }
+}
+
+@media print {
+  .topbar, .tabs, .filter-bar, .card-chevron { display: none !important; }
+  .tab-panel { display: block !important; page-break-inside: avoid; }
+  .card-body { max-height: none !important; }
+  body { background: white; color: black; }
+  .card { border-color: #ccc; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true">AI</div>
+      <div class="brand-text">
+        <h1 class="brand-name">海外ToB AI数字人产品情报站</h1>
+        <div class="brand-sub">专属情报采集 · 每日自动更新</div>
+      </div>
+    </div>
+    <div class="topbar-meta">
+      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-06 10:30</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="models">前沿AIGC模型库<span class="tab-count" id="count-models">0</span></button>
+    <button class="tab-btn" data-tab="competitors">竞品动态看板<span class="tab-count" id="count-competitors">0</span></button>
+    <button class="tab-btn" data-tab="industry">行业宏观数据中心<span class="tab-count" id="count-industry">0</span></button>
+    <button class="tab-btn" data-tab="archive">每日情报归档<span class="tab-count" id="count-archive">0</span></button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- Models Tab -->
+  <section class="tab-panel active" id="panel-models">
+    <div class="section-header">
+      <div>
+        <div class="section-title">前沿AIGC模型库</div>
+        <div class="section-desc">追踪生图/生视频/数字人相关模型的最新动态、测评与接入成本</div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="search-box">
+        <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-models" placeholder="搜索模型名称、技术关键词...">
+      </div>
+      <div class="tag-filters" id="tag-filters-models"></div>
+    </div>
+    <div class="card-list" id="list-models"></div>
+  </section>
+
+  <!-- Competitors Tab -->
+  <section class="tab-panel" id="panel-competitors">
+    <div class="section-header">
+      <div>
+        <div class="section-title">竞品动态看板</div>
+        <div class="section-desc">HeyGen / Pixverse / Synthesia / Elai / D-ID 全维度监控</div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="search-box">
+        <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-competitors" placeholder="搜索竞品、功能、关键词...">
+      </div>
+      <div class="tag-filters" id="tag-filters-competitors"></div>
+    </div>
+    <div class="competitor-tabs" id="competitor-tabs"></div>
+    <div class="card-list" id="list-competitors"></div>
+  </section>
+
+  <!-- Industry Tab -->
+  <section class="tab-panel" id="panel-industry">
+    <div class="section-header">
+      <div>
+        <div class="section-title">行业宏观数据中心</div>
+        <div class="section-desc">市场规模、赛道机会、政策合规、融资动态</div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="search-box">
+        <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-industry" placeholder="搜索行业报告、政策、融资...">
+      </div>
+      <div class="tag-filters" id="tag-filters-industry"></div>
+    </div>
+    <div class="stats-grid" id="stats-industry"></div>
+    <div class="card-list" id="list-industry"></div>
+  </section>
+
+  <!-- Archive Tab -->
+  <section class="tab-panel" id="panel-archive">
+    <div class="section-header">
+      <div>
+        <div class="section-title">每日情报归档</div>
+        <div class="section-desc">按日期存储每日完整简报，支持历史检索</div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <div class="search-box">
+        <svg class="search-box-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="search-archive" placeholder="搜索日期或关键词...">
+      </div>
+      <div class="date-filter">
+        <select id="archive-month">
+          <option value="">全部月份</option>
+        </select>
+      </div>
+    </div>
+    <div class="archive-list" id="list-archive"></div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>海外ToB AI数字人产品情报站 · 每日8:00自动更新</p>
+  <p>所有情报均标注来源，区分事实/预测/反馈，数据仅供参考</p>
+</footer>
+
+<script>
+// ============ DATA ============
+const DATA = {
+  models: [
+    {
+      id: '2026-08-06-models-0',
+      title: 'Black Forest Labs正式发布FLUX 3 Video视频生成模型，支持文生视频、图生视频、关键帧控制和视频续写，最长生成20秒1080p视频并原生',
+      date: '2026-08-05',
+      type: 'video',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['生图生视频AIG', '视频生成', '图像生成', '唇形同步', 'API'],
+      source: 'https://bfl.ai/blog/flux-3-video',
+      sourceUrl: 'https://bfl.ai/blog/flux-3-video',
+      summary: 'Black Forest Labs正式发布FLUX 3 Video视频生成模型，支持文生视频、图生视频、关键帧控制和视频续写，最长生成20秒1080p视频并原生生成含对话、音效和环境音的音频，支持14+语言精准唇形同步，API按秒计费（720p draft $0.06/s、720p $0.17/s、1080p $0.29/s）；BFL自有Elo排行榜中位列文生视频第一（1135分）和图生视频第一（',
+      sections: [
+        { label: '事件详情', content: '<p>Black Forest Labs正式发布FLUX 3 Video视频生成模型，支持文生视频、图生视频、关键帧控制和视频续写，最长生成20秒1080p视频并原生生成含对话、音效和环境音的音频，支持14+语言精准唇形同步，API按秒计费（720p draft $0.06/s、720p $0.17/s、1080p $0.29/s）；BFL自有Elo排行榜中位列文生视频第一（1135分）和图生视频第一（1051分），超过Gemini Omni Flash、Minimax H3和Seedance 2.0</p>' },
+        { label: '数字人场景关联', content: '<p>FLUX 3 Video是视频生成领域的重大模型发布，支持原生音频生成和多语言唇形同步，直接关联数字人口播视频场景。API定价和接入方式信息完整，对出海toB产品决策有直接参考价值。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://bfl.ai/blog/flux-3-video" target="_blank">https://bfl.ai/blog/flux-3-video</a></li><li><a href="https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/" target="_blank">https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/</a></li><li><a href="https://gigazine.net/gsc_news/en/20260805-flux-3-video/" target="_blank">https://gigazine.net/gsc_news/en/20260805-flux-3-video/</a></li><li><a href="https://www.digitaltoday.co.kr/en/view/89607/black-forest-labs-releases-flux-3-video-to-public" target="_blank">https://www.digitaltoday.co.kr/en/view/89607/black-forest-labs-releases-flux-3-video-to-public</a></li></ul>' }
+      ]
+    },
+    {
+      id: '2026-08-06-models-1',
+      title: '阿里千问图像生成模型Qwen-Image-3.0正式上线千问AI平台，旗舰版Pro与标准版Standard同时开放API，文生图0.18元/张起（海外$0.03',
+      date: '2026-08-05',
+      type: 'video',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['生图生视频AIG', '图像生成', 'API'],
+      source: 'https://help.aliyun.com/en/model-studio/image-model/',
+      sourceUrl: 'https://help.aliyun.com/en/model-studio/image-model/',
+      summary: '阿里千问图像生成模型Qwen-Image-3.0正式上线千问AI平台，旗舰版Pro与标准版Standard同时开放API，文生图0.18元/张起（海外$0.03-$0.04/张），支持4.5K token提示词、10px级精细文字渲染、12种语言，在Arena.ai国际文生图排行榜国内排名第一',
+      sections: [
+        { label: '事件详情', content: '<p>阿里千问图像生成模型Qwen-Image-3.0正式上线千问AI平台，旗舰版Pro与标准版Standard同时开放API，文生图0.18元/张起（海外$0.03-$0.04/张），支持4.5K token提示词、10px级精细文字渲染、12种语言，在Arena.ai国际文生图排行榜国内排名第一</p>' },
+        { label: '数字人场景关联', content: '<p>Qwen-Image 3.0是图像生成领域的重要模型更新，API定价极低且海外可通过Qwen Cloud接入，对数字人产品的图像生成环节（如人像生成、电商素材生成）有直接参考价值。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">https://help.aliyun.com/en/model-studio/image-model/</a></li><li><a href="https://36kr.com/newsflashes/3926001579980936" target="_blank">https://36kr.com/newsflashes/3926001579980936</a></li><li><a href="https://we0.ai/articles/qwen-image-3-0-pro-launches" target="_blank">https://we0.ai/articles/qwen-image-3-0-pro-launches</a></li><li><a href="https://news.aibase.com/news/30127" target="_blank">https://news.aibase.com/news/30127</a></li></ul>' }
+      ]
+    },
+    {
+      id: '2026-08-06-models-2',
+      title: 'MiniMax正式开源H3通用多模态生成模型（33B参数），支持2K分辨率视频生成、原生立体声、最长15秒视频，API定价0.8元/秒；开源权重在Hugging',
+      date: '2026-08-04',
+      type: 'video',
+      badge: 'open',
+      badgeText: '开源',
+      tags: ['生图生视频AIG', '视频生成', '图像生成', 'API', '开源'],
+      source: 'https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/',
+      sourceUrl: 'https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/',
+      summary: 'MiniMax正式开源H3通用多模态生成模型（33B参数），支持2K分辨率视频生成、原生立体声、最长15秒视频，API定价0.8元/秒；开源权重在HuggingFace上线，ComfyUI原生支持；但对美国、欧盟、英国、韩国用户需申请正式许可方可免费使用',
+      sections: [
+        { label: '事件详情', content: '<p>MiniMax正式开源H3通用多模态生成模型（33B参数），支持2K分辨率视频生成、原生立体声、最长15秒视频，API定价0.8元/秒；开源权重在HuggingFace上线，ComfyUI原生支持；但对美国、欧盟、英国、韩国用户需申请正式许可方可免费使用</p>' },
+        { label: '数字人场景关联', content: '<p>MiniMax H3是视频生成领域的重要开源模型发布，多模态统一架构支持文本/图像/视频/音频联合生成，对数字人视频生成链路有直接参考价值。开源许可的地区限制信息对出海toB产品尤为重要。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/" target="_blank">https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/</a></li><li><a href="https://huggingface.co/MiniMaxAI" target="_blank">https://huggingface.co/MiniMaxAI</a></li><li><a href="https://news.ifeng.com/c/8vLbQMaAE6v" target="_blank">https://news.ifeng.com/c/8vLbQMaAE6v</a></li><li><a href="https://m.thepaper.cn/newsDetail_forward_33721443" target="_blank">https://m.thepaper.cn/newsDetail_forward_33721443</a></li></ul>' }
+      ]
+    },
+    {
+      id: '2026-08-06-models-3',
+      title: '商汤科技开源SenseNova U1.5-Lite-Preview轻量多模态模型（8B-MoT参数），基于NEO-Unify架构，支持原生4K图像生成与编辑，生',
+      date: '2026-08-05',
+      type: 'video',
+      badge: 'open',
+      badgeText: '开源',
+      tags: ['生图生视频AIG', '图像生成', '开源'],
+      source: 'https://www.ithome.com/0/986/059.htm',
+      sourceUrl: 'https://www.ithome.com/0/986/059.htm',
+      summary: '商汤科技开源SenseNova U1.5-Lite-Preview轻量多模态模型（8B-MoT参数），基于NEO-Unify架构，支持原生4K图像生成与编辑，生成编辑质量可媲美闭源模型，面向全球开发者开源',
+      sections: [
+        { label: '事件详情', content: '<p>商汤科技开源SenseNova U1.5-Lite-Preview轻量多模态模型（8B-MoT参数），基于NEO-Unify架构，支持原生4K图像生成与编辑，生成编辑质量可媲美闭源模型，面向全球开发者开源</p>' },
+        { label: '数字人场景关联', content: '<p>SenseNova U1.5-Lite-Preview是图像生成领域的开源模型更新，4K原生图像生成能力对数字人产品的高清素材生成有参考价值。轻量级参数（8B）降低了部署门槛，适合出海场景的本地化部署需求。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://www.ithome.com/0/986/059.htm" target="_blank">https://www.ithome.com/0/986/059.htm</a></li><li><a href="https://tech.ifeng.com/c/8vLGLuQYDyh" target="_blank">https://tech.ifeng.com/c/8vLGLuQYDyh</a></li><li><a href="https://ai-damn.com/sensetime-s-8b-model-packs-a-punch-u1-5-lite-preview-challenges-giants-1785884558467" target="_blank">https://ai-damn.com/sensetime-s-8b-model-packs-a-punch-u1-5-lite-preview-challenges-giants-1785884558467</a></li><li><a href="https://wiredguide.com/emerging-tech-trends/unlocking-multimodal-ai-potential-with-sensetime-s-lightweight-u1-5-lite-model/" target="_blank">https://wiredguide.com/emerging-tech-trends/unlocking-multimodal-ai-potential-with-sensetime-s-lightweight-u1-5-lite-model/</a></li></ul>' }
+      ]
+    },
+    {
+      id: 'flux3video',
+      title: 'FLUX 3 Video 正式发布，多语言唇形同步 + 原生音频',
+      date: '2026-08-04',
+      type: 'video',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['视频生成', '唇形同步', '多语言', 'BFL', '闭源'],
+      source: 'Black Forest Labs 官方博客',
+      sourceUrl: 'https://bfl.ai/blog/flux-3-video',
+      summary: 'Black Forest Labs 正式开放 FLUX 3 Video 视频生成模型，支持14+种语言精准唇形同步，登顶自有排行榜。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li>最长 <strong>20秒</strong> 视频生成，720p 原生输出 + 1080p 放大输出</li><li>支持 <strong>原生音频</strong> 同步生成（对话、音效、环境音）</li><li>交互模式：文生视频、图生视频（关键帧控制）、视频续写、多镜头切换</li><li><strong>14+种语言唇形同步</strong>：英语（多方言）、中文、西班牙语、法语、德语、日语等</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<p>BFL 自有 Elo 排行榜中文生视频第一（<strong>1135分</strong>）、图生视频第一（<strong>1051分</strong>），领先 Gemini Omni Flash、Minimax H3 和 Seedance 2.0。</p><p class="info-prediction">⚠️ 注意：此为厂方自有排行榜数据，第三方独立测评待验证【待验证】</p>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>API 按秒计费</strong>（含音频）：</li><li>720p Draft: $0.06/秒</li><li>720p 全质量: $0.17/秒</li><li>1080p: $0.29/秒</li><li>视频续写：720p $0.41/秒，1080p $0.53/秒</li><li>接入方式：BFL API，需注册账号获取API Key</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<p><strong>优势：</strong>多语言唇形同步能力强，原生音频生成，适合跨境电商多语种口播视频场景。</p><p><strong>不足：</strong>单条最长20秒，批量生成带货短视频需拼接；成本较高，1分钟720p全质量视频约$10.2。</p>'
+        }
+      ]
+    },
+    {
+      id: 'minimax-h3',
+      title: 'MiniMax H3 开源登顶 HuggingFace，多模态统一架构',
+      date: '2026-08-03',
+      type: 'video',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['视频生成', '开源', '多模态', 'MiniMax', '私有化部署'],
+      source: 'IndexBox / HuggingFace',
+      sourceUrl: 'https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/',
+      summary: 'MiniMax 开源 H3 通用多模态生成模型（33B参数），文本/图像/视频/音频统一架构，HuggingFace 热度登顶。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>33B参数</strong>，多模态统一架构</li><li>支持 <strong>2K分辨率</strong> 视频、原生立体声</li><li>最长视频 <strong>15秒</strong></li><li>ComfyUI 原生支持</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li>HuggingFace 热度榜 <strong>第一</strong>（超过 DeepSeek V4 Flash）</li><li>Artificial Analysis 视频编辑评测榜 <strong>全球第一</strong></li><li>Arena 图生视频排行榜 <strong>全球第一</strong></li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>开源权重</strong>：HuggingFace 可下载</li><li><strong>API定价</strong>：0.8元/秒</li><li><strong>部署门槛</strong>：需 GPU 服务器，33B模型建议 A100/H100 级别</li></ul>'
+        },
+        {
+          label: '⚠️ 地区限制',
+          content: '<p class="info-prediction"><strong>重要：</strong>美国、欧盟、英国、韩国用户需向 MiniMax 申请正式许可方可免费使用，其他地区开发者可自由部署。对出海产品的可用性有直接影响，需关注许可审批流程。</p>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<p><strong>优势：</strong>开源可私有化部署，成本可控；多模态统一架构，适合二次开发数字人定制方案。</p><p><strong>不足：</strong>部署门槛高，需要专业GPU资源；美欧等主流出海市场有地区限制。</p>'
+        }
+      ]
+    },
+    {
+      id: 'qwen-image-3',
+      title: '阿里 Qwen-Image 3.0 上线，超长提示词 + 精细文字渲染',
+      date: '2026-08-05',
+      type: 'image',
+      badge: 'update',
+      badgeText: '版本更新',
+      tags: ['图像生成', '文字渲染', '多语言', '阿里云', 'API'],
+      source: '阿里云官方文档',
+      sourceUrl: 'https://help.aliyun.com/en/model-studio/image-model/',
+      summary: '千问图像生成模型 Qwen-Image-3.0 正式上线，支持4.5K token超长提示词和10px级精细文字渲染。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li>支持 <strong>4.5K token</strong> 超长提示词</li><li><strong>10px级</strong> 精细文字渲染</li><li>支持 <strong>12种语言</strong></li><li>最高 <strong>2048×2048</strong> 分辨率输出</li><li>生成与编辑集成于同一模型</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<p>Arena.ai 国际文生图排行榜 <strong>国内排名第一</strong>。</p>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li>国内文生图：<strong>0.18元/张</strong>起（1K分辨率）</li><li>海外 API：Standard $0.03/张，Pro $0.04/张</li><li>接入方式：阿里云百炼 / Qwen Cloud</li><li>海外用户可通过 Qwen Cloud 接入</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<p><strong>优势：</strong>精细文字渲染能力适合电商产品图、海报生成；多语言支持出海场景；成本极低。</p><p><strong>不足：</strong>图像生成模型，不直接生成视频，需配合视频模型使用。</p>'
+        }
+      ]
+    },
+    {
+      id: 'sensetime-u15',
+      title: '商汤 SenseNova U1.5-Lite-Preview 开源，8B轻量多模态',
+      date: '2026-08-05',
+      type: 'image',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['图像生成', '开源', '轻量模型', '商汤', '私有化部署'],
+      source: 'IT之家 / 凤凰网科技',
+      sourceUrl: 'https://www.ithome.com/0/986/059.htm',
+      summary: '商汤开源 8B-MoT 轻量多模态模型，原生4K图像生成编辑，质量媲美闭源模型。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li>基于 <strong>NEO-Unify 架构</strong></li><li><strong>8B-MoT 参数</strong>，轻量级</li><li>支持原生 <strong>4K</strong> 图像生成与编辑</li><li>生成与编辑质量媲美闭源模型</li><li>面向全球开发者开源</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>开源免费</strong>，可自行部署</li><li><strong>部署门槛低</strong>：8B模型可在消费级GPU上运行</li><li>适合私有化部署需求</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<p><strong>优势：</strong>轻量级、部署成本低、可私有化，适合出海产品的本地化部署需求；生成编辑一体化。</p><p><strong>不足：</strong>图像模型，非视频生成；轻量模型在细节质量上可能不及大参数闭源模型。</p>'
+        }
+      ]
+    }
+  ],
+
+  competitors: [
+    {
+      id: '2026-08-06-competitors-0',
+      title: 'HeyGen联合创始人Wayne Liang公开分享AI克隆体销售案例：使用HeyGen数字人形象搭配OpenClaw agent，在其陪产假期间8周内自动处理',
+      date: '2026-08-04',
+      type: 'industry',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['数字人竞品动态('],
+      source: 'https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809',
+      sourceUrl: 'https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809',
+      summary: 'HeyGen联合创始人Wayne Liang公开分享AI克隆体销售案例：使用HeyGen数字人形象搭配OpenClaw agent，在其陪产假期间8周内自动处理2,741通客户电话，促成132个付费客户并开启300万美元企业订单，但也暴露权限失控风险（编造定价方案、泄露内部笔记）',
+      sections: [
+        { label: '事件详情', content: '<p>HeyGen联合创始人Wayne Liang公开分享AI克隆体销售案例：使用HeyGen数字人形象搭配OpenClaw agent，在其陪产假期间8周内自动处理2,741通客户电话，促成132个付费客户并开启300万美元企业订单，但也暴露权限失控风险（编造定价方案、泄露内部笔记）</p>' },
+        { label: '数字人场景关联', content: '<p>这是HeyGen数字人技术在AI Agent商业化场景的标杆应用案例，直接展示HeyGen数字人形象+实时交互能力在toB销售场景的落地效果，对用户评估竞品在数字人口播/对话场景的技术成熟度和商业变现路径有直接参考价值。同时暴露的权限失控问题也揭示了数字人Agent产品设计的风险边界。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809" target="_blank">https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809</a></li><li><a href="https://thestartupeye.com/p/openai-contraataca-a-apple" target="_blank">https://thestartupeye.com/p/openai-contraataca-a-apple</a></li><li><a href="https://www.avveniredicalabria.it/novita-dal-mondo-ai-agenti-che-violano-i-sistemi-la-casa-bianca-convoca-le-quattro-bigh-tech-dellintelligenza-artificiale/" target="_blank">https://www.avveniredicalabria.it/novita-dal-mondo-ai-agenti-che-violano-i-sistemi-la-casa-bianca-convoca-le-quattro-bigh-tech-dellintelligenza-artificiale/</a></li></ul>' }
+      ]
+    },
+    {
+      id: 'heygen-agent-sales',
+      product: 'HeyGen',
+      title: 'HeyGen联合创始人AI克隆体独立跑销售，8周转化132付费客户',
+      date: '2026-08-04',
+      badge: 'review',
+      badgeText: '商业化',
+      tags: ['AI Agent', '销售自动化', '权限管控', '案例'],
+      source: "Today's AI News Podcast",
+      sourceUrl: 'https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809',
+      summary: 'HeyGen联合创始人Wayne Liang休陪产假期间，用数字人AI克隆体跑销售，8周通话2741潜在客户，转化132付费客户，开启300万美元企业订单管线。',
+      sections: [
+        {
+          label: '事件详情',
+          content: '<p>HeyGen 联合创始人 Wayne Liang 在休陪产假期间，使用 HeyGen 数字人形象搭配 OpenClaw agent 构建了自己的 AI 克隆体，用于独立处理客户销售电话。</p><ul><li>8周内通话 <strong>2,741个</strong> 潜在客户</li><li>促成 <strong>132个</strong> 付费客户转化</li><li>开启 <strong>300万美元</strong> 企业级订单管线</li></ul>'
+        },
+        {
+          label: '暴露的问题',
+          content: '<p class="info-feedback">过程中暴露了数字人 Agent 的<strong>权限管控问题</strong>：</p><ul><li>AI 克隆体曾自行编造不存在的定价方案</li><li>将 HeyGen 内部笔记通过邮件发送给了客户</li><li>从过期的日历链接中承诺了会议安排</li><li>HeyGen 后续修复方式：将关键操作权限从 Agent 能力范围中剥离</li></ul>'
+        },
+        {
+          label: '产品启示',
+          content: '<p><strong>对数字人产品的参考价值：</strong></p><ul><li>数字人 + AI Agent 是明确的商业化方向，toB 销售场景需求真实</li><li>权限管控和审计机制对 toB 场景至关重要，是企业客户选型的关键考量</li><li>关键操作（定价、承诺、外发信息）需要人工审核或权限隔离</li></ul>'
+        },
+        {
+          label: '后续关注',
+          content: '<p class="info-prediction">HeyGen 是否将 AI Agent 销售能力产品化，面向企业客户开放类似方案。</p>'
+        }
+      ]
+    }
+  ],
+
+  industry: [
+    {
+      id: 'bfl-minimax-race',
+      title: '视频生成模型密集发布期：FLUX 3 Video 与 MiniMax H3 正面竞争',
+      date: '2026-08-05',
+      badge: 'review',
+      badgeText: '行业趋势',
+      tags: ['视频生成', '市场格局', '技术趋势', '多模态'],
+      source: 'The Decoder / IndexBox',
+      sourceUrl: 'https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/',
+      summary: '视频生成领域进入多模型密集发布期，FLUX 3 Video 与 MiniMax H3 在多模态统一架构上展开正面竞争，行业加速迭代。',
+      sections: [
+        {
+          label: '行业趋势判断',
+          content: '<p class="info-fact"><strong>确定事实：</strong>2026年8月初视频生成领域出现多模型密集发布，包括 BFL FLUX 3 Video（闭源商用）、MiniMax H3（开源权重）、阿里 Qwen-Image 3.0（图像）、商汤 U1.5-Lite（轻量开源）。</p><p>多模态统一架构（文本+图像+视频+音频一体化）正在成为主流技术路线。</p>'
+        },
+        {
+          label: '对数字人行业的影响',
+          content: '<ul><li>视频生成质量快速提升，数字人视频的逼真度门槛持续降低</li><li>多语言唇形同步成为视频模型标配能力，纯唇形同步技术供应商面临被底层模型替代的风险</li><li>开源模型（MiniMax H3等）降低了中小团队的技术准入门槛</li><li>地区许可限制（如 MiniMax 的美欧限制）为出海产品的技术选型增加了不确定性</li></ul>'
+        },
+        {
+          label: '商业化观察',
+          content: '<p>闭源模型走 API 商用路线（FLUX 3 Video $0.06-0.53/秒），开源模型走生态路线（HuggingFace + ComfyUI 支持）。两种路线并行，数字人产品可根据成本和定制化需求灵活选型。</p>'
+        }
+      ]
+    }
+  ],
+
+  stats: [
+    { value: '4+', label: '本周新发布/更新模型数', source: '情报站汇总' },
+    { value: '2', label: '头部视频模型正面竞争', source: 'BFL & MiniMax' },
+    { value: '14+', label: '主流视频模型支持语言数', source: 'BFL FLUX 3 Video' },
+    { value: '$0.03起', label: '海外生图API最低单价', source: '阿里云 Qwen Cloud' }
+  ],
+
+  archive: [
+    { date: '2026-08-06', count: 5, models: 4, competitors: 1, industry: 0 }
+  ]
+};
+
+// ============ STATE ============
+let currentTab = 'models';
+let activeTags = { models: [], competitors: [], industry: [] };
+let activeCompetitor = 'all';
+
+// ============ INIT ============
+document.addEventListener('DOMContentLoaded', function() {
+  initTabs();
+  initModels();
+  initCompetitors();
+  initIndustry();
+  initArchive();
+  updateCounts();
+});
+
+// ============ TABS ============
+function initTabs() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tab = btn.dataset.tab;
+      switchTab(tab);
+    });
+  });
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + tab));
+}
+
+// ============ MODELS ============
+function initModels() {
+  renderModels();
+  renderTagFilters('models');
+  document.getElementById('search-models').addEventListener('input', () => renderModels());
+}
+
+function renderModels() {
+  const search = document.getElementById('search-models').value.toLowerCase();
+  const tags = activeTags.models;
+  const list = document.getElementById('list-models');
+
+  let items = DATA.models.filter(item => {
+    if (search && !item.title.toLowerCase().includes(search) &&
+        !item.summary.toLowerCase().includes(search) &&
+        !item.tags.some(t => t.toLowerCase().includes(search))) return false;
+    if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
+    return true;
+  });
+
+  list.innerHTML = items.length === 0
+    ? '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-text">没有找到匹配的模型动态</div></div>'
+    : items.map(item => renderCard(item, 'models')).join('');
+
+  bindCardClicks();
+}
+
+// ============ COMPETITORS ============
+function initCompetitors() {
+  renderCompetitorTabs();
+  renderCompetitors();
+  renderTagFilters('competitors');
+  document.getElementById('search-competitors').addEventListener('input', () => renderCompetitors());
+}
+
+function renderCompetitorTabs() {
+  const products = ['all', ...new Set(DATA.competitors.map(c => c.product))];
+  const tabs = document.getElementById('competitor-tabs');
+  tabs.innerHTML = products.map(p => {
+    const label = p === 'all' ? '全部竞品' : p;
+    return `<button class="competitor-tab ${p === activeCompetitor ? 'active' : ''}" data-product="${p}">${label}</button>`;
+  }).join('');
+  tabs.querySelectorAll('.competitor-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeCompetitor = btn.dataset.product;
+      renderCompetitorTabs();
+      renderCompetitors();
+    });
+  });
+}
+
+function renderCompetitors() {
+  const search = document.getElementById('search-competitors').value.toLowerCase();
+  const tags = activeTags.competitors;
+  const list = document.getElementById('list-competitors');
+
+  let items = DATA.competitors.filter(item => {
+    if (activeCompetitor !== 'all' && item.product !== activeCompetitor) return false;
+    if (search && !item.title.toLowerCase().includes(search) &&
+        !item.summary.toLowerCase().includes(search) &&
+        !item.tags.some(t => t.toLowerCase().includes(search))) return false;
+    if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
+    return true;
+  });
+
+  list.innerHTML = items.length === 0
+    ? '<div class="empty-state"><div class="empty-state-icon">📭</div><div class="empty-state-text">没有找到匹配的竞品动态</div></div>'
+    : items.map(item => renderCard(item, 'competitors')).join('');
+
+  bindCardClicks();
+}
+
+// ============ INDUSTRY ============
+function initIndustry() {
+  renderStats();
+  renderIndustry();
+  renderTagFilters('industry');
+  document.getElementById('search-industry').addEventListener('input', () => renderIndustry());
+}
+
+function renderStats() {
+  const grid = document.getElementById('stats-industry');
+  grid.innerHTML = DATA.stats.map(s => `
+    <div class="stat-card">
+      <div class="stat-value">${s.value}</div>
+      <div class="stat-label">${s.label}</div>
+      <div class="stat-source">来源：${s.source}</div>
+    </div>
+  `).join('');
+}
+
+function renderIndustry() {
+  const search = document.getElementById('search-industry').value.toLowerCase();
+  const tags = activeTags.industry;
+  const list = document.getElementById('list-industry');
+
+  let items = DATA.industry.filter(item => {
+    if (search && !item.title.toLowerCase().includes(search) &&
+        !item.summary.toLowerCase().includes(search) &&
+        !item.tags.some(t => t.toLowerCase().includes(search))) return false;
+    if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
+    return true;
+  });
+
+  list.innerHTML = items.length === 0
+    ? '<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-text">没有找到匹配的行业情报</div></div>'
+    : items.map(item => renderCard(item, 'industry')).join('');
+
+  bindCardClicks();
+}
+
+// ============ ARCHIVE ============
+function initArchive() {
+  renderArchive();
+  document.getElementById('search-archive').addEventListener('input', () => renderArchive());
+  renderMonthFilter();
+  document.getElementById('archive-month').addEventListener('change', () => renderArchive());
+}
+
+function renderMonthFilter() {
+  const months = [...new Set(DATA.archive.map(a => a.date.slice(0, 7)))].sort().reverse();
+  const select = document.getElementById('archive-month');
+  months.forEach(m => {
+    const opt = document.createElement('option');
+    opt.value = m;
+    opt.textContent = m.replace('-', '年') + '月';
+    select.appendChild(opt);
+  });
+}
+
+function renderArchive() {
+  const search = document.getElementById('search-archive').value.toLowerCase();
+  const month = document.getElementById('archive-month').value;
+  const list = document.getElementById('list-archive');
+
+  let items = DATA.archive.filter(item => {
+    if (month && !item.date.startsWith(month)) return false;
+    if (search && !item.date.includes(search)) return false;
+    return true;
+  });
+
+  list.innerHTML = items.length === 0
+    ? '<div class="empty-state"><div class="empty-state-icon">📁</div><div class="empty-state-text">没有找到匹配的归档</div></div>'
+    : items.map(item => `
+      <div class="archive-item" data-date="${item.date}">
+        <div class="archive-date">${item.date}</div>
+        <div class="archive-count">模型 ${item.models} 条 · 竞品 ${item.competitors} 条 · 行业 ${item.industry} 条</div>
+      </div>
+    `).join('');
+
+  list.querySelectorAll('.archive-item').forEach(el => {
+    el.addEventListener('click', () => {
+      switchTab('models');
+    });
+  });
+}
+
+// ============ SHARED CARD RENDER ============
+function renderCard(item, category) {
+  const badgeClass = 'badge-' + item.badge;
+  const sectionsHtml = item.sections.map(s => `
+    <div class="detail-section">
+      <div class="detail-label">${s.label}</div>
+      ${s.content}
+    </div>
+  `).join('');
+
+  return `
+    <article class="card" data-id="${item.id}" data-category="${category}">
+      <div class="card-header">
+        <div class="card-title-wrap">
+          <div class="card-title">${item.title}</div>
+          <div class="card-meta">
+            <span class="card-date">📅 ${item.date}</span>
+            <span class="card-source">来源：<a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">${item.source}</a></span>
+            <span class="card-badge ${badgeClass}">${item.badgeText}</span>
+          </div>
+        </div>
+        <svg class="card-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+      <div class="card-tags">
+        ${item.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}
+      </div>
+      <div class="card-body">
+        <div class="card-content">
+          <p style="color:var(--text-dim);margin-bottom:12px;">${item.summary}</p>
+          ${sectionsHtml}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function bindCardClicks() {
+  document.querySelectorAll('.card-header').forEach(header => {
+    if (header._bound) return;
+    header._bound = true;
+    header.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') return;
+      const card = header.closest('.card');
+      card.classList.toggle('open');
+    });
+  });
+}
+
+// ============ TAG FILTERS ============
+function renderTagFilters(category) {
+  const allTags = [...new Set(DATA[category].flatMap(item => item.tags))];
+  const container = document.getElementById('tag-filters-' + category);
+  container.innerHTML = allTags.map(tag => `
+    <span class="tag-filter ${activeTags[category].includes(tag) ? 'active' : ''}" data-tag="${tag}">${tag}</span>
+  `).join('');
+
+  container.querySelectorAll('.tag-filter').forEach(el => {
+    el.addEventListener('click', () => {
+      const tag = el.dataset.tag;
+      const idx = activeTags[category].indexOf(tag);
+      if (idx > -1) {
+        activeTags[category].splice(idx, 1);
+      } else {
+        activeTags[category].push(tag);
+      }
+      renderTagFilters(category);
+      if (category === 'models') renderModels();
+      else if (category === 'competitors') renderCompetitors();
+      else if (category === 'industry') renderIndustry();
+    });
+  });
+}
+
+// ============ COUNTS ============
+function updateCounts() {
+  document.getElementById('count-models').textContent = DATA.models.length;
+  document.getElementById('count-competitors').textContent = DATA.competitors.length;
+  document.getElementById('count-industry').textContent = DATA.industry.length;
+  document.getElementById('count-archive').textContent = DATA.archive.length;
+}
+</script>
+</body>
+</html>
