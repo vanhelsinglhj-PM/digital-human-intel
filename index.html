@@ -384,6 +384,24 @@ a:focus-visible {
   color: var(--text);
   line-height: 1.4;
   margin-bottom: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.card-expand-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.7;
+  white-space: nowrap;
+  font-weight: 400;
+  flex-shrink: 0;
 }
 
 .card-meta {
@@ -732,7 +750,7 @@ a:focus-visible {
 }
 
 @media print {
-  .topbar, .tabs, .filter-bar, .card-chevron { display: none !important; }
+  .topbar, .tabs, .filter-bar, .card-chevron, .card-expand-hint { display: none !important; }
   .tab-panel { display: block !important; page-break-inside: avoid; }
   .card-body { max-height: none !important; }
   body { background: white; color: black; }
@@ -1960,7 +1978,7 @@ function renderModels() {
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
     if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
     return true;
-  });
+  }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   list.innerHTML = items.length === 0
     ? '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-text">没有找到匹配的模型动态</div></div>'
@@ -2006,7 +2024,7 @@ function renderCompetitors() {
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
     if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
     return true;
-  });
+  }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   list.innerHTML = items.length === 0
     ? '<div class="empty-state"><div class="empty-state-icon">📭</div><div class="empty-state-text">没有找到匹配的竞品动态</div></div>'
@@ -2045,7 +2063,7 @@ function renderIndustry() {
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
     if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
     return true;
-  });
+  }).sort((a, b) => new Date(b.date) - new Date(a.date));
 
   list.innerHTML = items.length === 0
     ? '<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-text">没有找到匹配的行业情报</div></div>'
@@ -2114,7 +2132,10 @@ function renderCard(item, category) {
     <article class="card" data-id="${item.id}" data-category="${category}">
       <div class="card-header">
         <div class="card-title-wrap">
-          <div class="card-title">${item.title}</div>
+          <div class="card-title-row">
+            <div class="card-title">${item.title}</div>
+            <span class="card-expand-hint">点击展开详情</span>
+          </div>
           <div class="card-meta">
             <span class="card-date">📅 ${item.date}</span>
             <span class="card-source">来源：<a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">${item.source}</a></span>
