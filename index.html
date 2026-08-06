@@ -738,6 +738,501 @@ a:focus-visible {
   body { background: white; color: black; }
   .card { border-color: #ccc; }
 }
+
+/* ========== Compare Table ========== */
+.compare-table-wrap {
+  overflow-x: auto;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 20px;
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.compare-table th {
+  background: var(--panel-2);
+  color: var(--text);
+  font-weight: 600;
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.compare-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  color: var(--text-dim);
+}
+
+.compare-table tr:last-child td { border-bottom: none; }
+
+.compare-table tr:hover td {
+  background: rgba(99, 102, 241, 0.04);
+}
+
+.col-model { min-width: 180px; width: 18%; }
+.col-params { min-width: 220px; width: 25%; }
+.col-cost { min-width: 180px; width: 20%; }
+.col-access { min-width: 180px; width: 17%; }
+.col-demo { min-width: 160px; width: 20%; }
+
+.compare-model-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.compare-model-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.compare-model-tag.video {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+}
+
+.compare-model-tag.image {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+}
+
+.compare-model-tag.audio {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+}
+
+.compare-model-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.compare-params-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.compare-params-list li {
+  padding: 3px 0;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.compare-params-list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.compare-cost-text {
+  line-height: 1.6;
+}
+
+.compare-cost-text strong {
+  color: var(--text);
+}
+
+.compare-access-text {
+  line-height: 1.6;
+}
+
+/* Demo cell */
+.demo-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.demo-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.demo-thumbnail:hover {
+  border-color: var(--accent);
+}
+
+.demo-thumbnail svg,
+.demo-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.demo-play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(99, 102, 241, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.demo-thumbnail:hover .demo-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: var(--accent);
+}
+
+.demo-play-btn::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 16px solid currentColor;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  margin-left: 4px;
+}
+
+.demo-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.demo-link {
+  text-align: center;
+  font-size: 12px;
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.demo-link:hover {
+  text-decoration: underline;
+}
+
+.demo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  color: var(--text-muted);
+  font-size: 12px;
+  background: var(--bg-2);
+  border-radius: 8px;
+  border: 1px dashed var(--border);
+}
+
+/* Lightbox */
+.lightbox-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.lightbox-content {
+  position: relative;
+  z-index: 1;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.lightbox-img-wrap {
+  max-width: 90vw;
+  max-height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img-wrap svg,
+.lightbox-img-wrap img {
+  max-width: 100%;
+  max-height: 75vh;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.lightbox-caption {
+  color: var(--text-dim);
+  font-size: 13px;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  font-size: 36px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  line-height: 1;
+}
+
+.lightbox-prev { left: -70px; }
+.lightbox-next { right: -70px; }
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.lightbox-prev:disabled,
+.lightbox-next:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Video Modal */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.video-modal-content {
+  position: relative;
+  z-index: 1;
+  width: 90vw;
+  max-width: 960px;
+  max-height: 85vh;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background 0.2s;
+}
+
+.video-modal-close:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.video-modal-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.video-modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.video-modal-desc {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.video-modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 13px;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+}
+
+.video-modal-link:hover {
+  opacity: 0.9;
+}
+
+/* Audio player mockup */
+.audio-player {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audio-play-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.audio-play-btn::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 12px solid currentColor;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+  margin-left: 3px;
+}
+
+.audio-wave {
+  flex: 1;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.audio-wave-bar {
+  flex: 1;
+  background: var(--accent);
+  border-radius: 1px;
+  opacity: 0.6;
+}
+
+.audio-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  flex-shrink: 0;
+  min-width: 70px;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .lightbox-prev { left: 8px; }
+  .lightbox-next { right: 8px; }
+  .lightbox-close { top: -36px; }
+}
+
 </style>
 </head>
 <body>
@@ -762,6 +1257,7 @@ a:focus-visible {
     <button class="tab-btn active" data-tab="models">前沿AIGC模型库<span class="tab-count" id="count-models">0</span></button>
     <button class="tab-btn" data-tab="competitors">竞品动态看板<span class="tab-count" id="count-competitors">0</span></button>
     <button class="tab-btn" data-tab="industry">行业宏观数据中心<span class="tab-count" id="count-industry">0</span></button>
+        <button class="tab-btn" data-tab="compare">模型对比<span class="tab-count" id="count-compare">0</span></button>
     <button class="tab-btn" data-tab="archive">每日情报归档<span class="tab-count" id="count-archive">0</span></button>
   </div>
 </nav>
@@ -824,6 +1320,55 @@ a:focus-visible {
     <div class="card-list" id="list-industry"></div>
   </section>
 
+  <!-- Compare Tab -->
+  <section class="tab-panel" id="panel-compare">
+    <div class="section-header">
+      <div>
+        <div class="section-title">模型对比</div>
+        <div class="section-desc">近3个月发布的主流AIGC模型横向对比，支持案例展示交互</div>
+      </div>
+    </div>
+    <div class="compare-table-wrap" id="compare-table-wrap">
+      <table class="compare-table" id="compare-table">
+        <thead>
+          <tr>
+            <th class="col-model">模型名称</th>
+            <th class="col-params">核心技术参数</th>
+            <th class="col-cost">接入成本</th>
+            <th class="col-access">接入方式</th>
+            <th class="col-demo">案例展示</th>
+          </tr>
+        </thead>
+        <tbody id="compare-tbody"></tbody>
+      </table>
+    </div>
+    <div id="compare-empty" class="empty-state" style="display:none;">
+      <div class="empty-state-icon">📊</div>
+      <div class="empty-state-text">暂无近期发布的模型数据</div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightbox-modal" style="display:none;">
+    <div class="lightbox-overlay" id="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" aria-label="关闭">×</button>
+      <button class="lightbox-prev" id="lightbox-prev" aria-label="上一张">‹</button>
+      <div class="lightbox-img-wrap" id="lightbox-img-wrap"></div>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+      <button class="lightbox-next" id="lightbox-next" aria-label="下一张">›</button>
+    </div>
+  </div>
+
+  <!-- Video Demo Modal -->
+  <div class="video-modal" id="video-modal" style="display:none;">
+    <div class="video-modal-overlay" id="video-modal-overlay"></div>
+    <div class="video-modal-content">
+      <button class="video-modal-close" id="video-modal-close" aria-label="关闭">×</button>
+      <div class="video-modal-body" id="video-modal-body"></div>
+    </div>
+  </div>
+
   <!-- Archive Tab -->
   <section class="tab-panel" id="panel-archive">
     <div class="section-header">
@@ -858,6 +1403,36 @@ a:focus-visible {
 const DATA = {
   models: [
     {
+      id: 'seedance-2-5',
+      title: '字节 Seedance 2.5 正式发布，原生30秒4K视频 + 50个多模态参考',
+      date: '2026-07-31',
+      type: 'video',
+      badge: 'update',
+      badgeText: '重磅发布',
+      tags: ['视频生成', '4K', '数字人', '唇形同步', '字节跳动', '火山引擎'],
+      source: '字节跳动Seed官方博客',
+      sourceUrl: 'https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5',
+      summary: '字节跳动正式发布Seedance 2.5视频生成模型，原生支持30秒4K连续生成、50个多模态参考输入、局部编辑、3D白模预演，音视频联合生成架构。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>原生30秒</strong>单次生成，非片段拼接，支持多轮延长</li><li><strong>原生4K</strong>分辨率 + 10-bit色深，非插值放大</li><li><strong>50个多模态参考</strong>：30张图+10段视频+10段音频</li><li><strong>音视频联合生成</strong>架构：同一潜空间共处理，音画同步更自然</li><li><strong>局部编辑</strong>：时间戳级精准修改，不影响整体画面节奏</li><li><strong>3D白模预演</strong>：先低精度验证构图和镜头，再渲染4K</li><li><strong>绿幕/运镜/参考编辑</strong>等专业级后期能力</li><li>原生支持<strong>10+种语言</strong>，复杂指令控制增强</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-fact">【确定事实】</span> 官方称较2.0版本<strong>提示词遵循度提升约20%</strong> <a href="https://seeddance.ai/blog/what-is-seedance-2-5" target="_blank">Seeddance.ai评测</a></li><li><span class="info-fact">【确定事实】</span> 已上线豆包、即梦、扣子等字节旗下产品 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网报道</a></li><li><span class="info-prediction">【行业预测】</span> 30秒原生时长+局部编辑+白模预演，可能重塑广告/电商/影视预演的生产流程</li><li><span class="info-feedback">【用户反馈】</span> 香港科技大学王帅副教授评价：视频生成模型正从"生成内容"走向"理解世界" <a href="https://m.voc.com.cn/xhn/news/202608/33374990.html" target="_blank">科技日报</a></li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>第三方API参考价（PiAPI）</strong>：480p约<strong>¥2.18/秒</strong>（约$0.30），720p约<strong>¥4.35/秒</strong>（约$0.60）（汇率7.25） <a href="https://app.piapi.ai/docs/seedance-api/seedance-25-preview" target="_blank">PiAPI文档</a></li><li><strong>官方接入方式</strong>：火山引擎企业版（需申请）、即梦(Dreamina)网页端、豆包Pro <a href="https://seed.bytedance.com/seedance2_5" target="_blank">官方主页</a></li><li><strong>企业合作</strong>：徐工集团、小鹏汽车、灵初智能、微分智飞等已确认合作 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网</a></li><li><strong>参考输入计费</strong>：视频参考按输入时长×(单价/2)+输出时长×单价计算</li><li><span class="info-pending">【待验证】</span> 官方消费者定价尚未公布，企业版需询价</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>数字人带货视频</strong>：30秒原生时长+50参考图，可固定产品+人物形象，生成多版本口播素材，无需拼接</li><li><strong>唇形同步</strong>：音视频联合生成架构，音素级口型同步，比单独后处理更自然</li><li><strong>批量视频生产</strong>：局部编辑可快速换SKU/背景/服装，大幅降低批量变体成本</li><li><strong>虚拟直播素材</strong>：支持动作参考+音色参考，可生成直播切片和预热视频</li><li><strong>跨境电商</strong>：原生10+语言，一键生成多语种口播版本，适配海外多市场</li><li><strong>3D白模预演</strong>：先验证镜头走位和产品展示角度，避免浪费算力在废片上</li></ul>'
+        }
+      ]
+    },
+    {
       id: 'qwen-image-3',
       title: '阿里 Qwen-Image 3.0 上线，超长提示词 + 精细文字渲染',
       date: '2026-08-05',
@@ -879,7 +1454,7 @@ const DATA = {
         },
         {
           label: '接入成本与方式',
-          content: '<ul><li>国内文生图：<strong>0.18元/张</strong>起（1K分辨率）</li><li>海外 API：Standard $0.03/张，Pro $0.04/张</li><li>接入方式：阿里云百炼 / Qwen Cloud</li><li>海外用户可通过 Qwen Cloud 接入 <a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">官方文档</a></li></ul>'
+          content: '<ul><li>国内文生图：<strong>0.18元/张</strong>起（1K分辨率）</li><li>海外 API：Standard ¥0.22/张（约$0.03），Pro ¥0.29/张（约$0.04）</li><li>接入方式：阿里云百炼 / Qwen Cloud</li><li>海外用户可通过 Qwen Cloud 接入 <a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">官方文档</a></li></ul>'
         },
         {
           label: '数字人场景适配',
@@ -939,11 +1514,11 @@ const DATA = {
         },
         {
           label: '接入成本与方式',
-          content: '<ul><li><strong>API 按秒计费</strong>（含音频）：</li><li>720p Draft: $0.06/秒</li><li>720p 全质量: $0.17/秒</li><li>1080p: $0.29/秒</li><li>视频续写：720p $0.41/秒，1080p $0.53/秒</li><li>接入方式：BFL API，需注册账号获取API Key</li></ul>'
+          content: '<ul><li><strong>API 按秒计费</strong>（含音频）：</li><li>720p Draft: ¥0.43/秒（约$0.06）</li><li>720p 全质量: ¥1.23/秒（约$0.17）</li><li>1080p: ¥2.10/秒（约$0.29）</li><li>视频续写：720p ¥2.97/秒（约$0.41），1080p ¥3.84/秒（约$0.53）</li><li>接入方式：BFL API，需注册账号获取API Key</li></ul>'
         },
         {
           label: '数字人场景适配',
-          content: '<p><strong>优势：</strong>多语言唇形同步能力强，原生音频生成，适合跨境电商多语种口播视频场景。</p><p><strong>不足：</strong>单条最长20秒，批量生成带货短视频需拼接；成本较高，1分钟720p全质量视频约$10.2。</p>'
+          content: '<p><strong>优势：</strong>多语言唇形同步能力强，原生音频生成，适合跨境电商多语种口播视频场景。</p><p><strong>不足：</strong>单条最长20秒，批量生成带货短视频需拼接；成本较高，1分钟720p全质量视频约¥73.95（约$10.2）。</p>'
         }
       ]
     },
@@ -1005,11 +1580,11 @@ const DATA = {
           },
           {
             "label": "👥 用户&市场反馈",
-            "content": "<ul><li><span class=\"info-feedback\">【B端评价】</span> Content Society 2026 年报告：个性化数字人 outreach 视频回复率 25-45%（纯文本仅 5-12%），会议预约率 8-18%（纯文本 1-3%） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> ProductHunt / Capterra 用户反馈集中在：1) 口型同步在>2分钟视频中质量下降；2) 客服响应慢（12 条投诉提及）；3) 额度与定价不透明，升级后仍需额外买 token；4) 非英语语言效果下降明显 <a href=\"https://www.producthunt.com/products/heygen/reviews\" target=\"_blank\">ProductHunt</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> CSDN 博主实测：HeyGen 中文口型准确率约 90%，卷舌音 zh/ch/sh 略生硬；1080P 渲染时间翻倍；免费版每月仅 5 分钟额度 <a href=\"https://blog.csdn.net/jiangzeonline/article/details/149934341\" target=\"_blank\">来源</a></li><li><span class=\"info-fact\">【付费转化数据】</span> 60 秒 Avatar III 视频约 $1，Avatar IV 约 $5/分钟；B2B SaaS 客户（€299/月）集成 HeyGen API 后，3 个月内新客户从 2/月增至 8/月，ROI 显著 <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">Content Society</a></li></ul>"
+            "content": "<ul><li><span class=\"info-feedback\">【B端评价】</span> Content Society 2026 年报告：个性化数字人 outreach 视频回复率 25-45%（纯文本仅 5-12%），会议预约率 8-18%（纯文本 1-3%） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> ProductHunt / Capterra 用户反馈集中在：1) 口型同步在>2分钟视频中质量下降；2) 客服响应慢（12 条投诉提及）；3) 额度与定价不透明，升级后仍需额外买 token；4) 非英语语言效果下降明显 <a href=\"https://www.producthunt.com/products/heygen/reviews\" target=\"_blank\">ProductHunt</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> CSDN 博主实测：HeyGen 中文口型准确率约 90%，卷舌音 zh/ch/sh 略生硬；1080P 渲染时间翻倍；免费版每月仅 5 分钟额度 <a href=\"https://blog.csdn.net/jiangzeonline/article/details/149934341\" target=\"_blank\">来源</a></li><li><span class=\"info-fact\">【付费转化数据】</span> 60 秒 Avatar III 视频约 ¥7.25（约$1），Avatar IV 约 ¥36.25/分钟（约$5）；B2B SaaS 客户（€299/月）集成 HeyGen API 后，3 个月内新客户从 2/月增至 8/月，ROI 显著 <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">Content Society</a></li></ul>"
           },
           {
             "label": "💼 商业化动作",
-            "content": "<ul><li><strong>企业客户案例</strong>： Würth Group 报告翻译成本降低 80%；STUDIO 47 生产速度提升 80%、成本降低 60% <a href=\"https://checkthat.ai/brands/heygen/reviews\" target=\"_blank\">CheckThat 汇总</a></li><li><strong>批量电商视频案例</strong>：某跨境家居电商使用 HeyGen 一周生成 500 条 SKU 产品介绍 + 客服答疑视频，单条成本控制在传统方式的 5% 以下 <a href=\"https://blog.csdn.net/weixin_30533301/article/details/158751358\" target=\"_blank\">CSDN 实战复盘</a></li><li><strong>渠道合作</strong>：与 HubSpot、Salesforce、Shopify 等平台集成，支持邮件营销、销售自动化、电商产品视频等场景</li><li><strong>定价策略</strong>：Creator 计划 $29/月起，Business 计划 $99/月起，Enterprise 定制；Avatar IV 比 Avatar III 消耗更多 credits（+20/min） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">来源</a></li><li><strong>市场定位</strong>：面向营销和外部内容创作（用户对比 HeyGen vs Synthesia 时，营销选 HeyGen，内部培训选 Synthesia）</li></ul>"
+            "content": "<ul><li><strong>企业客户案例</strong>： Würth Group 报告翻译成本降低 80%；STUDIO 47 生产速度提升 80%、成本降低 60% <a href=\"https://checkthat.ai/brands/heygen/reviews\" target=\"_blank\">CheckThat 汇总</a></li><li><strong>批量电商视频案例</strong>：某跨境家居电商使用 HeyGen 一周生成 500 条 SKU 产品介绍 + 客服答疑视频，单条成本控制在传统方式的 5% 以下 <a href=\"https://blog.csdn.net/weixin_30533301/article/details/158751358\" target=\"_blank\">CSDN 实战复盘</a></li><li><strong>渠道合作</strong>：与 HubSpot、Salesforce、Shopify 等平台集成，支持邮件营销、销售自动化、电商产品视频等场景</li><li><strong>定价策略</strong>：Creator 计划 ¥210.25/月（约$29）起，Business 计划 ¥717.75/月（约$99）起，Enterprise 定制；Avatar IV 比 Avatar III 消耗更多 credits（+20/min） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">来源</a></li><li><strong>市场定位</strong>：面向营销和外部内容创作（用户对比 HeyGen vs Synthesia 时，营销选 HeyGen，内部培训选 Synthesia）</li></ul>"
           }
         ]
       },
@@ -1042,7 +1617,7 @@ const DATA = {
           },
           {
             "label": "💼 商业化动作",
-            "content": "<ul><li><strong>定价结构</strong>：Creator $29/月 → Business $99/月 → Enterprise 定制；API 计划单独收费，约 $200+/月起</li><li><strong>Avatar IV 溢价</strong>：比 Avatar III 每分钟多 20 credits，企业批量生产 Avatar IV 视频成本约 $5/分钟 vs Avatar III 的 $1/分钟 <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">Content Society</a></li><li><strong>企业大客户策略</strong>：85% 财富 100 强企业使用；重点客户包括 Würth Group、STUDIO 47 等</li><li><strong>渠道合作</strong>：与 Canva App 商店集成，HeyGen 作为第三方应用嵌入 Canva 设计工作流 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">来源</a></li><li><strong>投放策略</strong>：B2B 营销内容集中在 LinkedIn、ProductHunt、G2 等平台；面向跨境电商的投放主要在 YouTube 教程和独立站评测</li></ul>"
+            "content": "<ul><li><strong>定价结构</strong>：Creator ¥210.25/月（约$29） → Business ¥717.75/月（约$99） → Enterprise 定制；API 计划单独收费，约 ¥1450+/月（约$200）起</li><li><strong>Avatar IV 溢价</strong>：比 Avatar III 每分钟多 20 credits，企业批量生产 Avatar IV 视频成本约 ¥36.25/分钟（约$5） vs Avatar III 的 ¥7.25/分钟（约$1） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">Content Society</a></li><li><strong>企业大客户策略</strong>：85% 财富 100 强企业使用；重点客户包括 Würth Group、STUDIO 47 等</li><li><strong>渠道合作</strong>：与 Canva App 商店集成，HeyGen 作为第三方应用嵌入 Canva 设计工作流 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">来源</a></li><li><strong>投放策略</strong>：B2B 营销内容集中在 LinkedIn、ProductHunt、G2 等平台；面向跨境电商的投放主要在 YouTube 教程和独立站评测</li></ul>"
           }
         ]
       },
@@ -1071,11 +1646,11 @@ const DATA = {
           },
           {
             "label": "👥 用户&市场反馈",
-            "content": "<ul><li><span class=\"info-feedback\">【正面评价】</span> \"10 款工具中最易上手，零学习曲线\"；BotBunch 评测给出易用性 ⭐⭐⭐⭐⭐，性价比 ⭐⭐⭐⭐⭐ <a href=\"https://botbunch.com/best-ai-avatar-generators/\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> 1) 数字人质量明显低于专用工具（HeyGen/D-ID），口型僵硬、面部微表情不足；2) Avatar 自定义选项有限；3) 翻译配音后口型不能动态适配新语言发音；4) 不适合专业级/企业级视频输出 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">VidWave 对比</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> Canva 数字人适合作为短视频角落的次要元素（如教程小窗口），但全屏产品口播视频\"难以越过恐怖谷\"，可能导致观看满意度下降和平台算法降权 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">来源</a></li><li><span class=\"info-fact\">【确定事实】</span> 全球用户超 1.7 亿；Canva Pro $12.99/月解锁完整 AI 套件；免费版有基础 AI 功能但额度有限 <a href=\"https://videoai.me/blog/canva-ai-video-generator-review-alternatives-2026\" target=\"_blank\">VideoAI 评测</a></li></ul>"
+            "content": "<ul><li><span class=\"info-feedback\">【正面评价】</span> \"10 款工具中最易上手，零学习曲线\"；BotBunch 评测给出易用性 ⭐⭐⭐⭐⭐，性价比 ⭐⭐⭐⭐⭐ <a href=\"https://botbunch.com/best-ai-avatar-generators/\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> 1) 数字人质量明显低于专用工具（HeyGen/D-ID），口型僵硬、面部微表情不足；2) Avatar 自定义选项有限；3) 翻译配音后口型不能动态适配新语言发音；4) 不适合专业级/企业级视频输出 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">VidWave 对比</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> Canva 数字人适合作为短视频角落的次要元素（如教程小窗口），但全屏产品口播视频\"难以越过恐怖谷\"，可能导致观看满意度下降和平台算法降权 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">来源</a></li><li><span class=\"info-fact\">【确定事实】</span> 全球用户超 1.7 亿；Canva Pro ¥94.18/月（约$12.99）解锁完整 AI 套件；免费版有基础 AI 功能但额度有限 <a href=\"https://videoai.me/blog/canva-ai-video-generator-review-alternatives-2026\" target=\"_blank\">VideoAI 评测</a></li></ul>"
           },
           {
             "label": "💼 商业化动作",
-            "content": "<ul><li><strong>市场定位</strong>：\"设计平台里的 AI 视频功能\"而非专业数字人工具；走普惠路线，让 1.7 亿存量用户首次体验 AI 视频生成</li><li><strong>企业客户案例</strong>：日本某环保水杯品牌用 Canva AI 生成 45 秒产品介绍视频，商品页停留时间提升 1.8 倍、购买率上升 12% <a href=\"https://app-tatsujin.com/canva-ai-video-editing-guide/\" target=\"_blank\">日本案例</a></li><li><strong>企业客户案例</strong>：某 500 人公司用 Canva AI Avatar 做 CEO 月度全员视频 + 多语言部门公告，员工信息留存率提升 78% <a href=\"https://www.artificial-intelligence-wiki.com/best-ai-tools/ai-image-and-video-generators/canva-ai-video-features/\" target=\"_blank\">AI Wiki</a></li><li><strong>渠道合作</strong>：与 HeyGen、D-ID、ElevenLabs、Google Veo 等在 App Store 内集成，形成生态平台而非自研全栈</li><li><strong>定价策略</strong>：免费版有基础功能，Pro $12.99/月解锁完整 AI，Enterprise 定制；AI 视频生成按 credits 消耗，30 秒约 2 credits <a href=\"https://app-tatsujin.com/canva-ai-video-editing-guide-2026/\" target=\"_blank\">来源</a></li></ul>"
+            "content": "<ul><li><strong>市场定位</strong>：\"设计平台里的 AI 视频功能\"而非专业数字人工具；走普惠路线，让 1.7 亿存量用户首次体验 AI 视频生成</li><li><strong>企业客户案例</strong>：日本某环保水杯品牌用 Canva AI 生成 45 秒产品介绍视频，商品页停留时间提升 1.8 倍、购买率上升 12% <a href=\"https://app-tatsujin.com/canva-ai-video-editing-guide/\" target=\"_blank\">日本案例</a></li><li><strong>企业客户案例</strong>：某 500 人公司用 Canva AI Avatar 做 CEO 月度全员视频 + 多语言部门公告，员工信息留存率提升 78% <a href=\"https://www.artificial-intelligence-wiki.com/best-ai-tools/ai-image-and-video-generators/canva-ai-video-features/\" target=\"_blank\">AI Wiki</a></li><li><strong>渠道合作</strong>：与 HeyGen、D-ID、ElevenLabs、Google Veo 等在 App Store 内集成，形成生态平台而非自研全栈</li><li><strong>定价策略</strong>：免费版有基础功能，Pro ¥94.18/月（约$12.99）解锁完整 AI，Enterprise 定制；AI 视频生成按 credits 消耗，30 秒约 2 credits <a href=\"https://app-tatsujin.com/canva-ai-video-editing-guide-2026/\" target=\"_blank\">来源</a></li></ul>"
           }
         ]
       },
@@ -1138,11 +1713,11 @@ const DATA = {
           },
           {
             "label": "👥 用户&市场反馈",
-            "content": "<ul><li><span class=\"info-feedback\">【用户反馈】</span> V6 在运镜稳定性和物理交互真实感上较 V5.6 有显著提升，但<strong>长视频（>30秒）人物动作仍有漂移现象</strong>，适合短视频带货场景而非长视频课程</li><li><span class=\"info-feedback\">【用户反馈】</span> 口型同步 API 对中文卷舌音（zh/ch/sh）处理略生硬，英文表现最佳；视频最长支持 60 秒 <a href=\"https://docs.platform.pixverse.ai/how-to-use-speechlip-sync-1268530m0\" target=\"_blank\">官方文档</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> 与 HeyGen 相比，PixVerse 缺乏预设电商模板和现成数字人形象库，需要用户自行创建 Character，<strong>对非技术团队上手门槛更高</strong></li><li><span class=\"info-fact\">【确定事实】</span> API 按秒计费，V6 720p 无音频约 $0.045/秒、有音频约 $0.06/秒；1080p 无音频约 $0.09/秒 <a href=\"https://www.atlascloud.ai/zh/blog/guides/pixverse-ai-video-generator-review\" target=\"_blank\">AtlasCloud 评测</a></li><li><span class=\"info-prediction\">【行业预测】</span> PixVerse 以视频生成底层模型见长，数字人能力偏向\"角色一致性视频生成\"而非\"专业数字人平台\"，<strong>预计 2026 下半年会加强面向电商的模板化工具</strong>【待验证】</li></ul>"
+            "content": "<ul><li><span class=\"info-feedback\">【用户反馈】</span> V6 在运镜稳定性和物理交互真实感上较 V5.6 有显著提升，但<strong>长视频（>30秒）人物动作仍有漂移现象</strong>，适合短视频带货场景而非长视频课程</li><li><span class=\"info-feedback\">【用户反馈】</span> 口型同步 API 对中文卷舌音（zh/ch/sh）处理略生硬，英文表现最佳；视频最长支持 60 秒 <a href=\"https://docs.platform.pixverse.ai/how-to-use-speechlip-sync-1268530m0\" target=\"_blank\">官方文档</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> 与 HeyGen 相比，PixVerse 缺乏预设电商模板和现成数字人形象库，需要用户自行创建 Character，<strong>对非技术团队上手门槛更高</strong></li><li><span class=\"info-fact\">【确定事实】</span> API 按秒计费，V6 720p 无音频约 ¥0.33/秒（约$0.045）、有音频约 ¥0.43/秒（约$0.06）；1080p 无音频约 ¥0.65/秒（约$0.09） <a href=\"https://www.atlascloud.ai/zh/blog/guides/pixverse-ai-video-generator-review\" target=\"_blank\">AtlasCloud 评测</a></li><li><span class=\"info-prediction\">【行业预测】</span> PixVerse 以视频生成底层模型见长，数字人能力偏向\"角色一致性视频生成\"而非\"专业数字人平台\"，<strong>预计 2026 下半年会加强面向电商的模板化工具</strong>【待验证】</li></ul>"
           },
           {
             "label": "💼 商业化动作",
-            "content": "<ul><li><strong>API 订阅模式</strong>：官方平台 API 会员 $100/月起含 15,000 积分，1080p 约 $0.10-$0.15/秒；第三方代理（AtlasCloud、EmpirioLabs）支持按需付费无月费 <a href=\"https://www.atlascloud.ai/zh/blog/guides/pixverse-ai-video-generator-review\" target=\"_blank\">来源</a></li><li><strong>CLI + Agent 工作流</strong>：V6 同步推出 CLI 工具和 Agent 对话式创作，面向开发者和智能体工作流，便于批量生成电商视频</li><li><strong>Webhook 功能</strong>（2026/01/09 上线）：支持异步任务回调，适合批量视频生成的自动化流水线</li><li><strong>企业客户案例</strong>：官方暂未公开大型企业客户名单，但 PR Newswire 通稿强调\"生产就绪的工作流\"与\"可扩展的 API 架构\"，<strong>主要面向开发团队而非营销团队</strong></li><li><span class=\"info-pending\">【待验证】</span> PixVerse 是否在 2026 年下半年推出面向跨境电商的标准化数字人模板套件【待验证】</li></ul>"
+            "content": "<ul><li><strong>API 订阅模式</strong>：官方平台 API 会员 ¥725/月（约$100）起含 15,000 积分，1080p 约 ¥0.73-¥1.09/秒（约$0.10-$0.15）；第三方代理（AtlasCloud、EmpirioLabs）支持按需付费无月费 <a href=\"https://www.atlascloud.ai/zh/blog/guides/pixverse-ai-video-generator-review\" target=\"_blank\">来源</a></li><li><strong>CLI + Agent 工作流</strong>：V6 同步推出 CLI 工具和 Agent 对话式创作，面向开发者和智能体工作流，便于批量生成电商视频</li><li><strong>Webhook 功能</strong>（2026/01/09 上线）：支持异步任务回调，适合批量视频生成的自动化流水线</li><li><strong>企业客户案例</strong>：官方暂未公开大型企业客户名单，但 PR Newswire 通稿强调\"生产就绪的工作流\"与\"可扩展的 API 架构\"，<strong>主要面向开发团队而非营销团队</strong></li><li><span class=\"info-pending\">【待验证】</span> PixVerse 是否在 2026 年下半年推出面向跨境电商的标准化数字人模板套件【待验证】</li></ul>"
           }
         ]
       },
@@ -1203,7 +1778,7 @@ const DATA = {
         },
         {
           label: '商业化观察',
-          content: '<p>闭源模型走 API 商用路线（FLUX 3 Video $0.06-0.53/秒），开源模型走生态路线（HuggingFace + ComfyUI 支持）。两种路线并行，数字人产品可根据成本和定制化需求灵活选型。</p>'
+          content: '<p>闭源模型走 API 商用路线（FLUX 3 Video ¥0.43-¥3.84/秒（约$0.06-$0.53）），开源模型走生态路线（HuggingFace + ComfyUI 支持）。两种路线并行，数字人产品可根据成本和定制化需求灵活选型。</p>'
         }
       ]
     }
@@ -1213,7 +1788,7 @@ const DATA = {
     { value: '4+', label: '本周新发布/更新模型数', source: '情报站汇总' },
     { value: '2', label: '头部视频模型正面竞争', source: 'BFL & MiniMax' },
     { value: '14+', label: '主流视频模型支持语言数', source: 'BFL FLUX 3 Video' },
-    { value: '$0.03起', label: '海外生图API最低单价', source: '阿里云 Qwen Cloud' }
+    { value: '¥0.22起（约$0.03）', label: '海外生图API最低单价', source: '阿里云 Qwen Cloud' }
   ],
 
   archive: [
@@ -1231,6 +1806,7 @@ document.addEventListener('DOMContentLoaded', function() {
   initModels();
   initCompetitors();
   initIndustry();
+  initCompare();
   initArchive();
   updateCounts();
 });
@@ -1484,12 +2060,398 @@ function renderTagFilters(category) {
   });
 }
 
+
+// ============ COMPARE ============
+function initCompare() {
+  renderCompareTable();
+  initLightbox();
+  initVideoModal();
+  document.getElementById('count-compare').textContent = getRecentModels().length;
+}
+
+function getRecentModels() {
+  const cutoffDate = new Date();
+  cutoffDate.setMonth(cutoffDate.getMonth() - 3);
+  return DATA.models.filter(m => new Date(m.date) >= cutoffDate)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+}
+
+function getModelType(type) {
+  const typeMap = {
+    'video': { label: '视频', className: 'video' },
+    'image': { label: '图像', className: 'image' },
+    'audio': { label: '音频', className: 'audio' }
+  };
+  return typeMap[type] || { label: '其他', className: 'video' };
+}
+
+function getModelShortName(title) {
+  // 从标题提取简短模型名
+  const patterns = [
+    /^(字节\s+)?Seedance\s*[\d.]+/i,
+    /^阿里\s+Qwen-Image\s*[\d.]+/i,
+    /^商汤\s+SenseNova[\s\w.-]*/i,
+    /^FLUX\s*[\d\w\s]+/i,
+    /^MiniMax\s*\w+/i,
+    /^PixVerse\s*\w+/i,
+  ];
+  for (const p of patterns) {
+    const m = title.match(p);
+    if (m) return m[0].trim();
+  }
+  // fallback: 取前20字符
+  return title.length > 20 ? title.slice(0, 20) + '…' : title;
+}
+
+function extractParams(sections) {
+  const paramSection = sections.find(s => s.label === '核心技术参数');
+  if (!paramSection) return [];
+  // 从HTML中提取li文本
+  const temp = document.createElement('div');
+  temp.innerHTML = paramSection.content;
+  const items = temp.querySelectorAll('li');
+  return Array.from(items).slice(0, 4).map(li => li.textContent.trim());
+}
+
+function extractCost(sections) {
+  const costSection = sections.find(s => s.label === '接入成本与方式');
+  if (!costSection) return '<span style="color:var(--text-muted)">暂无数据</span>';
+  const temp = document.createElement('div');
+  temp.innerHTML = costSection.content;
+  const items = temp.querySelectorAll('li');
+  if (items.length === 0) return costSection.content;
+  // 取前2条成本相关的
+  const costItems = Array.from(items).slice(0, 2);
+  return '<div class="compare-cost-text">' + costItems.map(li => li.outerHTML).join('') + '</div>';
+}
+
+function extractAccess(sections) {
+  const costSection = sections.find(s => s.label === '接入成本与方式');
+  if (!costSection) return '<span style="color:var(--text-muted)">暂无数据</span>';
+  const temp = document.createElement('div');
+  temp.innerHTML = costSection.content;
+  const items = temp.querySelectorAll('li');
+  // 找接入方式相关的（从第2条之后）
+  const accessItems = Array.from(items).filter(li => {
+    const text = li.textContent.toLowerCase();
+    return text.includes('接入') || text.includes('方式') || text.includes('官方') || text.includes('申请') || text.includes('下载') || text.includes('开源');
+  });
+  if (accessItems.length === 0) {
+    // 取第3条往后
+    return '<div class="compare-access-text">' + Array.from(items).slice(2, 4).map(li => li.outerHTML).join('') + '</div>';
+  }
+  return '<div class="compare-access-text">' + accessItems.slice(0, 2).map(li => li.outerHTML).join('') + '</div>';
+}
+
+// SVG 占位图生成器
+function generateVideoPlaceholder(modelName) {
+  const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b', '#10b981', '#3b82f6'];
+  const colorIndex = modelName.length % colors.length;
+  const c = colors[colorIndex];
+  return `<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="vg-${modelName.length}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:${c};stop-opacity:0.3"/>
+        <stop offset="100%" style="stop-color:${c};stop-opacity:0.1"/>
+      </linearGradient>
+    </defs>
+    <rect width="320" height="180" fill="url(#vg-${modelName.length})"/>
+    <text x="160" y="95" text-anchor="middle" fill="${c}" font-size="16" font-weight="600" font-family="sans-serif">${modelName}</text>
+    <text x="160" y="118" text-anchor="middle" fill="#9ba4c7" font-size="11" font-family="sans-serif">视频生成案例</text>
+  </svg>`;
+}
+
+function generateImagePlaceholder(modelName, index) {
+  const gradients = [
+    ['#6366f1', '#8b5cf6'],
+    ['#ec4899', '#f43f5e'],
+    ['#10b981', '#14b8a6'],
+    ['#f59e0b', '#f97316'],
+    ['#3b82f6', '#6366f1'],
+    ['#8b5cf6', '#a855f7'],
+  ];
+  const g = gradients[(modelName.length + index) % gradients.length];
+  return `<svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="ig-${modelName.length}-${index}" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:${g[0]}"/>
+        <stop offset="100%" style="stop-color:${g[1]}"/>
+      </linearGradient>
+    </defs>
+    <rect width="320" height="180" fill="url(#ig-${modelName.length}-${index})"/>
+    <circle cx="80" cy="60" r="30" fill="rgba(255,255,255,0.2)"/>
+    <rect x="150" y="80" width="120" height="70" rx="8" fill="rgba(255,255,255,0.15)"/>
+    <rect x="30" y="120" width="80" height="40" rx="6" fill="rgba(255,255,255,0.1)"/>
+    <text x="160" y="170" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="11" font-family="sans-serif">${modelName} 案例 ${index + 1}</text>
+  </svg>`;
+}
+
+function generateAudioWave(modelName, index) {
+  const colors = ['#f59e0b', '#ef4444', '#10b981', '#8b5cf6'];
+  const c = colors[(modelName.length + index) % colors.length];
+  let bars = '';
+  for (let i = 0; i < 40; i++) {
+    const h = 10 + Math.abs(Math.sin(i * 0.7 + index) * 25) + Math.random() * 10;
+    bars += `<rect x="${i * 8}" y="${50 - h/2}" width="4" height="${h}" rx="2" fill="${c}" opacity="${0.4 + (i / 40) * 0.6}"/>`;
+  }
+  return `<svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="320" height="100" fill="rgba(0,0,0,0.3)"/>
+    ${bars}
+    <text x="160" y="90" text-anchor="middle" fill="#9ba4c7" font-size="10" font-family="sans-serif">${modelName} 音频演示 ${index + 1}</text>
+  </svg>`;
+}
+
+// 获取模型的案例图片集（模拟数据，实际可扩展为真实图片URL）
+function getModelImages(model) {
+  const shortName = getModelShortName(model.title);
+  const count = 3 + (model.title.length % 4); // 3-6张
+  const images = [];
+  for (let i = 0; i < count; i++) {
+    images.push({
+      svg: generateImagePlaceholder(shortName, i),
+      caption: `${shortName} 生成案例 ${i + 1}`
+    });
+  }
+  return images;
+}
+
+function getModelAudios(model) {
+  const shortName = getModelShortName(model.title);
+  const count = 2 + (model.title.length % 2);
+  const audios = [];
+  for (let i = 0; i < count; i++) {
+    audios.push({
+      svg: generateAudioWave(shortName, i),
+      title: `${shortName} 音频演示 ${i + 1}`,
+      duration: '00:30'
+    });
+  }
+  return audios;
+}
+
+function renderDemoCell(model) {
+  const type = getModelType(model.type);
+  const shortName = getModelShortName(model.title);
+
+  if (model.type === 'video') {
+    const placeholder = generateVideoPlaceholder(shortName);
+    return `
+      <div class="demo-cell">
+        <div class="demo-thumbnail video-demo" data-model-id="${model.id}">
+          ${placeholder}
+          <div class="demo-play-btn"></div>
+          <span class="demo-badge">视频案例</span>
+        </div>
+        <a class="demo-link" href="${model.sourceUrl}" target="_blank" rel="noopener noreferrer">查看官方案例 →</a>
+      </div>
+    `;
+  } else if (model.type === 'image') {
+    const images = getModelImages(model);
+    const firstImg = images[0];
+    const extraCount = images.length - 1;
+    return `
+      <div class="demo-cell">
+        <div class="demo-thumbnail image-demo" data-model-id="${model.id}">
+          ${firstImg.svg}
+          <span class="demo-badge">+${extraCount}</span>
+        </div>
+        <span class="demo-link" data-action="open-lightbox" data-model-id="${model.id}">点击查看全部 →</span>
+      </div>
+    `;
+  } else if (model.type === 'audio') {
+    const audios = getModelAudios(model);
+    return `
+      <div class="demo-cell">
+        ${audios.map(a => `
+          <div class="audio-player">
+            <button class="audio-play-btn" aria-label="播放"></button>
+            <div class="audio-wave">
+              ${Array.from({length: 20}).map((_, i) => `<div class="audio-wave-bar" style="height:${20 + Math.abs(Math.sin(i*0.5)*30)}%"></div>`).join('')}
+            </div>
+            <div class="audio-time">${a.duration}</div>
+          </div>
+        `).join('')}
+        <span class="demo-link" style="opacity:0.7;">暂未提供音频演示</span>
+      </div>
+    `;
+  } else {
+    return `<div class="demo-placeholder">暂无官方案例</div>`;
+  }
+}
+
+function renderCompareTable() {
+  const models = getRecentModels();
+  const tbody = document.getElementById('compare-tbody');
+  const emptyEl = document.getElementById('compare-empty');
+
+  if (models.length === 0) {
+    tbody.innerHTML = '';
+    emptyEl.style.display = 'flex';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  tbody.innerHTML = models.map(model => {
+    const typeInfo = getModelType(model.type);
+    const shortName = getModelShortName(model.title);
+    const params = extractParams(model.sections);
+    const cost = extractCost(model.sections);
+    const access = extractAccess(model.sections);
+    const demo = renderDemoCell(model);
+
+    return `
+      <tr data-model-id="${model.id}">
+        <td>
+          <div class="compare-model-name">
+            ${shortName}
+            <span class="compare-model-tag ${typeInfo.className}">${typeInfo.label}</span>
+          </div>
+          <div class="compare-model-date">📅 ${model.date}</div>
+        </td>
+        <td>
+          <ul class="compare-params-list">
+            ${params.map(p => `<li>${p}</li>`).join('')}
+          </ul>
+        </td>
+        <td>${cost}</td>
+        <td>${access}</td>
+        <td>${demo}</td>
+      </tr>
+    `;
+  }).join('');
+
+  bindCompareEvents();
+}
+
+function bindCompareEvents() {
+  // 视频缩略图点击
+  document.querySelectorAll('.video-demo').forEach(el => {
+    if (el._bound) return;
+    el._bound = true;
+    el.addEventListener('click', () => {
+      const modelId = el.dataset.modelId;
+      const model = DATA.models.find(m => m.id === modelId);
+      if (model) openVideoModal(model);
+    });
+  });
+
+  // 图片灯箱触发
+  document.querySelectorAll('.image-demo, [data-action="open-lightbox"]').forEach(el => {
+    if (el._bound) return;
+    el._bound = true;
+    el.addEventListener('click', (e) => {
+      const modelId = el.dataset.modelId;
+      const model = DATA.models.find(m => m.id === modelId);
+      if (model) openLightbox(model);
+    });
+  });
+}
+
+// ============ Video Modal ============
+let currentVideoModel = null;
+
+function initVideoModal() {
+  document.getElementById('video-modal-overlay').addEventListener('click', closeVideoModal);
+  document.getElementById('video-modal-close').addEventListener('click', closeVideoModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeVideoModal();
+  });
+}
+
+function openVideoModal(model) {
+  currentVideoModel = model;
+  const shortName = getModelShortName(model.title);
+  const body = document.getElementById('video-modal-body');
+  body.innerHTML = `
+    <div class="video-modal-title">${shortName} 官方视频案例</div>
+    <div class="demo-thumbnail" style="aspect-ratio:16/9;cursor:default;margin-bottom:8px;">
+      ${generateVideoPlaceholder(shortName)}
+      <div class="demo-play-btn"></div>
+    </div>
+    <div class="video-modal-desc">${model.summary}</div>
+    <a class="video-modal-link" href="${model.sourceUrl}" target="_blank" rel="noopener noreferrer">
+      在新窗口打开官方案例页 →
+    </a>
+  `;
+  document.getElementById('video-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoModal() {
+  document.getElementById('video-modal').style.display = 'none';
+  document.body.style.overflow = '';
+  currentVideoModel = null;
+}
+
+// ============ Lightbox ============
+let lightboxImages = [];
+let lightboxIndex = 0;
+
+function initLightbox() {
+  document.getElementById('lightbox-overlay').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  document.getElementById('lightbox-prev').addEventListener('click', prevLightboxImage);
+  document.getElementById('lightbox-next').addEventListener('click', nextLightboxImage);
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('lightbox-modal');
+    if (modal.style.display !== 'flex') return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') prevLightboxImage();
+    if (e.key === 'ArrowRight') nextLightboxImage();
+  });
+}
+
+function openLightbox(model) {
+  lightboxImages = getModelImages(model);
+  lightboxIndex = 0;
+  updateLightbox();
+  document.getElementById('lightbox-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox-modal').style.display = 'none';
+  document.body.style.overflow = '';
+  lightboxImages = [];
+  lightboxIndex = 0;
+}
+
+function updateLightbox() {
+  const imgWrap = document.getElementById('lightbox-img-wrap');
+  const caption = document.getElementById('lightbox-caption');
+  const prevBtn = document.getElementById('lightbox-prev');
+  const nextBtn = document.getElementById('lightbox-next');
+
+  const img = lightboxImages[lightboxIndex];
+  imgWrap.innerHTML = img.svg;
+  caption.textContent = `${img.caption} (${lightboxIndex + 1}/${lightboxImages.length})`;
+
+  prevBtn.disabled = lightboxIndex === 0;
+  nextBtn.disabled = lightboxIndex === lightboxImages.length - 1;
+}
+
+function prevLightboxImage() {
+  if (lightboxIndex > 0) {
+    lightboxIndex--;
+    updateLightbox();
+  }
+}
+
+function nextLightboxImage() {
+  if (lightboxIndex < lightboxImages.length - 1) {
+    lightboxIndex++;
+    updateLightbox();
+  }
+}
+
+
 // ============ COUNTS ============
 function updateCounts() {
   document.getElementById('count-models').textContent = DATA.models.length;
   document.getElementById('count-competitors').textContent = DATA.competitors.length;
   document.getElementById('count-industry').textContent = DATA.industry.length;
   document.getElementById('count-archive').textContent = DATA.archive.length;
+  document.getElementById('count-compare').textContent = getRecentModels().length;
 }
 </script>
 </body>
