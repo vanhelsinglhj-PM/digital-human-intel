@@ -503,19 +503,31 @@ a:focus-visible {
   border-top: 1px dashed var(--border);
 }
 
-.detail-section:first-of-type {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
-}
+
 
 .detail-label {
   font-size: 12px;
   font-weight: 600;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 6px;
+  color: var(--text-dim);
+  letter-spacing: 0.3px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.detail-section {
+  background: rgba(99, 102, 241, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.detail-section:first-of-type {
+  margin-top: 0;
+  padding-top: 12px;
 }
 
 .card-chevron {
@@ -722,7 +734,7 @@ a:focus-visible {
       </div>
     </div>
     <div class="topbar-meta">
-      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-06 10:30</span></div>
+      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-06 13:47</span></div>
     </div>
   </div>
 </header>
@@ -761,7 +773,7 @@ a:focus-visible {
     <div class="section-header">
       <div>
         <div class="section-title">竞品动态看板</div>
-        <div class="section-desc">HeyGen / Pixverse / Synthesia / Elai / D-ID 全维度监控</div>
+        <div class="section-desc">Pixverse / HeyGen / Canva — 产品更新 · 用户反馈 · 商业化动作 三维度监控</div>
       </div>
     </div>
     <div class="filter-bar">
@@ -950,36 +962,206 @@ const DATA = {
   ],
 
   competitors: [
-    {
-      id: 'heygen-agent-sales',
-      product: 'HeyGen',
-      title: 'HeyGen联合创始人AI克隆体独立跑销售，8周转化132付费客户',
-      date: '2026-08-04',
-      badge: 'review',
-      badgeText: '商业化',
-      tags: ['AI Agent', '销售自动化', '权限管控', '案例'],
-      source: "Today's AI News Podcast",
-      sourceUrl: 'https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809',
-      summary: 'HeyGen联合创始人Wayne Liang休陪产假期间，用数字人AI克隆体跑销售，8周通话2741潜在客户，转化132付费客户，开启300万美元企业订单管线。',
-      sections: [
-        {
-          label: '核心技术参数',
-          content: '<ul><li>基于 <strong>HeyGen 数字人形象</strong> + <strong>OpenClaw Agent</strong> 构建</li><li>8周内通话 <strong>2,741个</strong> 潜在客户</li><li>促成 <strong>132个</strong> 付费客户转化</li><li>开启 <strong>300万美元</strong> 企业级订单管线</li></ul>'
-        },
-        {
-          label: '第三方测评',
-          content: '<p>案例来自 HeyGen 联合创始人 Wayne Liang 在 <a href="https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809" target="_blank">Today\'s AI News Podcast</a> 中的公开分享。</p><p>为创始人自述案例，第三方独立验证数据有限</p>'
-        },
-        {
-          label: '接入成本与方式',
-          content: '<ul><li><strong>数字人形象</strong>：HeyGen 平台克隆生成</li><li><strong>Agent 能力</strong>：OpenClaw Agent 框架驱动</li><li><strong>商业化形态</strong>：当前为内部试验案例，尚未作为标准化产品对外发售</li><li><strong>暴露的问题</strong>：AI 克隆体曾自行编造定价方案、泄露内部笔记、从过期日历承诺会议；HeyGen 已将关键操作权限从 Agent 能力范围中剥离</li></ul>'
-        },
-        {
-          label: '数字人场景适配',
-          content: '<p><strong>参考价值：</strong>数字人 + AI Agent 是明确的商业化方向，toB 销售场景需求真实。</p><p><strong>风险提示：</strong>权限管控和审计机制对 toB 场景至关重要，关键操作（定价、承诺、外发信息）需要人工审核或权限隔离。</p><p><strong>后续关注：</strong>HeyGen 是否将 AI Agent 销售能力产品化，面向企业客户开放类似方案。</p>'
-        }
-      ]
-    }
+      {
+        "id": "heygen-agent-sales-update",
+        "product": "HeyGen",
+        "brand": "heygen",
+        "title": "HeyGen 联合创始人 AI 克隆体独立跑销售，8 周转化 132 付费客户",
+        "date": "2026-08-04",
+        "badge": "review",
+        "badgeText": "商业化",
+        "tags": [
+          "AI Agent",
+          "销售自动化",
+          "数字人克隆",
+          "企业案例",
+          "权限管控"
+        ],
+        "source": "Today's AI News Podcast",
+        "sourceUrl": "https://podcasts.apple.com/us/podcast/openai-anthropic-meta-and-google-head-to-the-white/id1881668650?i=1000779870809",
+        "summary": "HeyGen 联合创始人 Wayne Liang 休陪产假期间用数字人 AI 克隆体跑销售，8 周通话 2,741 潜在客户，转化 132 付费客户，开启 300 万美元企业订单管线，暴露 Agent 权限管控风险。",
+        "sections": [
+          {
+            "label": "📦 产品更新",
+            "content": "<ul><li><strong>数字人 AI Agent 能力</strong>：基于 HeyGen 数字人形象 + OpenClaw Agent 框架构建，可自主发起销售通话、回答产品问题、跟进客户</li><li><strong>权限管控机制（事后补强）</strong>：AI 克隆体曾自行编造定价、泄露内部笔记、从过期日历承诺会议；HeyGen 已将关键操作权限从 Agent 能力范围中剥离</li><li><strong>企业级安全与审计</strong>：当前为内部试验案例，尚未作为标准化产品对外发售；预计企业版将增加人工审核、权限隔离、操作审计等功能【待验证】</li></ul>"
+          },
+          {
+            "label": "👥 用户&市场反馈",
+            "content": "<ul><li><span class=\"info-feedback\">【B端评价】</span> Content Society 2026 年报告：个性化数字人 outreach 视频回复率 25-45%（纯文本仅 5-12%），会议预约率 8-18%（纯文本 1-3%） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> ProductHunt / Capterra 用户反馈集中在：1) 口型同步在>2分钟视频中质量下降；2) 客服响应慢（12 条投诉提及）；3) 额度与定价不透明，升级后仍需额外买 token；4) 非英语语言效果下降明显 <a href=\"https://www.producthunt.com/products/heygen/reviews\" target=\"_blank\">ProductHunt</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> CSDN 博主实测：HeyGen 中文口型准确率约 90%，卷舌音 zh/ch/sh 略生硬；1080P 渲染时间翻倍；免费版每月仅 5 分钟额度 <a href=\"https://blog.csdn.net/jiangzeonline/article/details/149934341\" target=\"_blank\">来源</a></li><li><span class=\"info-fact\">【付费转化数据】</span> 60 秒 Avatar III 视频约 $1，Avatar IV 约 $5/分钟；B2B SaaS 客户（€299/月）集成 HeyGen API 后，3 个月内新客户从 2/月增至 8/月，ROI 显著 <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">Content Society</a></li></ul>"
+          },
+          {
+            "label": "💼 商业化动作",
+            "content": "<ul><li><strong>企业客户案例</strong>： Würth Group 报告翻译成本降低 80%；STUDIO 47 生产速度提升 80%、成本降低 60% <a href=\"https://checkthat.ai/brands/heygen/reviews\" target=\"_blank\">CheckThat 汇总</a></li><li><strong>批量电商视频案例</strong>：某跨境家居电商使用 HeyGen 一周生成 500 条 SKU 产品介绍 + 客服答疑视频，单条成本控制在传统方式的 5% 以下 <a href=\"https://blog.csdn.net/weixin_30533301/article/details/158751358\" target=\"_blank\">CSDN 实战复盘</a></li><li><strong>渠道合作</strong>：与 HubSpot、Salesforce、Shopify 等平台集成，支持邮件营销、销售自动化、电商产品视频等场景</li><li><strong>定价策略</strong>：Creator 计划 $29/月起，Business 计划 $99/月起，Enterprise 定制；Avatar IV 比 Avatar III 消耗更多 credits（+20/min） <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">来源</a></li><li><strong>市场定位</strong>：面向营销和外部内容创作（用户对比 HeyGen vs Synthesia 时，营销选 HeyGen，内部培训选 Synthesia）</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "heygen-avatar-iv-pricing",
+        "product": "HeyGen",
+        "brand": "heygen",
+        "title": "HeyGen Avatar IV 定价调整 + 多语言能力升级，企业套餐政策收紧",
+        "date": "2026-06-28",
+        "badge": "price",
+        "badgeText": "定价调整",
+        "tags": [
+          "Avatar IV",
+          "定价",
+          "企业套餐",
+          "多语言",
+          "Voice Director"
+        ],
+        "source": "Content Society / VidWave AI",
+        "sourceUrl": "https://contentsociety.co/blog/heygen-marketing-b2b",
+        "summary": "HeyGen Avatar IV 相比 Avatar III 每分钟多消耗 20 credits，企业 API 套餐单独收费；同时 Voice Director 支持逐词情感控制和多语言音素映射，跨境电商多语种口播能力增强。",
+        "sections": [
+          {
+            "label": "📦 产品更新",
+            "content": "<ul><li><strong>Avatar IV 画质升级</strong>：超写实数字人渲染，面部微表情、眼神、皮肤纹理更自然，被 G2 评为行业第一 <a href=\"https://www.producthunt.com/products/heygen/reviews\" target=\"_blank\">ProductHunt</a></li><li><strong>Voice Director 语音导演</strong>：支持逐词情感控制、音素级映射，翻译脚本时口型动态适配新语言的发音口型 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">VidWave 对比</a></li><li><strong>175+ 种语言支持</strong>：多语言视频翻译 + 自动配音 + 口型同步，适合跨境电商多语种产品介绍</li><li><strong>AI Video Agent</strong>：消息优先的 AI 视频平台，支持从脚本、图片、PPT、对话提示生成视频</li></ul>"
+          },
+          {
+            "label": "👥 用户&市场反馈",
+            "content": "<ul><li><span class=\"info-feedback\">【正面评价】</span> Capterra 用户：\"速度快、界面直观、可快速规模化生产多语言版本内容\"，替代传统视频制作成本 <a href=\"https://www.capterra.co.uk/software/1059360/heygen\" target=\"_blank\">Capterra</a></li><li><span class=\"info-feedback\">【负面评价】</span> App Store 评论：1) 定价政策误导，升级套餐后仍需单独购买 token；2) 移动端和网页端额度统计不一致；3) 客服无响应 <a href=\"https://apps.apple.com/ua/app/heygen-ai-video-generator/id6711356409\" target=\"_blank\">App Store</a></li><li><span class=\"info-feedback\">【跨境电商场景】</span> 适合多语种产品介绍视频、国际会议开场、动画剧情类口播；但免费版额度少，批量生成成本需要核算</li><li><span class=\"info-fact\">【确定事实】</span> 全球用户超 3000 万，财富 100 强中 85% 使用 HeyGen <a href=\"https://www.producthunt.com/products/heygen/reviews\" target=\"_blank\">来源</a></li></ul>"
+          },
+          {
+            "label": "💼 商业化动作",
+            "content": "<ul><li><strong>定价结构</strong>：Creator $29/月 → Business $99/月 → Enterprise 定制；API 计划单独收费，约 $200+/月起</li><li><strong>Avatar IV 溢价</strong>：比 Avatar III 每分钟多 20 credits，企业批量生产 Avatar IV 视频成本约 $5/分钟 vs Avatar III 的 $1/分钟 <a href=\"https://contentsociety.co/blog/heygen-marketing-b2b\" target=\"_blank\">Content Society</a></li><li><strong>企业大客户策略</strong>：85% 财富 100 强企业使用；重点客户包括 Würth Group、STUDIO 47 等</li><li><strong>渠道合作</strong>：与 Canva App 商店集成，HeyGen 作为第三方应用嵌入 Canva 设计工作流 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">来源</a></li><li><strong>投放策略</strong>：B2B 营销内容集中在 LinkedIn、ProductHunt、G2 等平台；面向跨境电商的投放主要在 YouTube 教程和独立站评测</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "canva-magic-studio-avatar",
+        "product": "Canva",
+        "brand": "canva",
+        "title": "Canva Magic Studio 全面升级 AI 视频能力，Talking Photo + AI Avatar 覆盖 1.7 亿用户",
+        "date": "2026-05-22",
+        "badge": "update",
+        "badgeText": "产品更新",
+        "tags": [
+          "Magic Studio",
+          "Talking Photo",
+          "AI Avatar",
+          "Veo 3",
+          "Magic Video"
+        ],
+        "source": "BotBunch / AI Wiki",
+        "sourceUrl": "https://botbunch.com/best-ai-avatar-generators/",
+        "summary": "Canva 内置 AI 数字人能力快速增长，Talking Photo 可让任意照片开口说话，AI Avatar 支持 40+ 语言口播，集成 Google Veo 3 视频生成，但专业质量仍落后于 HeyGen/D-ID 等专用工具。",
+        "sections": [
+          {
+            "label": "📦 产品更新",
+            "content": "<ul><li><strong>Talking Photo 功能</strong>：上传任一人脸照片（真人/插画/品牌吉祥物）即可输入文字生成说话视频，零门槛 <a href=\"https://botbunch.com/best-ai-avatar-generators/\" target=\"_blank\">BotBunch 评测</a></li><li><strong>AI Avatar 系统</strong>：两种方式——预设 AI 数字人形象 或 上传自己的照片生成 Talking Head；支持 40+ 种语言口播 <a href=\"https://www.artificial-intelligence-wiki.com/ai-for-content-creators/ai-image-and-video-generation/canva-video-ai-guide/\" target=\"_blank\">AI Wiki</a></li><li><strong>集成 Google Veo 3</strong>：Create a Video Clip 功能可生成 8 秒电影级视频 + 同步音频，作为数字人视频的背景/B-roll <a href=\"https://www.artificial-intelligence-wiki.com/ai-for-content-creators/ai-image-and-video-generation/canva-video-ai-guide/\" target=\"_blank\">AI Wiki</a></li><li><strong>Magic Video 自动剪辑</strong>：输入素材自动生成 60 秒 polished 视频，含转场、文字、动态图形、背景音乐</li><li><strong>AI 翻译 + 配音</strong>：Pro 版支持多语言自动翻译和语音合成，配合 Avatar 实现多语种口播视频本地化</li><li><strong>第三方集成</strong>：App 商店内置 HeyGen、D-ID、Neiro 等专业数字人工具，可在 Canva 内直接调用 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">VidWave</a></li></ul>"
+          },
+          {
+            "label": "👥 用户&市场反馈",
+            "content": "<ul><li><span class=\"info-feedback\">【正面评价】</span> \"10 款工具中最易上手，零学习曲线\"；BotBunch 评测给出易用性 ⭐⭐⭐⭐⭐，性价比 ⭐⭐⭐⭐⭐ <a href=\"https://botbunch.com/best-ai-avatar-generators/\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> 1) 数字人质量明显低于专用工具（HeyGen/D-ID），口型僵硬、面部微表情不足；2) Avatar 自定义选项有限；3) 翻译配音后口型不能动态适配新语言发音；4) 不适合专业级/企业级视频输出 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">VidWave 对比</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> Canva 数字人适合作为短视频角落的次要元素（如教程小窗口），但全屏产品口播视频\"难以越过恐怖谷\"，可能导致观看满意度下降和平台算法降权 <a href=\"https://vidwave.ai/heygen-vs-canva-ai-video-which-offers-better-value\" target=\"_blank\">来源</a></li><li><span class=\"info-fact\">【确定事实】</span> 全球用户超 1.7 亿；Canva Pro $12.99/月解锁完整 AI 套件；免费版有基础 AI 功能但额度有限 <a href=\"https://videoai.me/blog/canva-ai-video-generator-review-alternatives-2026\" target=\"_blank\">VideoAI 评测</a></li></ul>"
+          },
+          {
+            "label": "💼 商业化动作",
+            "content": "<ul><li><strong>市场定位</strong>：\"设计平台里的 AI 视频功能\"而非专业数字人工具；走普惠路线，让 1.7 亿存量用户首次体验 AI 视频生成</li><li><strong>企业客户案例</strong>：日本某环保水杯品牌用 Canva AI 生成 45 秒产品介绍视频，商品页停留时间提升 1.8 倍、购买率上升 12% <a href=\"https://app-tatsujin.com/canva-ai-video-editing-guide/\" target=\"_blank\">日本案例</a></li><li><strong>企业客户案例</strong>：某 500 人公司用 Canva AI Avatar 做 CEO 月度全员视频 + 多语言部门公告，员工信息留存率提升 78% <a href=\"https://www.artificial-intelligence-wiki.com/best-ai-tools/ai-image-and-video-generators/canva-ai-video-features/\" target=\"_blank\">AI Wiki</a></li><li><strong>渠道合作</strong>：与 HeyGen、D-ID、ElevenLabs、Google Veo 等在 App Store 内集成，形成生态平台而非自研全栈</li><li><strong>定价策略</strong>：免费版有基础功能，Pro $12.99/月解锁完整 AI，Enterprise 定制；AI 视频生成按 credits 消耗，30 秒约 2 credits <a href=\"https://app-tatsujin.com/canva-ai-video-editing-guide-2026/\" target=\"_blank\">来源</a></li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "canva-enterprise-video",
+        "product": "Canva",
+        "brand": "canva",
+        "title": "Canva Enterprise 推出 AI 视频批量生成套件，主打电商营销与品牌一致性",
+        "date": "2026-04-28",
+        "badge": "policy",
+        "badgeText": "企业套餐",
+        "tags": [
+          "Enterprise",
+          "品牌套件",
+          "批量生成",
+          "电商营销",
+          "Magic Resize"
+        ],
+        "source": "GenAI AI 日本 / App Tatsujin",
+        "sourceUrl": "https://genai-ai.co.jp/ai-kanri/blog/cc-canva-ai-video-guide/",
+        "summary": "Canva Enterprise 面向中大型企业推出品牌套件 + AI 视频批量生成方案，支持 Magic Resize 多平台尺寸适配、Brand Kit 品牌一致性管控、团队协作权限，电商营销场景增长迅速。",
+        "sections": [
+          {
+            "label": "📦 产品更新",
+            "content": "<ul><li><strong>Brand Kit 品牌套件</strong>：企业统一管理 Logo、品牌色、字体，所有 AI 生成内容自动对齐品牌规范</li><li><strong>Magic Resize 智能尺寸适配</strong>：一键将视频适配 TikTok (9:16)、Meta Ads (1:1)、YouTube (16:9) 等多平台尺寸</li><li><strong>Magic Design for Video</strong>：文字描述需求 → AI 自动推荐模板和布局，快速生成电商广告视频</li><li><strong>Beat Sync 音乐节奏同步</strong>：AI 自动将剪辑点对齐音乐节拍，适合短视频带货</li><li><strong>批量生成能力</strong>：结合模板 + 数据表，可批量生成不同 SKU 的产品介绍视频【行业预测，待验证具体功能】</li></ul>"
+          },
+          {
+            "label": "👥 用户&市场反馈",
+            "content": "<ul><li><span class=\"info-feedback\">【B端商家评价】</span> 日本 SMB 营销团队：\"SNS 动户外包 1 条 3-5 万日元，用 Canva AI 几乎零成本量产\"，营销内容产出效率提升 5-10 倍 <a href=\"https://genai-ai.co.jp/ai-kanri/blog/cc-canva-ai-video-guide/\" target=\"_blank\">来源</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> 1) 企业版价格不透明（需询价）；2) 数字人质量不足，全屏产品口播显得假；3) 复杂多轨视频编辑能力不如 Premiere 等专业工具；4) 海外投放素材的版权合规边界模糊 <a href=\"https://videoai.me/blog/canva-ai-video-generator-review-alternatives-2026\" target=\"_blank\">VideoAI</a></li><li><span class=\"info-feedback\">【电商使用痛点】</span> Canva 数字人适合\"快速试水 + 轻量级素材\"，但真正做主图视频、详情页视频还需要专业工具配合</li><li><span class=\"info-prediction\">【行业预测】</span> Canva 凭借 1.7 亿用户基数和极低的上手门槛，<strong>会成为中小电商团队的 AI 视频入门首选</strong>，但高端市场仍会流向 HeyGen/Synthesia</li></ul>"
+          },
+          {
+            "label": "💼 商业化动作",
+            "content": "<ul><li><strong>企业套餐政策</strong>：Canva for Teams / Enterprise 提供品牌套件、团队权限、SSO、审计日志等企业级功能；具体价格需询价</li><li><strong>渠道合作</strong>：与 Salesforce、HubSpot、Shopify、Slack 等企业工具集成，嵌入工作流</li><li><strong>海外投放策略</strong>：通过 App Store 生态 + 第三方评测博主（YouTube/TikTok）+ 企业内容营销获取客户；获客成本远低于纯 AI 视频工具</li><li><strong>电商场景合作</strong>：日本市场案例显示，Canva + HeyGen 混合方式（AI 数字人做产品介绍 + Canva 做品牌包装）是中小电商性价比最高的方案 <a href=\"https://genai-ai.co.jp/ai-kanri/blog/cc-canva-ai-video-guide/\" target=\"_blank\">来源</a></li><li><strong>直播带货功能</strong><span class=\"info-pending\">【待验证】</span>：目前尚未有官方明确的 AI 数字人直播带货功能上线消息，预计 2026 下半年可能通过第三方应用集成方式实现【待验证】</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "pixverse-v6-release",
+        "product": "Pixverse",
+        "brand": "pixverse",
+        "title": "PixVerse 发布 V6 模型 + C1 模型，原生音频与电影级运镜全面升级",
+        "date": "2026-04-15",
+        "badge": "update",
+        "badgeText": "产品更新",
+        "tags": [
+          "V6",
+          "C1",
+          "原生音频",
+          "唇形同步",
+          "API",
+          "Modify功能"
+        ],
+        "source": "PixVerse 官方文档 / PR Newswire",
+        "sourceUrl": "https://www.prnewswire.com/apac/zh/news-releases/pixverse--v6--ai--302728390.html",
+        "summary": "PixVerse 在 2026 年 3-4 月密集发布 V6、C1 两代模型及 Modify 编辑功能，支持原生音视频同步生成、多语言文字渲染、角色一致性和唇形同步，API 按秒计费。",
+        "sections": [
+          {
+            "label": "📦 产品更新",
+            "content": "<ul><li><strong>2026/04/15 Modify 功能上线</strong>：支持视频局部修改与再创作 <a href=\"https://docs.platform.pixverse.ai/change-logs-906383m0\" target=\"_blank\">来源</a></li><li><strong>2026/04/07 C1 模型发布</strong>：文生视频/图生视频/转场/参考图视频一体化 <a href=\"https://docs.platform.pixverse.ai/change-logs-906383m0\" target=\"_blank\">来源</a></li><li><strong>2026/03/29 V6 模型发布</strong>：镜头追踪、视角转换、环境展现等运镜准确度大幅提升，角色表情与肢体语言在场景切换时保持连贯 <a href=\"https://www.prnewswire.com/apac/zh/news-releases/pixverse--v6--ai--302728390.html\" target=\"_blank\">PR Newswire</a></li><li><strong>原生音频生成</strong>：V6/C1 支持从单提示词生成带原生音频的多镜头短片，音画同步输出</li><li><strong>多语言文字渲染</strong>：支持英文、中文等多语言画内文字生成与风格一致化，适合本地化视频批量制作</li><li><strong>角色一致性 Character 功能</strong>：上传 1-3 张照片即可生成保持角色一致的视频，适合产品口播带货场景</li><li><strong>口型同步 Speech (LipSync)</strong>：独立 API 端点，支持音轨驱动 + TTS 文本驱动，支持自定义音色克隆 <a href=\"https://docs.platform.pixverse.ai/how-to-use-speechlip-sync-1268530m0\" target=\"_blank\">官方文档</a></li><li><strong>2026/04/01 R1 实时世界模型升级</strong>：新增个性化 Avatar（数字分身）+ 多人共享实时世界 + 无会话时长限制 <a href=\"https://pixverse.ai/en/blog/pixverse-updates-r1-real-time-world-model\" target=\"_blank\">官方博客</a></li></ul>"
+          },
+          {
+            "label": "👥 用户&市场反馈",
+            "content": "<ul><li><span class=\"info-feedback\">【用户反馈】</span> V6 在运镜稳定性和物理交互真实感上较 V5.6 有显著提升，但<strong>长视频（>30秒）人物动作仍有漂移现象</strong>，适合短视频带货场景而非长视频课程</li><li><span class=\"info-feedback\">【用户反馈】</span> 口型同步 API 对中文卷舌音（zh/ch/sh）处理略生硬，英文表现最佳；视频最长支持 60 秒 <a href=\"https://docs.platform.pixverse.ai/how-to-use-speechlip-sync-1268530m0\" target=\"_blank\">官方文档</a></li><li><span class=\"info-feedback\">【跨境电商痛点】</span> 与 HeyGen 相比，PixVerse 缺乏预设电商模板和现成数字人形象库，需要用户自行创建 Character，<strong>对非技术团队上手门槛更高</strong></li><li><span class=\"info-fact\">【确定事实】</span> API 按秒计费，V6 720p 无音频约 $0.045/秒、有音频约 $0.06/秒；1080p 无音频约 $0.09/秒 <a href=\"https://www.atlascloud.ai/zh/blog/guides/pixverse-ai-video-generator-review\" target=\"_blank\">AtlasCloud 评测</a></li><li><span class=\"info-prediction\">【行业预测】</span> PixVerse 以视频生成底层模型见长，数字人能力偏向\"角色一致性视频生成\"而非\"专业数字人平台\"，<strong>预计 2026 下半年会加强面向电商的模板化工具</strong>【待验证】</li></ul>"
+          },
+          {
+            "label": "💼 商业化动作",
+            "content": "<ul><li><strong>API 订阅模式</strong>：官方平台 API 会员 $100/月起含 15,000 积分，1080p 约 $0.10-$0.15/秒；第三方代理（AtlasCloud、EmpirioLabs）支持按需付费无月费 <a href=\"https://www.atlascloud.ai/zh/blog/guides/pixverse-ai-video-generator-review\" target=\"_blank\">来源</a></li><li><strong>CLI + Agent 工作流</strong>：V6 同步推出 CLI 工具和 Agent 对话式创作，面向开发者和智能体工作流，便于批量生成电商视频</li><li><strong>Webhook 功能</strong>（2026/01/09 上线）：支持异步任务回调，适合批量视频生成的自动化流水线</li><li><strong>企业客户案例</strong>：官方暂未公开大型企业客户名单，但 PR Newswire 通稿强调\"生产就绪的工作流\"与\"可扩展的 API 架构\"，<strong>主要面向开发团队而非营销团队</strong></li><li><span class=\"info-pending\">【待验证】</span> PixVerse 是否在 2026 年下半年推出面向跨境电商的标准化数字人模板套件【待验证】</li></ul>"
+          }
+        ]
+      },
+      {
+        "id": "pixverse-lipsync-api",
+        "product": "Pixverse",
+        "brand": "pixverse",
+        "title": "PixVerse 唇形同步 API 正式开放，支持音色克隆与 60 秒视频配音",
+        "date": "2026-02-28",
+        "badge": "new",
+        "badgeText": "新功能",
+        "tags": [
+          "唇形同步",
+          "LipSync",
+          "音色克隆",
+          "TTS",
+          "API"
+        ],
+        "source": "PixVerse 官方 API 文档",
+        "sourceUrl": "https://docs.platform.pixverse.ai/how-to-use-speechlip-sync-1268530m0",
+        "summary": "PixVerse Speech (LipSync) API 支持视频 + 音轨或 TTS 文本驱动的口型同步，支持自定义音色克隆，最长 60 秒 1080p 输出。",
+        "sections": [
+          {
+            "label": "📦 产品更新",
+            "content": "<ul><li><strong>两种驱动方式</strong>：音轨文件驱动（MP3/WAV/M4A/AAC） + TTS 文本驱动（内置音色或自定义克隆音色）</li><li><strong>自定义音色克隆</strong>：上传音频样本 → 创建 speaker_id → 用于 LipSync TTS 生成，支持多语言</li><li><strong>视频输入</strong>：支持 PixVerse 生成的 video_id 或上传 MP4/MOV/WEBM，最大 1920 分辨率、100MB、60 秒 <a href=\"https://docs.platform.pixverse.ai/how-to-use-speechlip-sync-1268530m0\" target=\"_blank\">官方文档</a></li><li><strong>2026/02/28 Mimic 功能上线</strong>：支持表情/动作复刻，配合 LipSync 可实现更丰富的数字人表现力 <a href=\"https://docs.platform.pixverse.ai/change-logs-906383m0\" target=\"_blank\">Changelog</a></li></ul>"
+          },
+          {
+            "label": "👥 用户&市场反馈",
+            "content": "<ul><li><span class=\"info-feedback\">【用户反馈】</span> LipSync 模型\"不仅做机械口型，还支持情绪驱动的面部表情\"，比纯口型同步工具更自然 <a href=\"https://lipsyncx.com/models-pixverse-lipsync\" target=\"_blank\">LipSyncX 评测</a></li><li><span class=\"info-feedback\">【差评集中问题】</span> 1) 长视频（>30秒）口型漂移；2) 侧脸、低头角度下精度下降明显；3) 中文小语种音色选择少</li><li><span class=\"info-feedback\">【跨境电商使用场景】</span> 适合将产品展示视频配上多语种口播，但需要先有基础视频素材，无法从 0 生成数字人带货视频</li><li><span class=\"info-fact\">【确定事实】</span> 阿里云百炼已上架 PixVerse LipSync 模型，北京区域可用，异步任务通常 1-5 分钟 <a href=\"https://help.aliyun.com/en/model-studio/pixverse-lipsync-api-reference\" target=\"_blank\">阿里云文档</a></li></ul>"
+          },
+          {
+            "label": "💼 商业化动作",
+            "content": "<ul><li><strong>API 开放策略</strong>：PixVerse 官方平台 + 阿里云百炼 + 多家第三方代理（AtlasCloud、Zooop、EachLabs 等）同步接入，覆盖面广</li><li><strong>定价优势</strong>：LipSync 作为单独功能计费，成本低于使用 HeyGen 全套数字人方案，适合已有视频素材、只需配音的批量场景</li><li><strong>渠道合作</strong>：与阿里云、腾讯云等云厂商达成模型上架合作，拓展企业客户渠道</li><li><span class=\"info-pending\">【待验证】</span> 是否推出面向电商的批量 LipSync 打包套餐【待验证】</li></ul>"
+          }
+        ]
+      }
+  ]
   ],
 
   industry: [
@@ -1088,11 +1270,12 @@ function initCompetitors() {
 }
 
 function renderCompetitorTabs() {
-  const products = ['all', ...new Set(DATA.competitors.map(c => c.product))];
+  const products = ['all', 'pixverse', 'heygen', 'canva'];
+  const labels = { all: '全部', pixverse: 'Pixverse', heygen: 'HeyGen', canva: 'Canva' };
   const tabs = document.getElementById('competitor-tabs');
   tabs.innerHTML = products.map(p => {
-    const label = p === 'all' ? '全部竞品' : p;
-    return `<button class="competitor-tab ${p === activeCompetitor ? 'active' : ''}" data-product="${p}">${label}</button>`;
+    const count = p === 'all' ? DATA.competitors.length : DATA.competitors.filter(c => c.brand === p).length;
+    return `<button class="competitor-tab ${p === activeCompetitor ? 'active' : ''}" data-product="${p}">${labels[p]} <span class="tab-count" style="margin-left:4px;">${count}</span></button>`;
   }).join('');
   tabs.querySelectorAll('.competitor-tab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1109,7 +1292,7 @@ function renderCompetitors() {
   const list = document.getElementById('list-competitors');
 
   let items = DATA.competitors.filter(item => {
-    if (activeCompetitor !== 'all' && item.product !== activeCompetitor) return false;
+    if (activeCompetitor !== 'all' && item.brand !== activeCompetitor) return false;
     if (search && !item.title.toLowerCase().includes(search) &&
         !item.summary.toLowerCase().includes(search) &&
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
