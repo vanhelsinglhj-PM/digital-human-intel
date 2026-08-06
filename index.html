@@ -859,6 +859,20 @@ a:focus-visible {
   line-height: 1.6;
 }
 
+
+/* 比较表格内链接统一柠檬黄 */
+.compare-table a {
+  color: #facc15;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(250, 204, 21, 0.4);
+  transition: all 0.2s;
+}
+
+.compare-table a:hover {
+  color: #fde047;
+  border-bottom-color: #fde047;
+}
+
 /* Demo cell */
 .demo-cell {
   display: flex;
@@ -897,18 +911,18 @@ a:focus-visible {
   transform: translate(-50%, -50%);
   width: 48px;
   height: 48px;
-  background: rgba(99, 102, 241, 0.9);
+  background: rgba(250, 204, 21, 0.9);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #1a1a2e;
   transition: transform 0.2s, background 0.2s;
 }
 
 .demo-thumbnail:hover .demo-play-btn {
   transform: translate(-50%, -50%) scale(1.1);
-  background: var(--accent);
+  background: #fde047;
 }
 
 .demo-play-btn::before {
@@ -937,12 +951,14 @@ a:focus-visible {
 .demo-link {
   text-align: center;
   font-size: 12px;
-  color: var(--accent);
+  color: #facc15;
   cursor: pointer;
   text-decoration: none;
+  transition: color 0.2s;
 }
 
 .demo-link:hover {
+  color: #fde047;
   text-decoration: underline;
 }
 
@@ -1020,7 +1036,7 @@ a:focus-visible {
   right: 0;
   background: none;
   border: none;
-  color: white;
+  color: #facc15;
   font-size: 32px;
   cursor: pointer;
   width: 36px;
@@ -1029,7 +1045,11 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lightbox-close:hover {
+  color: #fde047;
 }
 
 .lightbox-close:hover {
@@ -1041,9 +1061,9 @@ a:focus-visible {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  color: white;
+  background: rgba(250, 204, 21, 0.15);
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: #facc15;
   font-size: 36px;
   width: 48px;
   height: 48px;
@@ -1052,7 +1072,7 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
   line-height: 1;
 }
 
@@ -1061,7 +1081,8 @@ a:focus-visible {
 
 .lightbox-prev:hover,
 .lightbox-next:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(250, 204, 21, 0.25);
+  color: #fde047;
 }
 
 .lightbox-prev:disabled,
@@ -1112,8 +1133,8 @@ a:focus-visible {
   top: 10px;
   right: 10px;
   background: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+  color: #facc15;
   font-size: 24px;
   width: 32px;
   height: 32px;
@@ -1123,7 +1144,12 @@ a:focus-visible {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
+}
+
+.video-modal-close:hover {
+  background: rgba(250, 204, 21, 0.2);
+  color: #fde047;
 }
 
 .video-modal-close:hover {
@@ -1154,18 +1180,19 @@ a:focus-visible {
   align-items: center;
   gap: 6px;
   padding: 10px 20px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: white;
+  background: #facc15;
+  color: #1a1a2e;
   text-decoration: none;
   border-radius: 8px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 13px;
-  transition: opacity 0.2s;
+  transition: background 0.2s, color 0.2s;
   align-self: flex-start;
 }
 
 .video-modal-link:hover {
-  opacity: 0.9;
+  background: #fde047;
+  color: #1a1a2e;
 }
 
 /* Audio player mockup */
@@ -1430,7 +1457,13 @@ const DATA = {
           label: '数字人场景适配',
           content: '<ul><li><strong>数字人带货视频</strong>：30秒原生时长+50参考图，可固定产品+人物形象，生成多版本口播素材，无需拼接</li><li><strong>唇形同步</strong>：音视频联合生成架构，音素级口型同步，比单独后处理更自然</li><li><strong>批量视频生产</strong>：局部编辑可快速换SKU/背景/服装，大幅降低批量变体成本</li><li><strong>虚拟直播素材</strong>：支持动作参考+音色参考，可生成直播切片和预热视频</li><li><strong>跨境电商</strong>：原生10+语言，一键生成多语种口播版本，适配海外多市场</li><li><strong>3D白模预演</strong>：先验证镜头走位和产品展示角度，避免浪费算力在废片上</li></ul>'
         }
-      ]
+      ],
+    demoImages: [
+      'https://s.coze.cn/image/IIY3ADShR2k/',
+      'https://s.coze.cn/image/ixcxy8r5nXQ/',
+      'https://s.coze.cn/image/zRBjAv9bmIg/',
+    ],
+    demoVideoUrl: 'https://seed.bytedance.com/seedance2_5',
     },
     {
       id: 'qwen-image-3',
@@ -1460,7 +1493,12 @@ const DATA = {
           label: '数字人场景适配',
           content: '<p><strong>优势：</strong>精细文字渲染能力适合电商产品图、海报生成；多语言支持出海场景；成本极低。</p><p><strong>不足：</strong>图像生成模型，不直接生成视频，需配合视频模型使用。</p>'
         }
-      ]
+      ],
+    demoImages: [
+      'https://s.coze.cn/image/Fpepr0bCpQQ/',
+      'https://s.coze.cn/image/xSWmYQtb6tA/',
+      'https://s.coze.cn/image/_I0Wl-wdtRo/',
+    ],
     },
     {
       id: 'sensetime-u15',
@@ -1490,7 +1528,12 @@ const DATA = {
           label: '数字人场景适配',
           content: '<p><strong>优势：</strong>轻量级、部署成本低、可私有化，适合出海产品的本地化部署需求；生成编辑一体化。</p><p><strong>不足：</strong>图像模型，非视频生成；轻量模型在细节质量上可能不及大参数闭源模型。</p>'
         }
-      ]
+      ],
+    demoImages: [
+      'https://s.coze.cn/image/n4sYfn73gJM/',
+      'https://s.coze.cn/image/pYDhhIp-HNw/',
+      'https://s.coze.cn/image/OIb03Us-NDI/',
+    ],
     },
     {
       id: 'flux3video',
@@ -1520,7 +1563,13 @@ const DATA = {
           label: '数字人场景适配',
           content: '<p><strong>优势：</strong>多语言唇形同步能力强，原生音频生成，适合跨境电商多语种口播视频场景。</p><p><strong>不足：</strong>单条最长20秒，批量生成带货短视频需拼接；成本较高，1分钟720p全质量视频约¥73.95（约$10.2）。</p>'
         }
-      ]
+      ],
+    demoImages: [
+      'https://s.coze.cn/image/gU0ALTJodbw/',
+      'https://s.coze.cn/image/oxAVhnSVrm8/',
+      'https://s.coze.cn/image/B2Dl-yhsYHU/',
+    ],
+    demoVideoUrl: 'https://blackforestlabs.ai/',
     },
     {
       id: 'minimax-h3',
@@ -1550,7 +1599,13 @@ const DATA = {
           label: '数字人场景适配',
           content: '<p><strong>优势：</strong>开源可私有化部署，成本可控；多模态统一架构，适合二次开发数字人定制方案。</p><p><strong>不足：</strong>部署门槛高，需要专业GPU资源；美欧等主流出海市场有地区限制。</p>'
         }
-      ]
+      ],
+    demoImages: [
+      'https://s.coze.cn/image/rxGHefNd2ic/',
+      'https://s.coze.cn/image/YMH_l77hiDM/',
+      'https://s.coze.cn/image/Gvo_uXsKKFQ/',
+    ],
+    demoVideoUrl: 'https://minimaxh3.art/zh',
     }
   ],
 
@@ -2204,6 +2259,14 @@ function generateAudioWave(modelName, index) {
 // 获取模型的案例图片集（模拟数据，实际可扩展为真实图片URL）
 function getModelImages(model) {
   const shortName = getModelShortName(model.title);
+  // 如果模型有真实 demoImages，直接用真实图片
+  if (model.demoImages && model.demoImages.length > 0) {
+    return model.demoImages.map((url, i) => ({
+      src: url,
+      caption: `${shortName} 生成案例 ${i + 1}`
+    }));
+  }
+  // fallback: SVG 占位图
   const count = 3 + (model.title.length % 4); // 3-6张
   const images = [];
   for (let i = 0; i < count; i++) {
@@ -2234,25 +2297,32 @@ function renderDemoCell(model) {
   const shortName = getModelShortName(model.title);
 
   if (model.type === 'video') {
-    const placeholder = generateVideoPlaceholder(shortName);
+    const coverImg = (model.demoImages && model.demoImages.length > 0)
+      ? `<img src="${model.demoImages[0]}" alt="${shortName}视频案例" loading="lazy">`
+      : generateVideoPlaceholder(shortName);
+    const extraCount = (model.demoImages && model.demoImages.length > 1)
+      ? model.demoImages.length - 1 : 0;
     return `
       <div class="demo-cell">
         <div class="demo-thumbnail video-demo" data-model-id="${model.id}">
-          ${placeholder}
+          ${coverImg}
           <div class="demo-play-btn"></div>
-          <span class="demo-badge">视频案例</span>
+          <span class="demo-badge">视频案例${extraCount > 0 ? ' +' + extraCount : ''}</span>
         </div>
-        <a class="demo-link" href="${model.sourceUrl}" target="_blank" rel="noopener noreferrer">查看官方案例 →</a>
+        <span class="demo-link video-demo-link" data-model-id="${model.id}">查看案例 →</span>
       </div>
     `;
   } else if (model.type === 'image') {
     const images = getModelImages(model);
     const firstImg = images[0];
     const extraCount = images.length - 1;
+    const firstContent = firstImg.src
+      ? `<img src="${firstImg.src}" alt="${firstImg.caption}" loading="lazy">`
+      : firstImg.svg;
     return `
       <div class="demo-cell">
         <div class="demo-thumbnail image-demo" data-model-id="${model.id}">
-          ${firstImg.svg}
+          ${firstContent}
           <span class="demo-badge">+${extraCount}</span>
         </div>
         <span class="demo-link" data-action="open-lightbox" data-model-id="${model.id}">点击查看全部 →</span>
@@ -2325,7 +2395,7 @@ function renderCompareTable() {
 
 function bindCompareEvents() {
   // 视频缩略图点击
-  document.querySelectorAll('.video-demo').forEach(el => {
+  document.querySelectorAll('.video-demo, .video-demo-link').forEach(el => {
     if (el._bound) return;
     el._bound = true;
     el.addEventListener('click', () => {
@@ -2361,16 +2431,26 @@ function initVideoModal() {
 function openVideoModal(model) {
   currentVideoModel = model;
   const shortName = getModelShortName(model.title);
+  const videoUrl = model.demoVideoUrl || model.sourceUrl;
+  const coverImg = (model.demoImages && model.demoImages.length > 0)
+    ? `<img src="${model.demoImages[0]}" alt="${shortName}视频封面" style="width:100%;height:100%;object-fit:cover;display:block;">`
+    : generateVideoPlaceholder(shortName);
+
   const body = document.getElementById('video-modal-body');
   body.innerHTML = `
     <div class="video-modal-title">${shortName} 官方视频案例</div>
-    <div class="demo-thumbnail" style="aspect-ratio:16/9;cursor:default;margin-bottom:8px;">
-      ${generateVideoPlaceholder(shortName)}
-      <div class="demo-play-btn"></div>
+    <div class="video-modal-cover" style="position:relative;width:100%;aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:var(--bg-2);border:1px solid var(--border);">
+      ${coverImg}
+      <div class="video-modal-play" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:rgba(250,204,21,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform 0.2s,background 0.2s;box-shadow:0 4px 20px rgba(250,204,21,0.4);"
+           onmouseover="this.style.transform='translate(-50%,-50%) scale(1.1)';this.style.background='#fde047'"
+           onmouseout="this.style.transform='translate(-50%,-50%) scale(1)';this.style.background='rgba(250,204,21,0.9)'"
+           onclick="window.open('${videoUrl}', '_blank', 'noopener,noreferrer')">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#1a1a2e"><polygon points="8,5 19,12 8,19"/></svg>
+      </div>
     </div>
     <div class="video-modal-desc">${model.summary}</div>
-    <a class="video-modal-link" href="${model.sourceUrl}" target="_blank" rel="noopener noreferrer">
-      在新窗口打开官方案例页 →
+    <a class="video-modal-link" href="${videoUrl}" target="_blank" rel="noopener noreferrer">
+      前往官网观看完整视频 →
     </a>
   `;
   document.getElementById('video-modal').style.display = 'flex';
@@ -2423,7 +2503,11 @@ function updateLightbox() {
   const nextBtn = document.getElementById('lightbox-next');
 
   const img = lightboxImages[lightboxIndex];
-  imgWrap.innerHTML = img.svg;
+  if (img.src) {
+    imgWrap.innerHTML = `<img src="${img.src}" alt="${img.caption}" style="max-width:100%;max-height:75vh;border-radius:8px;object-fit:contain;">`;
+  } else {
+    imgWrap.innerHTML = img.svg;
+  }
   caption.textContent = `${img.caption} (${lightboxIndex + 1}/${lightboxImages.length})`;
 
   prevBtn.disabled = lightboxIndex === 0;
