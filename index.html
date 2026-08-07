@@ -384,24 +384,6 @@ a:focus-visible {
   color: var(--text);
   line-height: 1.4;
   margin-bottom: 8px;
-  flex: 1;
-  min-width: 0;
-}
-
-.card-title-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.card-expand-hint {
-  font-size: 11px;
-  color: var(--text-muted);
-  opacity: 0.7;
-  white-space: nowrap;
-  font-weight: 400;
-  flex-shrink: 0;
 }
 
 .card-meta {
@@ -750,7 +732,7 @@ a:focus-visible {
 }
 
 @media print {
-  .topbar, .tabs, .filter-bar, .card-chevron, .card-expand-hint { display: none !important; }
+  .topbar, .tabs, .filter-bar, .card-chevron { display: none !important; }
   .tab-panel { display: block !important; page-break-inside: avoid; }
   .card-body { max-height: none !important; }
   body { background: white; color: black; }
@@ -1292,7 +1274,7 @@ a:focus-visible {
       </div>
     </div>
     <div class="topbar-meta">
-      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-06 13:47</span></div>
+      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-07 14:12</span></div>
     </div>
   </div>
 </header>
@@ -1467,21 +1449,9 @@ const DATA = {
           label: '第三方测评',
           content: '<ul><li><span class="info-fact">【确定事实】</span> 官方称较2.0版本<strong>提示词遵循度提升约20%</strong> <a href="https://seeddance.ai/blog/what-is-seedance-2-5" target="_blank">Seeddance.ai评测</a></li><li><span class="info-fact">【确定事实】</span> 已上线豆包、即梦、扣子等字节旗下产品 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网报道</a></li><li><span class="info-prediction">【行业预测】</span> 30秒原生时长+局部编辑+白模预演，可能重塑广告/电商/影视预演的生产流程</li><li><span class="info-feedback">【用户反馈】</span> 香港科技大学王帅副教授评价：视频生成模型正从"生成内容"走向"理解世界" <a href="https://m.voc.com.cn/xhn/news/202608/33374990.html" target="_blank">科技日报</a></li></ul>'
         },
-                {
-          label: '企业API开放时间',
-          content: '<ul><li><strong>2026年6月23日</strong>：ByteDance FORCE大会首次发布Seedance 2.5，仅核心受邀企业内测</li><li><strong>2026年7月31日</strong>：正式官宣发布，C端产品（即梦AI、豆包Pro）陆续上线；官方说明BytePlus ModelArk API"coming soon"（尚未开放）</li><li><strong>2026年8月7日</strong>：<span class="info-prediction">【行业预测/网传】</span> 自媒体爆料内部消息称企业API将于8月7日开放申请，官方尚未确认</li><li>第三方代理API（PiAPI等）已可调用Seedance 2.5，但非官方企业直连通道</li><li>来源：<a href="https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5" target="_blank">字节Seed官方博客</a> + <a href="http://m.toutiao.com/group/7668748521859858979/" target="_blank">阿尔法智能头条号</a> + <a href="https://blog.laozhang.ai/en/posts/seedance-2-5-release-access-api-status" target="_blank">老张AI博客</a></li></ul>'
-        },
-        {
-          label: '开放详情与定制能力',
-          content: '<ul> <li><strong>定制化能力</strong>：支持自定义调用频次、内容风控规则、批量任务队列</li> <li><strong>本地化部署/私有化</strong>：<span class="info-pending">【待验证】</span>官方未明确2.5版本是否开放私有化部署，推测仅限头部年框客户（参考2.0企业版模式）</li> <li><strong>模型蒸馏</strong>：<span class="info-pending">【待验证】</span>官方未明确是否开放模型蒸馏权限，推测仅限头部定制客户</li> <li><strong>企业服务</strong>：提供专属技术运维对接、影视级宽松审核权限</li> <li>支持定制化画面风格适配、品牌VI色调约束</li> <li>来源：<a href="http://m.toutiao.com/group/7668554076073837079/" target="_blank">第三根k线头条号</a></li> </ul>'
-        },
-        {
-          label: 'API与本地化部署价格',
-          content: '<ul><li><strong>注：</strong>官方BytePlus企业API尚未正式全量开放，以下价格含第三方代理渠道参考价</li><li><strong>API按量计费（第三方参考价PiAPI）</strong>：480p约<strong>¥2.18/秒</strong>（约$0.30）、720p约<strong>¥4.35/秒</strong>（约$0.60）</li> <li><strong>官方企业API</strong>：需签署数百万至千万级年框保底协议，具体价格需商务洽谈</li> <li><strong>本地化/私有化部署</strong>：<span class="info-pending">【待验证】</span>仅面向头部大客户开放，部署成本未公开，预估百万级起步</li> <li><strong>C端参考价</strong>：即梦会员¥68-500/月（68元基础版、200元加强版、500元企业级）</li> <li><strong>视频参考输入计费</strong>：输入时长×(单价/2) + 输出时长×单价</li> <li>来源：<a href="https://app.piapi.ai/docs/seedance-api/seedance-25-preview" target="_blank">PiAPI文档</a> + IT之家 + 掘金</li> </ul>'
-        },
         {
           label: '接入成本与方式',
-          content: '<ul><li><strong>第三方API参考价（PiAPI）</strong>：480p约<strong>¥2.18/秒</strong>（约$0.30），720p约<strong>¥4.35/秒</strong>（约$0.60）（汇率7.25） <a href="https://app.piapi.ai/docs/seedance-api/seedance-25-preview" target="_blank">PiAPI文档</a></li><li><strong>官方BytePlus ModelArk API</strong>：<span class="info-pending">【待开放】</span> 官方公告"coming soon"，定价页已上线但实际可用性各区域不同；C端可通过即梦(Dreamina)网页端、豆包Pro体验 <a href="https://seed.bytedance.com/seedance2_5" target="_blank">官方主页</a></li><li><strong>企业合作</strong>：徐工集团、小鹏汽车、灵初智能、微分智飞等已确认合作 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网</a></li><li><strong>参考输入计费</strong>：视频参考按输入时长×(单价/2)+输出时长×单价计算</li><li><span class="info-pending">【待验证】</span> 官方消费者定价尚未公布，企业版需询价</li></ul>'
+          content: '<ul><li><strong>第三方API参考价（PiAPI）</strong>：480p约<strong>¥2.18/秒</strong>（约$0.30），720p约<strong>¥4.35/秒</strong>（约$0.60）（汇率7.25） <a href="https://app.piapi.ai/docs/seedance-api/seedance-25-preview" target="_blank">PiAPI文档</a></li><li><strong>官方接入方式</strong>：火山引擎企业版（需申请）、即梦(Dreamina)网页端、豆包Pro <a href="https://seed.bytedance.com/seedance2_5" target="_blank">官方主页</a></li><li><strong>企业合作</strong>：徐工集团、小鹏汽车、灵初智能、微分智飞等已确认合作 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网</a></li><li><strong>参考输入计费</strong>：视频参考按输入时长×(单价/2)+输出时长×单价计算</li><li><span class="info-pending">【待验证】</span> 官方消费者定价尚未公布，企业版需询价</li></ul>'
         },
         {
           label: '数字人场景适配',
@@ -1514,18 +1484,6 @@ const DATA = {
         {
           label: '第三方测评',
           content: '<p>Arena.ai 国际文生图排行榜 <strong>国内排名第一</strong>。 <a href="https://arena.ai/" target="_blank">查看来源</a></p>'
-        },
-                {
-          label: '企业API开放时间',
-          content: '<ul> <li><strong>2026年7月</strong>：Qwen-Image 3.0 上线阿里云百炼和Qwen Cloud</li> <li>API即时开放，注册即可调用</li> <li>来源：<a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">阿里云官方文档</a></li> </ul>'
-        },
-        {
-          label: '开放详情与定制能力',
-          content: '<ul> <li><strong>定制化能力</strong>：支持微调（fine-tuning）、LoRA定制训练，可定制企业专属风格</li> <li><strong>本地化部署</strong>：支持私有化部署，开源版本（Qwen-Image系列部分开源）可本地部署</li> <li><strong>模型蒸馏</strong>：支持模型蒸馏和量化，阿里提供模型轻量化工具链</li> <li><strong>企业服务</strong>：阿里云企业客户支持专属服务、SLA保障、高并发弹性扩容</li> <li>来源：<a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">阿里云百炼</a></li> </ul>'
-        },
-        {
-          label: 'API与本地化部署价格',
-          content: '<ul> <li><strong>API价格</strong>：国内文生图<strong>¥0.18/张</strong>起（1K分辨率）；海外Standard约<strong>¥0.22/张</strong>（约$0.03）、Pro约<strong>¥0.29/张</strong>（约$0.04）</li> <li><strong>企业套餐</strong>：阿里云企业用户可购买资源包，量大阶梯定价更优惠</li> <li><strong>本地化部署</strong>：开源版本免费自行部署；企业私有化部署需商务洽谈，<strong>¥10万-¥50万/年</strong>不等（按规模）</li> <li>来源：<a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">阿里云官方定价</a></li> </ul>'
         },
         {
           label: '接入成本与方式',
@@ -1562,18 +1520,6 @@ const DATA = {
           label: '第三方测评',
           content: '<p>暂无第三方权威排行榜数据，官方宣称生成与编辑质量<strong>媲美闭源模型</strong>。 <a href="https://www.ithome.com/0/986/059.htm" target="_blank">IT之家报道</a> | <a href="https://tech.ifeng.com/c/8vLGLuQYDyh" target="_blank">凤凰科技</a></p>'
         },
-                {
-          label: '企业API开放时间',
-          content: '<ul> <li><strong>2026年8月初</strong>：商汤日日新U1.5-Lite 发布，SenseNova平台开放API</li> <li>公测期间免费使用</li> <li>来源：<a href="https://www.sensetime.com/cn" target="_blank">商汤官网</a></li> </ul>'
-        },
-        {
-          label: '开放详情与定制能力',
-          content: '<ul> <li><strong>定制化能力</strong>：支持自定义训练、知识库融合、风格定制</li> <li><strong>本地化部署</strong>：支持私有化部署，商汤提供完整私有化方案（公有云/私有化/混合云）</li> <li><strong>模型蒸馏</strong>：商汤SenseCore大装置支持模型训练和推理优化，可提供定制化蒸馏服务</li> <li><strong>企业服务</strong>：500+企业客户经验，提供API接口、专属技术支持、行业解决方案</li> <li>支持移动端轻量化部署（车舱、移动终端）</li> <li>来源：<a href="https://www.sensetime.com/cn" target="_blank">商汤日日新SenseNova官网</a></li> </ul>'
-        },
-        {
-          label: 'API与本地化部署价格',
-          content: '<ul> <li><strong>API价格</strong>：公测期间免费；正式定价参考SenseNova 6.5约<strong>¥4.50/百万tokens</strong>输入、<strong>¥9.00/百万tokens</strong>输出（注：此为NLP模型参考价，图像/视频模型定价不同）</li> <li><strong>图像生成API</strong>：秒画SenseMirage企业版约<strong>¥0.10-¥0.50/张</strong>（按分辨率）</li> <li><strong>本地化部署</strong>：商汤支持私有化部署，价格按项目定制，通常<strong>¥30万-¥200万/年</strong>（含算力和服务）</li> <li><strong>企业套餐</strong>：按需定制，提供专属算力资源池、SLA保障</li> <li>来源：<a href="https://www.sensetime.com/cn" target="_blank">商汤官网</a> + <a href="https://juejin.cn/post/7663860193306804258" target="_blank">2026国内大模型定价汇总</a></li> </ul>'
-        },
         {
           label: '接入成本与方式',
           content: '<ul><li><strong>开源免费</strong>，可自行部署</li><li><strong>部署门槛低</strong>：8B模型可在消费级GPU上运行</li><li>适合私有化部署需求</li></ul>'
@@ -1608,18 +1554,6 @@ const DATA = {
         {
           label: '第三方测评',
           content: '<p>BFL 自有 Elo 排行榜中文生视频第一（<strong>1135分</strong>）、图生视频第一（<strong>1051分</strong>），领先 Gemini Omni Flash、Minimax H3 和 Seedance 2.0。 <a href="https://bfl.ai/blog/flux-3-video" target="_blank">官方博客</a> | <a href="https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/" target="_blank">The Decoder 报道</a></p><p>注意：此为厂方自有排行榜数据，第三方独立测评待验证</p>'
-        },
-                {
-          label: '企业API开放时间',
-          content: '<ul> <li><strong>2026年7月底</strong>：Black Forest Labs 正式发布 FLUX 3 Video</li> <li><strong>2026年8月初</strong>：API正式开放，通过 BFL 官方平台接入</li> <li>来源：<a href="https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/" target="_blank">The Decoder</a></li> </ul>'
-        },
-        {
-          label: '开放详情与定制能力',
-          content: '<ul> <li><strong>定制化能力</strong>：支持API参数调优，官方提供企业级接入方案</li> <li><strong>本地化部署</strong>：<span class="info-pending">【待验证】</span>BFL 主要以云端API为主，暂未公开本地化部署方案</li> <li><strong>模型蒸馏</strong>：FLUX系列部分模型权重开源，社区有蒸馏版本，但官方不提供商业蒸馏授权</li> <li><strong>企业支持</strong>：企业级API提供更高并发配额、SLA保障</li> <li>来源：<a href="https://bfl.ai/blog/flux-3-video" target="_blank">BFL官网</a></li> </ul>'
-        },
-        {
-          label: 'API与本地化部署价格',
-          content: '<ul> <li><strong>API价格</strong>：<span class="info-pending">【待验证】</span>官方定价未完全公开，第三方平台参考约<strong>$0.10-$0.50/秒</strong>（约<strong>¥0.73-¥3.63/秒</strong>）</li> <li><strong>本地化部署</strong>：不支持官方本地化，可基于社区开源版本自行部署但商用需授权</li> <li><strong>企业套餐</strong>：企业级API需联系BFL商务获取报价</li> <li>来源：各第三方API平台综合</li> </ul>'
         },
         {
           label: '接入成本与方式',
@@ -1657,18 +1591,6 @@ const DATA = {
           label: '第三方测评',
           content: '<ul><li>HuggingFace 热度榜 <strong>第一</strong>（超过 DeepSeek V4 Flash） <a href="https://huggingface.co/MiniMaxAI" target="_blank">查看</a></li><li>Artificial Analysis 视频编辑评测榜 <strong>全球第一</strong> <a href="https://artificialanalysis.ai/" target="_blank">查看</a></li><li>Arena 图生视频排行榜 <strong>全球第一</strong> <a href="https://arena.ai/" target="_blank">查看</a></li></ul>'
         },
-                {
-          label: '企业API开放时间',
-          content: '<ul> <li><strong>2026年7月</strong>：MiniMax H3 发布并开放API</li> <li>支持通过 MiniMax 官方平台及国内云厂商（如阿里云）接入</li> <li>来源：<a href="https://minimaxh3.art/zh" target="_blank">MiniMax官网</a></li> </ul>'
-        },
-        {
-          label: '开放详情与定制能力',
-          content: '<ul> <li><strong>定制化能力</strong>：支持音色克隆、角色一致性锁定、自定义风格参考</li> <li><strong>本地化部署</strong>：<span class="info-pending">【待验证】</span>MiniMax 提供企业私有化部署方案，需商务洽谈</li> <li><strong>模型蒸馏</strong>：<span class="info-pending">【待验证】</span>未公开蒸馏服务</li> <li><strong>企业功能</strong>：支持批量视频生成、API并发调用、1440p原生分辨率、音视频联合生成</li> <li>支持9张图+3段视频+3段音频多模态参考输入</li> <li>来源：<a href="https://minimaxh3.art/zh" target="_blank">MiniMax官网</a></li> </ul>'
-        },
-        {
-          label: 'API与本地化部署价格',
-          content: '<ul> <li><strong>API价格</strong>：约<strong>$0.15-$0.40/秒</strong>（约<strong>¥1.09-¥2.90/秒</strong>），按分辨率和时长计费</li> <li><strong>企业套餐</strong>：Launch offer 年付方案5折优惠，具体价格需登录查看</li> <li><strong>本地化部署</strong>：<span class="info-pending">【待验证】</span>私有化部署价格未公开，预估企业级<strong>¥50万+/年</strong></li> <li>来源：<a href="https://minimaxh3.art/zh" target="_blank">MiniMax H3官网</a></li> </ul>'
-        },
         {
           label: '接入成本与方式',
           content: '<ul><li><strong>开源权重</strong>：HuggingFace 可下载</li><li><strong>API定价</strong>：0.8元/秒</li><li><strong>部署门槛</strong>：需 GPU 服务器，33B模型建议 A100/H100 级别</li><li><strong>地区限制</strong>：美国、欧盟、英国、韩国用户需向 MiniMax 申请正式许可方可免费使用，其他地区开发者可自由部署</li></ul>'
@@ -1690,37 +1612,21 @@ const DATA = {
   competitors: [
     {
       id: '2026-08-07-competitors-0',
-      title: 'PixVerse完成4.39亿美元C轮融资估值突破20亿美元，并发布主打1080P直出与音画同步的影视行业大模型C1。',
-      date: '2026-08-06',
+      title: 'SuperCLUE最新测评显示PixVerse V6以76分夺冠（物理真实性与风格化突出），同时海外SaaS平台更新竞品定价：PixVerse起步$100主打风',
+      date: '2026-08-07',
       type: 'industry',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['数字人竞品动态('],
-      source: 'https://ai-damn.com/pixverse-raises-439m-valuation-hits-2b-in-ai-video-race-1784001807882',
-      sourceUrl: 'https://ai-damn.com/pixverse-raises-439m-valuation-hits-2b-in-ai-video-race-1784001807882',
-      summary: 'PixVerse完成4.39亿美元C轮融资估值突破20亿美元，并发布主打1080P直出与音画同步的影视行业大模型C1。',
+      badge: 'update',
+      badgeText: '版本更新',
+      tags: ['数字人竞品动态(', 'API'],
+      source: 'https://soft.china.com/article/1107947.html',
+      sourceUrl: 'https://soft.china.com/article/1107947.html',
+      summary: 'SuperCLUE最新测评显示PixVerse V6以76分夺冠（物理真实性与风格化突出），同时海外SaaS平台更新竞品定价：PixVerse起步$100主打风格化，HeyGen起步$24-$29强化多语言API与企业级订阅。',
       sections: [
-        { label: '事件详情', content: '<p>PixVerse完成4.39亿美元C轮融资估值突破20亿美元，并发布主打1080P直出与音画同步的影视行业大模型C1。</p>' },
-        { label: '数字人场景关联', content: '<p>PixVerse作为核心AIGC视频竞品，其巨额融资将加速全球化布局与底层模型研发；C1模型的发布及音画同步能力对数字人及短视频带货场景有直接技术参考价值；同时其API按Token计费及模板化商业路线（ARR超4000万美元）为toB数字人产品的定价与商业化策略提供重要对标。</p>' },
-        { label: '来源链接', content: '<ul><li><a href="https://ai-damn.com/pixverse-raises-439m-valuation-hits-2b-in-ai-video-race-1784001807882" target="_blank">https://ai-damn.com/pixverse-raises-439m-valuation-hits-2b-in-ai-video-race-1784001807882</a></li><li><a href="https://soft.china.com/article/2536040.html" target="_blank">https://soft.china.com/article/2536040.html</a></li><li><a href="https://m.thepaper.cn/newsDetail_forward_33714583" target="_blank">https://m.thepaper.cn/newsDetail_forward_33714583</a></li><li><a href="https://cloud.tencent.cn/document/product/1823/130055" target="_blank">https://cloud.tencent.cn/document/product/1823/130055</a></li></ul>' }
-      ]
-    },
-    {
-      id: '2026-08-07-competitors-1',
-      title: 'HeyGen公布最新订阅定价（Business版$39/月）及API免费试用方案，行业评测强调其在多语言唇形同步与数字人口播场景的领先优势。',
-      date: '2026-08-06',
-      type: 'industry',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['数字人竞品动态(', '唇形同步', 'API'],
-      source: 'https://www.saasworthy.com/product/heygen',
-      sourceUrl: 'https://www.saasworthy.com/product/heygen',
-      summary: 'HeyGen公布最新订阅定价（Business版$39/月）及API免费试用方案，行业评测强调其在多语言唇形同步与数字人口播场景的领先优势。',
-      sections: [
-        { label: '事件详情', content: '<p>HeyGen公布最新订阅定价（Business版$39/月）及API免费试用方案，行业评测强调其在多语言唇形同步与数字人口播场景的领先优势。</p>' },
-        { label: '数字人场景关联', content: '<p>HeyGen是数字人赛道最直接竞品，其最新定价策略（Creator $30/Business $39）及API开放政策直接影响海外toB电商带货及口播产品的成本核算；多语言唇形同步与声音克隆功能正是当前跨境直播带货的核心痛点，其市场定位与功能演进对己方产品规划具直接指导意义。</p>' },
-        { label: '来源链接', content: '<ul><li><a href="https://www.saasworthy.com/product/heygen" target="_blank">https://www.saasworthy.com/product/heygen</a></li><li><a href="https://www.techjockey.com/alternatives/heygen" target="_blank">https://www.techjockey.com/alternatives/heygen</a></li><li><a href="https://www.intelligenthq.com/best-ai-image-to-video-tools/" target="_blank">https://www.intelligenthq.com/best-ai-image-to-video-tools/</a></li></ul>' }
-      ]
+        { label: '事件详情', content: '<p>SuperCLUE最新测评显示PixVerse V6以76分夺冠（物理真实性与风格化突出），同时海外SaaS平台更新竞品定价：PixVerse起步$100主打风格化，HeyGen起步$24-$29强化多语言API与企业级订阅。</p>' },
+        { label: '数字人场景关联', content: '<p>严格追踪核心竞品PixVerse与HeyGen的最新技术能力评测结果（PixVerse V6夺冠）与海外市场定价策略（API接入与订阅方案），直接回应产品经理对数字人及视频生成竞品技术底座、物理真实性及商业化对标的高度关注。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://soft.china.com/article/1107947.html" target="_blank">https://soft.china.com/article/1107947.html</a></li><li><a href="https://www.techjockey.com/alternatives/runway-ai" target="_blank">https://www.techjockey.com/alternatives/runway-ai</a></li><li><a href="https://www.analyticsinsight.net/review/heygen" target="_blank">https://www.analyticsinsight.net/review/heygen</a></li></ul>' }
+      ],
+      product: 'HeyGen'
     },
       {
         "id": "heygen-agent-sales-update",
@@ -1925,20 +1831,20 @@ const DATA = {
 
   industry: [
     {
-      id: '2026-08-07-industry-0',
-      title: 'Future Market Insights等机构发布报告预测全球虚拟数字人市场规模将以41.5%的CAGR从2026年的132亿美元增至2036年的4248亿',
+      id: '2026-08-06-industry-0',
+      title: '视频大模型商业化转向场景解决方案，出海广告素材与直播互动需求推动AI视频生成在跨境电商领域加速落地',
       date: '2026-08-06',
       type: 'industry',
       badge: 'new',
       badgeText: '新发布',
-      tags: ['AI数字人行业宏'],
-      source: 'http://www.lnast.net/info/20240830/1014134610604326912.html',
-      sourceUrl: 'http://www.lnast.net/info/20240830/1014134610604326912.html',
-      summary: 'Future Market Insights等机构发布报告预测全球虚拟数字人市场规模将以41.5%的CAGR从2026年的132亿美元增至2036年的4248亿美元，同时国内外电商直播数字人应用加速普及，海外AI合成内容合规监管趋严要求品牌建立资产级披露控制。',
+      tags: ['AI数字人行业宏', '视频生成'],
+      source: 'https://www.36kr.com/p/3927927258642822',
+      sourceUrl: 'https://www.36kr.com/p/3927927258642822',
+      summary: '视频大模型商业化转向场景解决方案，出海广告素材与直播互动需求推动AI视频生成在跨境电商领域加速落地',
       sections: [
-        { label: '事件详情', content: '<p>Future Market Insights等机构发布报告预测全球虚拟数字人市场规模将以41.5%的CAGR从2026年的132亿美元增至2036年的4248亿美元，同时国内外电商直播数字人应用加速普及，海外AI合成内容合规监管趋严要求品牌建立资产级披露控制。</p>' },
-        { label: '数字人场景关联', content: '<p>本事件聚合了全球虚拟影响者（数字人）市场的最新宏观规模预测、海外AI合成内容合规监管趋势（赞助披露要求），以及国内外电商直播中数字人应用的爆发数据。高度契合用户作为出海B端产品经理对海外宏观市场数据、跨境电商数字人应用趋势及出海合规要求的关注，为产品商业化定价与合规设计提供直接参考。</p>' },
-        { label: '来源链接', content: '<ul><li><a href="http://www.lnast.net/info/20240830/1014134610604326912.html" target="_blank">http://www.lnast.net/info/20240830/1014134610604326912.html</a></li><li><a href="https://36kr.com/p/3927927258642822" target="_blank">https://36kr.com/p/3927927258642822</a></li><li><a href="https://noah-news.com/virtual-influencer-market-set-to-reach-usd-4248-billion-by-2036-amid-evolving-re/" target="_blank">https://noah-news.com/virtual-influencer-market-set-to-reach-usd-4248-billion-by-2036-amid-evolving-re/</a></li><li><a href="https://www.futuremarketinsights.com/reports/virtual-influencer-market" target="_blank">https://www.futuremarketinsights.com/reports/virtual-influencer-market</a></li></ul>' }
+        { label: '事件详情', content: '<p>视频大模型商业化转向场景解决方案，出海广告素材与直播互动需求推动AI视频生成在跨境电商领域加速落地</p>' },
+        { label: '数字人场景关联', content: '<p>本组事件聚焦AI数字人与视频生成技术在跨境电商、出海广告及直播电商等B端商用场景的宏观商业化进展。涵盖了视频模型在出海广告素材生产、TikTok带货场景的专属工具落地，以及数字人主播批量化制造带来的市场规模增长，直接为海外电商带货与B端数字人产品迭代提供场景参考与市场趋势依据，高度契合话题定义。</p>' },
+        { label: '来源链接', content: '<ul><li><a href="https://www.36kr.com/p/3927927258642822" target="_blank">https://www.36kr.com/p/3927927258642822</a></li><li><a href="https://bj.lieju.com/qitashangwufuwu/101682726.html" target="_blank">https://bj.lieju.com/qitashangwufuwu/101682726.html</a></li><li><a href="http://www.lnast.net/info/20240830/1014134610604326912.html" target="_blank">http://www.lnast.net/info/20240830/1014134610604326912.html</a></li></ul>' }
       ]
     },
     {
@@ -1976,7 +1882,6 @@ const DATA = {
   ],
 
   archive: [
-    { date: '2026-08-07', count: 3, models: 0, competitors: 2, industry: 1 },
     { date: '2026-08-06', count: 6, models: 4, competitors: 1, industry: 1 }
   ]
 };
@@ -2030,7 +1935,7 @@ function renderModels() {
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
     if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
     return true;
-  }).sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
 
   list.innerHTML = items.length === 0
     ? '<div class="empty-state"><div class="empty-state-icon">🔍</div><div class="empty-state-text">没有找到匹配的模型动态</div></div>'
@@ -2076,7 +1981,7 @@ function renderCompetitors() {
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
     if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
     return true;
-  }).sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
 
   list.innerHTML = items.length === 0
     ? '<div class="empty-state"><div class="empty-state-icon">📭</div><div class="empty-state-text">没有找到匹配的竞品动态</div></div>'
@@ -2115,7 +2020,7 @@ function renderIndustry() {
         !item.tags.some(t => t.toLowerCase().includes(search))) return false;
     if (tags.length > 0 && !tags.some(t => item.tags.includes(t))) return false;
     return true;
-  }).sort((a, b) => new Date(b.date) - new Date(a.date));
+  });
 
   list.innerHTML = items.length === 0
     ? '<div class="empty-state"><div class="empty-state-icon">📊</div><div class="empty-state-text">没有找到匹配的行业情报</div></div>'
@@ -2184,10 +2089,7 @@ function renderCard(item, category) {
     <article class="card" data-id="${item.id}" data-category="${category}">
       <div class="card-header">
         <div class="card-title-wrap">
-          <div class="card-title-row">
-            <div class="card-title">${item.title}</div>
-            <span class="card-expand-hint">点击展开详情</span>
-          </div>
+          <div class="card-title">${item.title}</div>
           <div class="card-meta">
             <span class="card-date">📅 ${item.date}</span>
             <span class="card-source">来源：<a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">${item.source}</a></span>
@@ -2302,75 +2204,33 @@ function extractParams(sections) {
 }
 
 function extractCost(sections) {
-  // 优先从"API与本地化部署价格"板块提取（含API价格+本地化价格）
-  const priceSection = sections.find(s => s.label === 'API与本地化部署价格');
   const costSection = sections.find(s => s.label === '接入成本与方式');
-  const target = priceSection || costSection;
-  if (!target) return '<span style="color:var(--text-muted)">暂无数据</span>';
+  if (!costSection) return '<span style="color:var(--text-muted)">暂无数据</span>';
   const temp = document.createElement('div');
-  temp.innerHTML = target.content;
+  temp.innerHTML = costSection.content;
   const items = temp.querySelectorAll('li');
-  if (items.length === 0) return target.content;
-  // 筛选API价格和本地化部署价格相关的条目，最多4条
-  const costItems = Array.from(items).filter(li => {
-    const text = li.textContent.toLowerCase();
-    return (text.includes('api') || text.includes('价格') || text.includes('计费') ||
-            text.includes('本地化') || text.includes('私有化') || text.includes('部署') ||
-            text.includes('¥') || text.includes('$') || text.includes('元'));
-  }).slice(0, 4);
-  if (costItems.length === 0) {
-    return '<div class="compare-cost-text">' + Array.from(items).slice(0, 3).map(li => li.outerHTML).join('') + '</div>';
-  }
+  if (items.length === 0) return costSection.content;
+  // 取前2条成本相关的
+  const costItems = Array.from(items).slice(0, 2);
   return '<div class="compare-cost-text">' + costItems.map(li => li.outerHTML).join('') + '</div>';
 }
 
 function extractAccess(sections) {
-  const detailSection = sections.find(s => s.label === '开放详情与定制能力');
   const costSection = sections.find(s => s.label === '接入成本与方式');
+  if (!costSection) return '<span style="color:var(--text-muted)">暂无数据</span>';
   const temp = document.createElement('div');
-  const allItems = [];
-
-  // 从"开放详情与定制能力"提取本地化部署、定制化、开源信息
-  if (detailSection) {
-    temp.innerHTML = detailSection.content;
-    const items = temp.querySelectorAll('li');
-    Array.from(items).forEach(li => {
-      const text = li.textContent.toLowerCase();
-      if (text.includes('本地化') || text.includes('私有化') || text.includes('开源') ||
-          text.includes('定制') || text.includes('蒸馏') || text.includes('部署')) {
-        allItems.push(li.outerHTML);
-      }
-    });
-  }
-
-  // 从"接入成本与方式"提取接入方式信息
-  if (costSection) {
-    temp.innerHTML = costSection.content;
-    const items = temp.querySelectorAll('li');
-    Array.from(items).forEach(li => {
-      const text = li.textContent.toLowerCase();
-      if (text.includes('接入') || text.includes('方式') || text.includes('官方') ||
-          text.includes('申请') || text.includes('下载') || text.includes('开源') ||
-          text.includes('部署')) {
-        allItems.push(li.outerHTML);
-      }
-    });
-  }
-
-  if (allItems.length === 0) {
-    return '<span style="color:var(--text-muted)">暂无数据</span>';
-  }
-  // 去重（基于文本内容）
-  const seen = new Set();
-  const uniqueItems = [];
-  allItems.forEach(html => {
-    const key = html.replace(/<[^>]+>/g, '').trim().slice(0, 50);
-    if (!seen.has(key)) {
-      seen.add(key);
-      uniqueItems.push(html);
-    }
+  temp.innerHTML = costSection.content;
+  const items = temp.querySelectorAll('li');
+  // 找接入方式相关的（从第2条之后）
+  const accessItems = Array.from(items).filter(li => {
+    const text = li.textContent.toLowerCase();
+    return text.includes('接入') || text.includes('方式') || text.includes('官方') || text.includes('申请') || text.includes('下载') || text.includes('开源');
   });
-  return '<div class="compare-access-text">' + uniqueItems.slice(0, 4).join('') + '</div>';
+  if (accessItems.length === 0) {
+    // 取第3条往后
+    return '<div class="compare-access-text">' + Array.from(items).slice(2, 4).map(li => li.outerHTML).join('') + '</div>';
+  }
+  return '<div class="compare-access-text">' + accessItems.slice(0, 2).map(li => li.outerHTML).join('') + '</div>';
 }
 
 // SVG 占位图生成器
