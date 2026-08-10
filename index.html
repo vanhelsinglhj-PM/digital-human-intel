@@ -1507,389 +1507,395 @@ a:focus-visible {
 <script>
 // ============ DATA ============
 const DATA = {
-  models: [
+    models: [
     {
-          id: '2026-08-10-models-0',
-          title: 'Sand.ai开源首个1000亿参数MoE视频模型MAGI-2 Preview',
-          date: '2026-08-10',
-          type: 'video',
-          badge: 'open',
-          badgeText: '开源',
-          tags: ['开源大模型', 'MoE架构'],
-          source: 'Robotbelt',
-          sourceUrl: 'https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/',
-          summary: 'Sand.ai开源1000亿参数MoE视频模型MAGI-2 Preview，引领视频生成新架构。',
-          sections: [
-            {
-              label: '核心技术参数',
-              content: '<ul><li>采用<strong>1000亿参数</strong>混合专家（MoE）架构，提升生成效率。</li><li>作为首个<strong>百亿级MoE视频模型</strong>，支持高质量视频生成。</li><li>模型版本为<strong>MAGI-2 Preview</strong>，已完全开源供社区使用。</li><li>具体分辨率与时长限制暂未详细披露，主打架构创新。</li></ul>'
-            },
-            {
-              label: '第三方测评',
-              content: '<ul><li><span class="info-tag fact">【确定事实】</span>MoE架构有效降低推理成本，提升长视频生成连贯性。<a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank">Robotbelt</a></li><li><span class="info-tag prediction">【行业预测】</span>百亿参数MoE将成为下一代视频大模型的主流演进方向。<a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank">Robotbelt</a></li><li><span class="info-tag pending">【待验证】</span>开源后社区实际微调效果与商用部署算力门槛仍需观察。<a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank">Robotbelt</a></li></ul>'
-            },
-            {
-              label: '接入成本与方式',
-              content: '<ul><li>模型已<strong>完全开源</strong>，开发者可免费下载权重进行本地部署。</li><li>预计后续将通过Sand.ai官方平台提供云端API调用服务。</li><li>开源协议允许商业二次开发，降低企业定制化成本。</li></ul>'
-            },
-            {
-              label: '数字人场景适配',
-              content: '<ul><li>MoE架构有助于提升<strong>数字人长视频口播</strong>的生成稳定性。</li><li>开源特性支持企业针对特定数字人IP进行<strong>私有化微调</strong>。</li><li>适合需要高保真面部细节与肢体动作的<strong>带货直播</strong>场景。</li></ul>'
-            },
-            {
-              label: '来源链接',
-              content: '<ul><li><a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank" rel="noopener noreferrer">Robotbelt</a></li></ul>'
-            },
-          ],
+      id: '2026-08-10-models-0',
+      title: 'Sand.ai MAGI-2 Preview 开源，千亿MoE统一音视频生成',
+      date: '2026-08-10',
+      type: 'video',
+      badge: 'open',
+      badgeText: '开源',
+      tags: ['MAGI-2', 'MoE架构', '音视频生成', '开源大模型'],
+      source: 'Sand.ai官方技术博客',
+      sourceUrl: 'https://sand.ai/blog/magi-2-preview',
+      summary: 'Sand.ai开源全球首个千亿级MoE统一音视频生成模型MAGI-2 Preview，总参数114B、激活仅6B，推理成本约为稠密模型的1/10。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>总参数114B / 激活约6B</strong>：超细粒度MoE架构，激活比仅约5%</li><li><strong>统一音视频架构</strong>：文本/画面/声音同一生成流，音画同步天然对齐</li><li><strong>12 head × 256 专家</strong>：每head选6专家，一层3072个独立小专家</li><li><strong>Head Parallel</strong>：头级并行解决跨设备通信瓶颈，通信量稳定可预测</li><li><strong>约10秒 1080P</strong>视频生成，输出包含画面与同步音频</li></ul>'
         },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> Artificial Analysis图生视频榜单 Elo <strong>1106分</strong>，全球排名第6 <a class="source-link" href="https://wap.mittrchina.com/news/detail/16738" target="_blank">麻省理工科技评论</a></li><li><span class="info-tag prediction">行业预测</span> 验证了视频生成MoE路线可行性，可能推动行业重新思考Scaling路径 <a class="source-link" href="https://36kr.com/p/3927644682123393" target="_blank">36氪</a></li><li><span class="info-tag feedback">用户反馈</span> 演示视频涵盖漫剧、长镜头、商业实拍质感，人物动作/运镜/材质无明显崩坏 <a class="source-link" href="http://m.toutiao.com/group/7670515234783740439/" target="_blank">栈海经略</a></li><li><span class="info-tag pending">待验证</span> 数字人场景口型同步精度、蒸馏版部署要求、全量权重下载难度</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>完全开源</strong>：权重/代码/技术报告全开放，MIT类协议允许商用与私有化部署</li><li><strong>自部署成本</strong>：8卡H100上10秒1080P约<strong>0.5元</strong>（约0.05元/秒），约为稠密模型的1/10</li><li><strong>接入渠道</strong>：GitHub开源下载为主，Sand.ai暂未公布官方商业化API</li><li><strong>企业定制</strong>：开源权重支持行业数据微调、私有化部署、架构修改，定制自由度最高</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>口播场景</strong>：统一音视频架构让口型/表情/声音从生成开始就相互影响，天然适配数字人口播</li><li><strong>成本优势</strong>：0.05元/秒推理成本使"多版本生成+自动筛选"的迭代模式成为可能</li><li><strong>私有化部署</strong>：形象数据和生成过程全在内网完成，满足品牌数字人资产安全需求</li><li><strong>建议</strong>：作为技术底座使用，配合自有数据LoRA微调强化特定身份一致性，结合续写技术探索分钟级内容</li></ul>'
+        }
+      ],
+    },
     {
-          id: '2026-08-10-models-1',
-          title: 'Lightricks更新LTXV模型，实现60秒AI视频生成突破',
-          date: '2026-08-10',
+      id: '2026-08-10-models-1',
+      title: 'Lightricks LTXV 2.0 开源更新，60秒4K音视频同步生成',
+      date: '2026-08-10',
+      type: 'video',
+      badge: 'update',
+      badgeText: '版本更新',
+      tags: ['LTXV 2.0', '视频生成', '长视频', '开源'],
+      source: 'fal.ai 开发者文档',
+      sourceUrl: 'https://fal.ai/models/fal-ai/ltx-2/text-to-video/fast',
+      summary: 'Lightricks发布LTXV 2.0开源视频模型，非对称双流架构+Flow Matching，支持最长60秒4K音视频同步生成。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>总参数19B</strong>：非对称双流架构，视觉14B + 音频5B，跨模态注意力协同</li><li><strong>DiT + Flow Matching</strong>：流匹配训练推理框架，非传统扩散模型</li><li><strong>最长60秒</strong>生成，分辨率覆盖1080p到<strong>4K（2160p）</strong>，25fps/50fps可选</li><li><strong>思维令牌（CoT tokens）</strong>：Gemma 3先解析复杂Prompt，层级化规划光影与声效</li><li><strong>量化方案完整</strong>：BF16≈38GB、FP8≈19GB、FP4≈9.5GB，蒸馏版推理提速约10倍</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> Fast版本多尺度渲染架构比传统扩散方法快<strong>30倍</strong> <a class="source-link" href="https://fal.ai/models/fal-ai/ltx-2/text-to-video/fast" target="_blank">fal.ai</a></li><li><span class="info-tag prediction">行业预测</span> 非对称双流架构为音视频联合生成提供高效路径，本地部署友好度领先 <a class="source-link" href="https://blog.csdn.net/gitblog_00650/article/details/153550123" target="_blank">CSDN</a></li><li><span class="info-tag feedback">用户反馈</span> 本地部署门槛低（FP4可在16GB GPU运行），音频质量稳定，ComfyUI插件生态完善</li><li><span class="info-tag pending">待验证</span> 60秒长视频实际质量与一致性、数字人口型同步精度、蒸馏版质量损失</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>开源自部署</strong>：GitHub完全开源，支持ComfyUI/Diffusers/Transformers，最低16GB显存可跑</li><li><strong>fal.ai API</strong>：Fast版1080p <strong>$0.04/秒（约0.29元/秒）</strong>，Pro版1080p <strong>$0.06/秒（约0.43元/秒）</strong></li><li><strong>LTX Desktop</strong>：RTX 5090/32GB以上可完全本地推理，零边际成本；低配置自动回退API模式</li><li><strong>混合部署</strong>：官方推荐"本地迭代+API量产"模式，兼顾成本与可靠性</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>60秒时长</strong>覆盖大部分数字人口播视频需求，减少拼接一致性问题</li><li><strong>原生同步音频</strong>：双流架构保证音视频实时对齐，一次生成完整口播内容</li><li><strong>灵活部署</strong>：小团队消费级显卡快速迭代，中大型企业API规模化生产</li><li><strong>建议</strong>：优先用于30-60秒带货口播/产品介绍，用Image-to-Video锁定身份，结合LoRA训练专属形象</li></ul>'
+        }
+      ],
+    },
+    {
+      id: '2026-08-10-models-2',
+      title: '腾讯混元图像3.0 开源，80B+ MoE原生多模态生图',
+      date: '2026-08-10',
+      type: 'image',
+      badge: 'open',
+      badgeText: '开源',
+      tags: ['混元图像3.0', '图像生成', 'MoE', '开源'],
+      source: 'arXiv技术报告',
+      sourceUrl: 'https://arxiv.org/html/2509.23951',
+      summary: '腾讯混元开源80B+参数原生多模态图像生成模型混元图像3.0，统一自回归框架实现理解与生成融合，目前最大开源生图MoE模型。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>总参数80B+ / 激活约13B</strong>：MoE架构64专家，每token激活8个+1个共享MLP</li><li><strong>统一自回归多模态</strong>：基于Hunyuan-A13B大语言模型骨干，文本理解与图像生成同一序列建模</li><li><strong>16倍下采样VAE</strong>：像素压缩到32维潜空间，比"8x VAE+patch"更简洁高效</li><li><strong>双编码器策略</strong>：VAE潜特征+视觉编码器特征拼接，支持对话/生成/理解/编辑复杂交互</li><li>三个版本：基础版（≥3×80GB）、Instruct版（≥8×80GB）、蒸馏版（8步采样）</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> 腾讯云API定价<strong>0.2元/张</strong>，比2.0版便宜60%，质量同时提升 <a class="source-link" href="https://cloud.tencent.com/document/product/1668/90896" target="_blank">腾讯云计费文档</a></li><li><span class="info-tag prediction">行业预测</span> 统一多模态架构代表图像生成新方向——从"画图工具"向"视觉推理+创作"演进</li><li><span class="info-tag feedback">用户反馈</span> 中文理解能力强、适配东方审美；提示词自动增强实用；开源免费商用性价比高</li><li><span class="info-tag pending">待验证</span> LMArena盲测夺冠权威性、与Midjourney/DALL-E 3系统性对比、数字人形象生成可控性</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>开源自部署</strong>：推理代码+权重完全开源免费商用，基础版推荐3×80GB显存</li><li><strong>腾讯云API</strong>：后付费<strong>0.2元/张</strong>，资源包同价无量大折扣，支持OpenAI兼容接口</li><li><strong>第三方API</strong>：Pixazo.ai等平台约<strong>$0.20/张</strong></li><li><strong>企业定制</strong>：腾讯云提供并发叠加包、AI写真/模特换装/商品背景等垂直专用API</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>形象素材生产</strong>：80B参数MoE生成高度定制化、细节丰富的数字人形象照片，作为下游视频模型输入</li><li><strong>智能编辑迭代</strong>：Instruct版图生图+提示词自动增强，快速生成服装/表情/角度/场景变体</li><li><strong>中文审美适配</strong>：基于高质量中文图文数据训练，适合生成符合国内用户审美的数字人形象</li><li><strong>建议</strong>：作为数字人素材库上游工具使用，配合视频模型构建完整生产链路；自有GPU集群可开源部署微调</li></ul>'
+        }
+      ],
+    },
+    {
+      id: '2026-08-10-models-3',
+      title: 'BytePlus 上线 Seedance 2.5 视频模型，OpenRouter 可直接调用',
+      date: '2026-08-09',
+      type: 'video',
+      badge: 'new',
+      badgeText: '新上线',
+      tags: ['Seedance 2.5', 'BytePlus', 'OpenRouter', '视频生成'],
+      source: 'AICrier',
+      sourceUrl: 'https://aicrier.com/post/mqo5tqrrcn1kafqqbklt',
+      summary: '字节旗下BytePlus在OpenRouter平台上线Dreamina Seedance 2.5视频生成模型，支持30秒720P、50个多模态参考输入及视频延长。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>Seedance 2.5</strong>：字节最新视频生成模型，主打长叙事与工业级制作</li><li><strong>多模态输入</strong>：支持最多<strong>50个</strong>图/视/音参考素材及首尾帧控制</li><li><strong>生成指标</strong>：单段最长<strong>30秒</strong>直出，支持多轮延长至180秒，<strong>720P</strong>画质</li><li><strong>核心特性</strong>：支持视频局部编辑、视频延长、可选生成音频及多语言视听</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> 火山引擎公布价格，720P每秒约<strong>1.51元</strong>，较2.0提价45%-52% <a class="source-link" href="https://www.aitop100.cn/infomation/details/34378.html" target="_blank">AI TOP100</a></li><li><span class="info-tag prediction">行业预测</span> OpenRouter上架意味着海外开发者可便捷接入，有助于拓展海外ToB市场</li><li><span class="info-tag feedback">用户反馈</span> 多模态参考与局部编辑能力强，有效解决数字人视频穿帮与动作僵硬</li><li><span class="info-tag pending">待验证</span> 超长视频漏动作或重新生成风险、OpenRouter实际可用性与延迟</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>接入渠道</strong>：支持通过<strong>OpenRouter API</strong>及<strong>火山引擎/火山方舟</strong>平台接入 <a class="source-link" href="https://openrouter.ai/bytedance/seedance-2.5" target="_blank">OpenRouter</a></li><li><strong>价格参考</strong>：720P约<strong>1.51元/秒</strong>，较2.0提价45%-52%</li><li><strong>本地部署</strong>：目前为闭源商用模型，未提及开源或本地化部署方案</li><li><strong>免费额度</strong>：官方暂未公布免费试用额度或积分赠送政策</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>多语种数字人播报</strong>：支持多语言视听与可选音频，极度契合跨境电商场景</li><li><strong>直播切片生成</strong>：适合数字人直播切片生成、长视频故事叙述及数字人动作局部修复</li><li><strong>首尾帧控制</strong>：保持数字人形象一致，结合50个素材进行多轮延长</li><li><strong>注意</strong>：生成成本较高（单秒超2元），超长视频易出现漏动作或重新生成风险</li></ul>'
+        }
+      ],
+    },
+    {
+      id: '2026-08-09-models-0',
+      title: '美团 LongCat-Video-Avatar 1.5 开源，数字人口型同步超越付费方案',
+      date: '2026-08-09',
+      type: 'avatar',
+      badge: 'open',
+      badgeText: '开源',
+      tags: ['LongCat 1.5', '数字人', '开源', 'MIT协议'],
+      source: '什么值得买',
+      sourceUrl: 'https://post.m.smzdm.com/p/aom4g277/',
+      summary: '美团开源LongCat-Video-Avatar 1.5数字人模型，13.6B参数+DMD2蒸馏8步推理，用户偏好测试对Kling Avatar 2.0胜率65.9%，消费级显卡可跑。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>LongCat-Video-Avatar 1.5</strong>：音频驱动数字人多模态模型，总参数<strong>13.6B</strong></li><li><strong>Whisper-Large-v3</strong>音频编码器，支持<strong>99种语言</strong>，唇形同步准确率大幅提升</li><li><strong>DMD2蒸馏技术</strong>：推理步数从约50步压缩至<strong>8步</strong>，效率提升约15倍</li><li><strong>逐帧级GRPO</strong>偏好对齐，优化手部稳定性和动作连续性，主体变形率仅23.1%</li><li>支持<strong>480P/720P</strong>、30fps，视频续写实现分钟级身份零漂移，INT8量化显存降低40%</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> 770名评估者13240条主观评分：对<strong>Kling Avatar 2.0胜率65.9%</strong>、对OmniHuman-1.5胜率61.1%、对HeyGen胜率54.3% <a class="source-link" href="https://post.m.smzdm.com/p/aom4g277/" target="_blank">什么值得买</a></li><li><span class="info-tag prediction">行业预测</span> MIT协议+消费级显卡门槛，有望推动AI数字人在电商直播/在线教育/虚拟客服规模化落地</li><li><span class="info-tag feedback">用户反馈</span> 口型同步效果优于多数开源方案，中文尤佳；8步推理速度快；720P满足短视频需求；部署文档完整</li><li><span class="info-tag pending">待验证</span> 10分钟以上长视频身份一致性、与HeyGen全维度差距、多人对话实际稳定性</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>MIT开源协议</strong>：完全免费商用、修改与分发，无使用限制，权重/代码/文档全公开</li><li><strong>硬件要求</strong>：推荐RTX 4090（24GB）消费级显卡可跑720P，INT8量化后显存再降40%</li><li><strong>成本对比</strong>：与付费方案（HeyGen约0.5-2元/分钟）相比，自部署边际成本几乎为零，成本降低<strong>90%以上</strong></li><li><strong>企业定制</strong>：最高定制自由度，可基于自有数据微调、私有化部署、修改架构、集成到自有产品</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>口型同步精度行业领先</strong>：Whisper-Large-v3+多阶段优化，中文和多语言场景表现突出</li><li><strong>分钟级长视频身份零漂移</strong>：视频续写+跨块潜变量拼接，支撑完整产品介绍/品牌宣讲</li><li><strong>消费级显卡部署</strong>：一张RTX 4090即可本地部署720P，MCN/中小电商ROI大幅提升</li><li><strong>多人对话场景</strong>：双音频输入分别驱动两个角色对话，拓展双人直播/访谈/虚拟客服等场景</li></ul>'
+        }
+      ],
+    },
+    {
+      id: '2026-08-09-models-1',
+      title: '谷歌 Veo 3 全球上线，原生同步音频+精准口型同步',
+      date: '2026-08-09',
+      type: 'video',
+      badge: 'new',
+      badgeText: '新发布',
+      tags: ['Veo 3', '多模态视频', '原生音频', 'Google'],
+      source: 'AI Wiki',
+      sourceUrl: 'https://aiwiki.ai/wiki/veo_3',
+      summary: 'Google DeepMind发布Veo 3旗舰视频生成模型，全球159国上线，首个商用原生同步音频视频模型，支持1080p/原生4K输出。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>Latent Diffusion Transformer</strong>架构，音频视频在<strong>共享潜空间</strong>联合生成</li><li><strong>原生同步音频</strong>：对话/音效/环境声/背景音乐同一生成过程，非后期合成</li><li><strong>8秒/1080p</strong>基础版，Veo 3.1增加<strong>原生4K</strong>输出、竖屏生成、Ingredients to Video</li><li><strong>精准口型同步</strong>：lip-sync准确性被认为领先同类模型</li><li>多种创作模式：文生视频、图生视频、首尾帧过渡、Ingredients to Video、场景扩展</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> 首个实现商用原生音频视频生成的模型，已在全球<strong>159国</strong>上线 <a class="source-link" href="https://zypa.in/google-veo-3-global-launch/" target="_blank">Zypa</a></li><li><span class="info-tag prediction">行业预测</span> 代表AI视频生成从"默片时代"进入"有声电影时代"，从视觉素材变为完整镜头</li><li><span class="info-tag feedback">用户反馈</span> 视频写实度高、物理效果真实、音频质量好、电影感强；但时长短、价格贵、日限额少</li><li><span class="info-tag pending">待验证</span> Veo 3.1 4K实际质量、数字人场景系统性评测、印度市场功能限制</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>Google AI Pro</strong>：印度₹1,999/月（约<strong>175元/月</strong>），美国$19.99/月，每天3个Veo 3 Fast视频</li><li><strong>Google AI Ultra</strong>：$249.99/月（约<strong>1,800元/月</strong>），前3月5折，无限制使用+Flow每月125次视频</li><li><strong>Gemini API</strong>：Light $0.05/video、Fast $0.15/video、Standard $0.40/video，支持扩展至约148秒总时长</li><li><strong>Vertex AI企业级</strong>：按秒计费，最高4K输出，批处理+企业级SLA支持</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>原生音频+精准口型同步</strong>：数字人带货视频一步到位，不需分别做TTS/口型同步/音效合成</li><li><strong>高写实度电影感</strong>：物理效果/材质/光影优势，产出接近真人拍摄，提升品牌信任感</li><li><strong>多模式可控性</strong>：参考图像锁定身份、首尾帧控制镜头、多参考素材保持角色一致性</li><li><strong>建议</strong>：用于高端品牌数字人广告/宣传片等高质量短时长内容；英文数字人优先考虑</li></ul>'
+        }
+      ],
+    },
+    {
+      id: '2026-08-07-models-0',
+      title: '阿里 Wan 3.0 开启公测，30秒1080P全能参考视频生成',
+      date: '2026-08-07',
+      type: 'video',
+      badge: 'new',
+      badgeText: '公测',
+      tags: ['Wan 3.0', '视频生成', '多模态', '阿里云'],
+      source: '阿里云百炼',
+      sourceUrl: 'https://bailian.console.aliyun.com/model-releases/wan3.0-video',
+      summary: '阿里通义万相3.0开启公测，单段生成30秒1080P，支持文本/图像/视频/音频/文档/网页6种以上输入模态，原生音视频同步生成。',
+      sections: [
+        {
+          label: '核心技术参数',
+          content: '<ul><li><strong>全能参考（Omni Reference）</strong>：支持文本/图像/视频/音频/文档（DOC/XLS/PPT/PDF）/网页6+种输入模态</li><li><strong>单段30秒</strong>原生生成，当前通用视频模型中最长原生时长之一</li><li><strong>480P/720P/1080P</strong>三档分辨率，<strong>原生音视频同步</strong>生成</li><li>功能模式：文生视频、图生视频、参考生视频、视频延长、视频编辑、文档转视频</li><li>角色一致性强化：30秒高速动作场景保持多角色毛发/服装/站位稳定，8语言切换演唱口型精准</li></ul>'
+        },
+        {
+          label: '第三方测评',
+          content: '<ul><li><span class="info-tag fact">确定事实</span> 2026年8月7日开启公测，官方展示30秒一镜到底人物跟拍、多角色动作、8语言切换等Demo <a class="source-link" href="https://bailian.console.aliyun.com/model-releases/wan3.0-video" target="_blank">阿里云百炼</a></li><li><span class="info-tag prediction">行业预测</span> 30秒原生时长+全能参考能力代表视频生成两大发展方向，有望成为企业级主流选择</li><li><span class="info-tag feedback">用户反馈</span> 30秒时长是质变级提升，角色一致性出色，中文提示词理解强，1080P画质满足社媒/广告需求</li><li><span class="info-tag pending">待验证</span> 具体架构和参数量、国际第三方榜单排名、30秒人物一致性系统评测、数字人口型同步精度对比</li></ul>'
+        },
+        {
+          label: '接入成本与方式',
+          content: '<ul><li><strong>阿里云百炼API（邀测）</strong>：按生成视频时长计费，480P <strong>0.3元/秒</strong>，720P <strong>0.6元/秒</strong>，1080P <strong>1.2元/秒</strong> <a class="source-link" href="https://help.aliyun.com/zh/model-studio/wan3-0-video" target="_blank">阿里云帮助中心</a></li><li><strong>Wan 3.0体验中心</strong>：wan3.io可视化界面，积分制消费</li><li><strong>阿里云Model Studio</strong>：可视化操作，适合先验证创意再API规模化生产</li><li><strong>企业定制</strong>：阿里云提供企业级支持、专属部署方案，但模型不提供开源权重，仅API使用</li></ul>'
+        },
+        {
+          label: '数字人场景适配',
+          content: '<ul><li><strong>30秒原生时长</strong>覆盖完整带货口播，一次性产出无需多次续写拼接，保证人物一致性</li><li><strong>多模态参考</strong>：参考图像锁定身份+参考视频保持动作风格+音频参考控制节奏，精细控制数字人</li><li><strong>多语言数字人内容</strong>：8种语言切换演唱案例证明多语言口播潜力</li><li><strong>阿里生态协同</strong>：与通义大模型、电商方案天然集成，电商企业接入成本低；可配合Live Avatar数字人系统</li></ul>'
+        }
+      ],
+    },
+    {
+          id: 'seedance-2-5',
+          title: '字节 Seedance 2.5 正式发布，原生30秒4K视频 + 50个多模态参考',
+          date: '2026-07-31',
           type: 'video',
           badge: 'update',
-          badgeText: '版本更新',
-          tags: ['视频生成', '长视频'],
-          source: 'AI-Damn',
-          sourceUrl: 'https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348',
-          summary: 'Lightricks发布LTXV重大更新，突破技术瓶颈实现长达60秒AI视频生成。',
+          badgeText: '重磅发布',
+          tags: ['视频生成', '4K', '数字人', '唇形同步', '字节跳动', '火山引擎'],
+          source: '字节跳动Seed官方博客',
+          sourceUrl: 'https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5',
+          summary: '字节跳动正式发布Seedance 2.5视频生成模型，原生支持30秒4K连续生成、50个多模态参考输入、局部编辑、3D白模预演，音视频联合生成架构。',
           sections: [
             {
               label: '核心技术参数',
-              content: '<ul><li>实现<strong>60秒</strong>长视频连续生成，突破行业时长瓶颈。</li><li>优化计算机视觉算法，保障长镜头下的<strong>时序一致性</strong>。</li><li>支持高分辨率输出，满足专业级视频制作需求。</li></ul>'
+              content: '<ul><li><strong>原生30秒</strong>单次生成，非片段拼接，支持多轮延长</li><li><strong>原生4K</strong>分辨率 + 10-bit色深，非插值放大</li><li><strong>50个多模态参考</strong>：30张图+10段视频+10段音频</li><li><strong>音视频联合生成</strong>架构：同一潜空间共处理，音画同步更自然</li><li><strong>局部编辑</strong>：时间戳级精准修改，不影响整体画面节奏</li><li><strong>3D白模预演</strong>：先低精度验证构图和镜头，再渲染4K</li><li><strong>绿幕/运镜/参考编辑</strong>等专业级后期能力</li><li>原生支持<strong>10+种语言</strong>，复杂指令控制增强</li></ul>'
             },
             {
               label: '第三方测评',
-              content: '<ul><li><span class="info-tag fact">【确定事实】</span>60秒生成能力大幅减少视频拼接工作量，提升效率。<a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank">AI-Damn</a></li><li><span class="info-tag feedback">【用户反馈】</span>长视频生成时的背景闪烁与人物变形问题得到显著改善。<a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank">AI-Damn</a></li><li><span class="info-tag prediction">【行业预测】</span>长视频生成将直接推动AI短剧与微综艺产业的爆发。<a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank">AI-Damn</a></li></ul>'
+              content: '<ul><li><span class="info-fact">【确定事实】</span> 官方称较2.0版本<strong>提示词遵循度提升约20%</strong> <a href="https://seeddance.ai/blog/what-is-seedance-2-5" target="_blank">Seeddance.ai评测</a></li><li><span class="info-fact">【确定事实】</span> 已上线豆包、即梦、扣子等字节旗下产品 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网报道</a></li><li><span class="info-prediction">【行业预测】</span> 30秒原生时长+局部编辑+白模预演，可能重塑广告/电商/影视预演的生产流程</li><li><span class="info-feedback">【用户反馈】</span> 香港科技大学王帅副教授评价：视频生成模型正从"生成内容"走向"理解世界" <a href="https://m.voc.com.cn/xhn/news/202608/33374990.html" target="_blank">科技日报</a></li></ul>'
             },
             {
               label: '接入成本与方式',
-              content: '<ul><li>通过Lightricks旗下产品<strong>内置集成</strong>提供订阅服务。</li><li>企业级API定价预计随60秒能力上线有所<strong>上调</strong>。</li><li>支持Web端与移动端多平台快速接入与渲染。</li></ul>'
+              content: '<ul><li><strong>第三方API参考价（PiAPI）</strong>：480p约<strong>¥2.18/秒</strong>（约$0.30），720p约<strong>¥4.35/秒</strong>（约$0.60）（汇率7.25） <a href="https://app.piapi.ai/docs/seedance-api/seedance-25-preview" target="_blank">PiAPI文档</a></li><li><strong>官方接入方式</strong>：火山引擎企业版（需申请）、即梦(Dreamina)网页端、豆包Pro <a href="https://seed.bytedance.com/seedance2_5" target="_blank">官方主页</a></li><li><strong>企业合作</strong>：徐工集团、小鹏汽车、灵初智能、微分智飞等已确认合作 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网</a></li><li><strong>参考输入计费</strong>：视频参考按输入时长×(单价/2)+输出时长×单价计算</li><li><span class="info-pending">【待验证】</span> 官方消费者定价尚未公布，企业版需询价</li></ul>'
             },
             {
               label: '数字人场景适配',
-              content: '<ul><li>60秒时长完美契合<strong>数字人短视频带货</strong>完整叙事需求。</li><li>时序一致性提升保障了数字人<strong>口播与肢体动作</strong>的自然度。</li><li>适用于制作<strong>沉浸式虚拟主播</strong>长时段互动与剧情演绎内容。</li></ul>'
-            },
-            {
-              label: '来源链接',
-              content: '<ul><li><a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank" rel="noopener noreferrer">AI-Damn</a></li></ul>'
-            },
+              content: '<ul><li><strong>数字人带货视频</strong>：30秒原生时长+50参考图，可固定产品+人物形象，生成多版本口播素材，无需拼接</li><li><strong>唇形同步</strong>：音视频联合生成架构，音素级口型同步，比单独后处理更自然</li><li><strong>批量视频生产</strong>：局部编辑可快速换SKU/背景/服装，大幅降低批量变体成本</li><li><strong>虚拟直播素材</strong>：支持动作参考+音色参考，可生成直播切片和预热视频</li><li><strong>跨境电商</strong>：原生10+语言，一键生成多语种口播版本，适配海外多市场</li><li><strong>3D白模预演</strong>：先验证镜头走位和产品展示角度，避免浪费算力在废片上</li></ul>'
+            }
           ],
+        demoImages: [
+          'https://s.coze.cn/image/IIY3ADShR2k/',
+          'https://s.coze.cn/image/ixcxy8r5nXQ/',
+          'https://s.coze.cn/image/zRBjAv9bmIg/',
+        ],
+        demoVideoUrl: 'https://seed.bytedance.com/seedance2_5',
         },
     {
-          id: '2026-08-10-models-0',
-          title: '腾讯混元发布并开源80B参数原生多模态生图模型混元图像3.0',
-          date: '2026-08-09',
+          id: 'qwen-image-3',
+          title: '阿里 Qwen-Image 3.0 上线，超长提示词 + 精细文字渲染',
+          date: '2026-08-05',
           type: 'image',
           badge: 'update',
           badgeText: '版本更新',
-          tags: ['混元图像3.0', '开源生图'],
-          source: '中华网软件',
-          sourceUrl: 'https://soft.china.com/article/2102038.html',
-          summary: '腾讯混元发布并开源80B参数原生多模态生图模型混元图像3.0，为目前最大开源生图模型。',
+          tags: ['图像生成', '文字渲染', '多语言', '阿里云', 'API'],
+          source: '阿里云官方文档',
+          sourceUrl: 'https://help.aliyun.com/en/model-studio/image-model/',
+          summary: '千问图像生成模型 Qwen-Image-3.0 正式上线，支持4.5K token超长提示词和10px级精细文字渲染。',
           sections: [
             {
-              label: '事件详情',
-              content: '<p>腾讯混元发布并开源80B参数原生多模态生图模型混元图像3.0，为目前最大开源生图模型。</p>'
+              label: '核心技术参数',
+              content: '<ul><li>支持 <strong>4.5K token</strong> 超长提示词</li><li><strong>10px级</strong> 精细文字渲染</li><li>支持 <strong>12种语言</strong></li><li>最高 <strong>2048×2048</strong> 分辨率输出</li><li>生成与编辑集成于同一模型</li></ul>'
             },
             {
-              label: '数字人场景关联',
-              content: '<ul><li>提升数字人带货背景生成质量与商品展示图效率。</li><li>降低企业定制专属生图模型的算力与开发成本。</li></ul>'
+              label: '第三方测评',
+              content: '<p>Arena.ai 国际文生图排行榜 <strong>国内排名第一</strong>。 <a href="https://arena.ai/" target="_blank">查看来源</a></p>'
             },
             {
-              label: '来源链接',
-              content: '<ul><li><a href="https://soft.china.com/article/2102038.html" target="_blank">https://soft.china.com/article/2102038.html</a></li></ul>'
+              label: '接入成本与方式',
+              content: '<ul><li>国内文生图：<strong>0.18元/张</strong>起（1K分辨率）</li><li>海外 API：Standard ¥0.22/张（约$0.03），Pro ¥0.29/张（约$0.04）</li><li>接入方式：阿里云百炼 / Qwen Cloud</li><li>海外用户可通过 Qwen Cloud 接入 <a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">官方文档</a></li></ul>'
             },
+            {
+              label: '数字人场景适配',
+              content: '<p><strong>优势：</strong>精细文字渲染能力适合电商产品图、海报生成；多语言支持出海场景；成本极低。</p><p><strong>不足：</strong>图像生成模型，不直接生成视频，需配合视频模型使用。</p>'
+            }
           ],
-        },    {
-          id: '2026-08-10-models-1',
-          title: '字节旗下BytePlus在OpenRouter上线Seedance 2.5视频模型',
-          date: '2026-08-09',
+        demoImages: [
+          'https://s.coze.cn/image/Fpepr0bCpQQ/',
+          'https://s.coze.cn/image/xSWmYQtb6tA/',
+          'https://s.coze.cn/image/_I0Wl-wdtRo/',
+        ],
+        },
+    {
+          id: 'sensetime-u15',
+          title: '商汤 SenseNova U1.5-Lite-Preview 开源，8B轻量多模态',
+          date: '2026-08-05',
+          type: 'image',
+          badge: 'new',
+          badgeText: '新发布',
+          tags: ['图像生成', '开源', '轻量模型', '商汤', '私有化部署'],
+          source: 'IT之家 / 凤凰网科技',
+          sourceUrl: 'https://www.ithome.com/0/986/059.htm',
+          summary: '商汤开源 8B-MoT 轻量多模态模型，原生4K图像生成编辑，质量媲美闭源模型。',
+          sections: [
+            {
+              label: '核心技术参数',
+              content: '<ul><li>基于 <strong>NEO-Unify 架构</strong></li><li><strong>8B-MoT 参数</strong>，轻量级</li><li>支持原生 <strong>4K</strong> 图像生成与编辑</li><li>生成与编辑质量媲美闭源模型</li><li>面向全球开发者开源</li></ul>'
+            },
+            {
+              label: '第三方测评',
+              content: '<p>暂无第三方权威排行榜数据，官方宣称生成与编辑质量<strong>媲美闭源模型</strong>。 <a href="https://www.ithome.com/0/986/059.htm" target="_blank">IT之家报道</a> | <a href="https://tech.ifeng.com/c/8vLGLuQYDyh" target="_blank">凤凰科技</a></p>'
+            },
+            {
+              label: '接入成本与方式',
+              content: '<ul><li><strong>开源免费</strong>，可自行部署</li><li><strong>部署门槛低</strong>：8B模型可在消费级GPU上运行</li><li>适合私有化部署需求</li></ul>'
+            },
+            {
+              label: '数字人场景适配',
+              content: '<p><strong>优势：</strong>轻量级、部署成本低、可私有化，适合出海产品的本地化部署需求；生成编辑一体化。</p><p><strong>不足：</strong>图像模型，非视频生成；轻量模型在细节质量上可能不及大参数闭源模型。</p>'
+            }
+          ],
+        demoImages: [
+          'https://s.coze.cn/image/n4sYfn73gJM/',
+          'https://s.coze.cn/image/pYDhhIp-HNw/',
+          'https://s.coze.cn/image/OIb03Us-NDI/',
+        ],
+        },
+    {
+          id: 'flux3video',
+          title: 'FLUX 3 Video 正式发布，多语言唇形同步 + 原生音频',
+          date: '2026-08-04',
           type: 'video',
           badge: 'new',
           badgeText: '新发布',
-          tags: ['Seedance 2.5', '视频生成'],
-          source: 'AICrier',
-          sourceUrl: 'https://aicrier.com/post/mqo5tqrrcn1kafqqbklt',
-          summary: '字节旗下BytePlus在OpenRouter平台上线Dreamina Seedance 2.5视频生成模型。',
+          tags: ['视频生成', '唇形同步', '多语言', 'BFL', '闭源'],
+          source: 'Black Forest Labs 官方博客',
+          sourceUrl: 'https://bfl.ai/blog/flux-3-video',
+          summary: 'Black Forest Labs 正式开放 FLUX 3 Video 视频生成模型，支持14+种语言精准唇形同步，登顶自有排行榜。',
           sections: [
             {
-              label: '事件详情',
-              content: '<p>字节旗下BytePlus在OpenRouter平台上线Dreamina Seedance 2.5视频生成模型。</p>'
+              label: '核心技术参数',
+              content: '<ul><li>最长 <strong>20秒</strong> 视频生成，720p 原生输出 + 1080p 放大输出</li><li>支持 <strong>原生音频</strong> 同步生成（对话、音效、环境音）</li><li>交互模式：文生视频、图生视频（关键帧控制）、视频续写、多镜头切换</li><li><strong>14+种语言唇形同步</strong>：英语（多方言）、中文、西班牙语、法语、德语、日语等</li></ul>'
             },
             {
-              label: '数字人场景关联',
-              content: '<ul><li>赋能数字人短视频带货脚本的高效自动化视频生成。</li><li>丰富口播视频的动作与表情动态表现力。</li></ul>'
+              label: '第三方测评',
+              content: '<p>BFL 自有 Elo 排行榜中文生视频第一（<strong>1135分</strong>）、图生视频第一（<strong>1051分</strong>），领先 Gemini Omni Flash、Minimax H3 和 Seedance 2.0。 <a href="https://bfl.ai/blog/flux-3-video" target="_blank">官方博客</a> | <a href="https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/" target="_blank">The Decoder 报道</a></p><p>注意：此为厂方自有排行榜数据，第三方独立测评待验证</p>'
             },
             {
-              label: '来源链接',
-              content: '<ul><li><a href="https://aicrier.com/post/mqo5tqrrcn1kafqqbklt" target="_blank">https://aicrier.com/post/mqo5tqrrcn1kafqqbklt</a></li></ul>'
+              label: '接入成本与方式',
+              content: '<ul><li><strong>API 按秒计费</strong>（含音频）：</li><li>720p Draft: ¥0.43/秒（约$0.06）</li><li>720p 全质量: ¥1.23/秒（约$0.17）</li><li>1080p: ¥2.10/秒（约$0.29）</li><li>视频续写：720p ¥2.97/秒（约$0.41），1080p ¥3.84/秒（约$0.53）</li><li>接入方式：BFL API，需注册账号获取API Key</li></ul>'
             },
+            {
+              label: '数字人场景适配',
+              content: '<p><strong>优势：</strong>多语言唇形同步能力强，原生音频生成，适合跨境电商多语种口播视频场景。</p><p><strong>不足：</strong>单条最长20秒，批量生成带货短视频需拼接；成本较高，1分钟720p全质量视频约¥73.95（约$10.2）。</p>'
+            }
           ],
+        demoImages: [
+          'https://s.coze.cn/image/gU0ALTJodbw/',
+          'https://s.coze.cn/image/oxAVhnSVrm8/',
+          'https://s.coze.cn/image/B2Dl-yhsYHU/',
+        ],
+        demoVideoUrl: 'https://blackforestlabs.ai/',
         },
     {
-          id: '2026-08-09-models-0',
-          title: '美团开源前沿数字人技术，效果超越付费方案',
-          date: '2026-08-09',
-          type: 'industry',
-          badge: 'open',
-          badgeText: '开源',
-          tags: ['开源大模型', '数字人技术'],
-          source: 'AI Damn',
-          sourceUrl: 'https://ai-damn.com/meituan-open-sources-cutting-edge-digital-human-tech-that-beats-paid-alternatives-1779422723464',
-          summary: '美团研究团队开源前沿数字人技术，效果超越现有付费替代方案。',
-          sections: [
-            {
-              label: '事件详情',
-              content: '<p>美团研究团队开源前沿数字人技术，效果超越现有付费替代方案。</p>'
-            },
-            {
-              label: '数字人场景关联',
-              content: '<ul><li>开源技术降低数字人定制门槛</li><li>高质量效果提升带货转化率</li></ul>'
-            },
-            {
-              label: '来源链接',
-              content: '<ul><li><a href="https://ai-damn.com/meituan-open-sources-cutting-edge-digital-human-tech-that-beats-paid-alternatives-1779422723464" target="_blank">https://ai-damn.com/meituan-open-sources-cutting-edge-digital-human-tech-that-beats-paid-alternatives-1779422723464</a></li></ul>'
-            },
-          ],
-        },    {
-          id: '2026-08-09-models-1',
-          title: '谷歌在印度推出Veo 3视频模型，支持音频',
-          date: '2026-08-09',
+          id: 'minimax-h3',
+          title: 'MiniMax H3 开源登顶 HuggingFace，多模态统一架构',
+          date: '2026-08-03',
           type: 'video',
           badge: 'new',
           badgeText: '新发布',
-          tags: ['Veo 3', '多模态视频'],
-          source: 'Tech Shots',
-          sourceUrl: 'https://www.techshotsapp.com/technology/google-launches-geminis-veo%E2%80%AF3-ai-video-model-in-india-with-audio-support',
-          summary: '谷歌在印度Gemini应用推出Veo 3视频模型，支持音频生成。',
+          tags: ['视频生成', '开源', '多模态', 'MiniMax', '私有化部署'],
+          source: 'IndexBox / HuggingFace',
+          sourceUrl: 'https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/',
+          summary: 'MiniMax 开源 H3 通用多模态生成模型（33B参数），文本/图像/视频/音频统一架构，HuggingFace 热度登顶。',
           sections: [
             {
-              label: '事件详情',
-              content: '<p>谷歌在印度Gemini应用推出Veo 3视频模型，支持音频生成。</p>'
+              label: '核心技术参数',
+              content: '<ul><li><strong>33B参数</strong>，多模态统一架构</li><li>支持 <strong>2K分辨率</strong> 视频、原生立体声</li><li>最长视频 <strong>15秒</strong></li><li>ComfyUI 原生支持</li></ul>'
             },
             {
-              label: '数字人场景关联',
-              content: '<ul><li>音视频同步提升带货真实感</li><li>多模态能力丰富口播场景</li></ul>'
+              label: '第三方测评',
+              content: '<ul><li>HuggingFace 热度榜 <strong>第一</strong>（超过 DeepSeek V4 Flash） <a href="https://huggingface.co/MiniMaxAI" target="_blank">查看</a></li><li>Artificial Analysis 视频编辑评测榜 <strong>全球第一</strong> <a href="https://artificialanalysis.ai/" target="_blank">查看</a></li><li>Arena 图生视频排行榜 <strong>全球第一</strong> <a href="https://arena.ai/" target="_blank">查看</a></li></ul>'
             },
             {
-              label: '来源链接',
-              content: '<ul><li><a href="https://www.techshotsapp.com/technology/google-launches-geminis-veo%E2%80%AF3-ai-video-model-in-india-with-audio-support" target="_blank">https://www.techshotsapp.com/technology/google-launches-geminis-veo%E2%80%AF3-ai-video-model-in-india-with-audio-support</a></li></ul>'
+              label: '接入成本与方式',
+              content: '<ul><li><strong>开源权重</strong>：HuggingFace 可下载</li><li><strong>API定价</strong>：0.8元/秒</li><li><strong>部署门槛</strong>：需 GPU 服务器，33B模型建议 A100/H100 级别</li><li><strong>地区限制</strong>：美国、欧盟、英国、韩国用户需向 MiniMax 申请正式许可方可免费使用，其他地区开发者可自由部署</li></ul>'
             },
+            {
+              label: '数字人场景适配',
+              content: '<p><strong>优势：</strong>开源可私有化部署，成本可控；多模态统一架构，适合二次开发数字人定制方案。</p><p><strong>不足：</strong>部署门槛高，需要专业GPU资源；美欧等主流出海市场有地区限制。</p>'
+            }
           ],
+        demoImages: [
+          'https://s.coze.cn/image/rxGHefNd2ic/',
+          'https://s.coze.cn/image/YMH_l77hiDM/',
+          'https://s.coze.cn/image/Gvo_uXsKKFQ/',
+        ],
+        demoVideoUrl: 'https://minimaxh3.art/zh',
         },
-    {
-      id: '2026-08-07-models-0',
-      title: '阿里视频大模型Wan 3.0开启公测，单次最长可生成30秒1080P视频，支持文档与PPT等多模态输入，人像生成实现“千人千面”及微表情自然联动。',
-      date: '2026-08-07',
-      type: 'industry',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['', '视频生成'],
-      source: 'https://www.yicai.com/news/103309461.html',
-      sourceUrl: 'https://www.yicai.com/news/103309461.html',
-      summary: '阿里视频大模型Wan 3.0开启公测，单次最长可生成30秒1080P视频，支持文档与PPT等多模态输入，人像生成实现“千人千面”及微表情自然联动。',
-      sections: [
-        { label: '事件详情', content: '<p>阿里视频大模型Wan 3.0开启公测，单次最长可生成30秒1080P视频，支持文档与PPT等多模态输入，人像生成实现“千人千面”及微表情自然联动。</p>' },
-        { label: '数字人场景关联', content: '<p>阿里Wan 3.0视频模型公测属于头部厂商在长视频生成与精准编辑领域的最新进展，其人像生成的微表情联动与千人千面能力直接契合AI数字人产品经理对人脸生成质量与微表情自然度的核心关注点。</p>' },
-        { label: '来源链接', content: '<ul><li><a href="https://www.yicai.com/news/103309461.html" target="_blank">https://www.yicai.com/news/103309461.html</a></li><li><a href="https://www.aitop100.cn/infomation/label/625.html?name=AI%E5%A4%A7%E6%A8%A1%E5%9E%8B" target="_blank">https://www.aitop100.cn/infomation/label/625.html?name=AI%E5%A4%A7%E6%A8%A1%E5%9E%8B</a></li></ul>' }
-      ]
-    },
-    {
-      id: '2026-08-05-models-0',
-      title: '字节跳动发布Seedance 2.5视频生成模型，单次生成时长提升至30秒，支持多达50路多模态参考输入，并新增基于时间戳的精准编辑功能',
-      date: '2026-08-05',
-      type: 'video',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['生图生视频AIG', '视频生成', '图像生成'],
-      source: 'https://gentic.news/article/bytedance-seedance-2-5-generates',
-      sourceUrl: 'https://gentic.news/article/bytedance-seedance-2-5-generates',
-      summary: '字节跳动发布Seedance 2.5视频生成模型，单次生成时长提升至30秒，支持多达50路多模态参考输入，并新增基于时间戳的精准编辑功能',
-      sections: [
-        { label: '事件详情', content: '<p>字节跳动发布Seedance 2.5视频生成模型，单次生成时长提升至30秒，支持多达50路多模态参考输入，并新增基于时间戳的精准编辑功能</p>' },
-        { label: '数字人场景关联', content: '<p>Seedance 2.5是视频生成模型的重大版本更新，其30秒单次生成能力和50路多模态参考输入（含图像、视频、音频）对保持数字人角色一致性、电商带货场景的视频生成及音频同步有直接帮助，符合海外toB电商直播及数字人核心能力进展的追踪方向。</p>' },
-        { label: '来源链接', content: '<ul><li><a href="https://gentic.news/article/bytedance-seedance-2-5-generates" target="_blank">https://gentic.news/article/bytedance-seedance-2-5-generates</a></li><li><a href="https://www.jiemian.com/article/14885762.html" target="_blank">https://www.jiemian.com/article/14885762.html</a></li><li><a href="https://ai-damn.com/bytedance-s-seedance-2-5-30-second-one-shot-videos-are-here-1785729989434" target="_blank">https://ai-damn.com/bytedance-s-seedance-2-5-30-second-one-shot-videos-are-here-1785729989434</a></li></ul>' }
-      ]
-    },
-    {
-      id: 'seedance-2-5',
-      title: '字节 Seedance 2.5 正式发布，原生30秒4K视频 + 50个多模态参考',
-      date: '2026-07-31',
-      type: 'video',
-      badge: 'update',
-      badgeText: '重磅发布',
-      tags: ['视频生成', '4K', '数字人', '唇形同步', '字节跳动', '火山引擎'],
-      source: '字节跳动Seed官方博客',
-      sourceUrl: 'https://seed.bytedance.com/en/blog/one-take-creation-flexible-referencing-introducing-seedance-2-5',
-      summary: '字节跳动正式发布Seedance 2.5视频生成模型，原生支持30秒4K连续生成、50个多模态参考输入、局部编辑、3D白模预演，音视频联合生成架构。',
-      sections: [
-        {
-          label: '核心技术参数',
-          content: '<ul><li><strong>原生30秒</strong>单次生成，非片段拼接，支持多轮延长</li><li><strong>原生4K</strong>分辨率 + 10-bit色深，非插值放大</li><li><strong>50个多模态参考</strong>：30张图+10段视频+10段音频</li><li><strong>音视频联合生成</strong>架构：同一潜空间共处理，音画同步更自然</li><li><strong>局部编辑</strong>：时间戳级精准修改，不影响整体画面节奏</li><li><strong>3D白模预演</strong>：先低精度验证构图和镜头，再渲染4K</li><li><strong>绿幕/运镜/参考编辑</strong>等专业级后期能力</li><li>原生支持<strong>10+种语言</strong>，复杂指令控制增强</li></ul>'
-        },
-        {
-          label: '第三方测评',
-          content: '<ul><li><span class="info-fact">【确定事实】</span> 官方称较2.0版本<strong>提示词遵循度提升约20%</strong> <a href="https://seeddance.ai/blog/what-is-seedance-2-5" target="_blank">Seeddance.ai评测</a></li><li><span class="info-fact">【确定事实】</span> 已上线豆包、即梦、扣子等字节旗下产品 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网报道</a></li><li><span class="info-prediction">【行业预测】</span> 30秒原生时长+局部编辑+白模预演，可能重塑广告/电商/影视预演的生产流程</li><li><span class="info-feedback">【用户反馈】</span> 香港科技大学王帅副教授评价：视频生成模型正从"生成内容"走向"理解世界" <a href="https://m.voc.com.cn/xhn/news/202608/33374990.html" target="_blank">科技日报</a></li></ul>'
-        },
-        {
-          label: '接入成本与方式',
-          content: '<ul><li><strong>第三方API参考价（PiAPI）</strong>：480p约<strong>¥2.18/秒</strong>（约$0.30），720p约<strong>¥4.35/秒</strong>（约$0.60）（汇率7.25） <a href="https://app.piapi.ai/docs/seedance-api/seedance-25-preview" target="_blank">PiAPI文档</a></li><li><strong>官方接入方式</strong>：火山引擎企业版（需申请）、即梦(Dreamina)网页端、豆包Pro <a href="https://seed.bytedance.com/seedance2_5" target="_blank">官方主页</a></li><li><strong>企业合作</strong>：徐工集团、小鹏汽车、灵初智能、微分智飞等已确认合作 <a href="http://m.toutiao.com/group/7668561915974631986/" target="_blank">环球网</a></li><li><strong>参考输入计费</strong>：视频参考按输入时长×(单价/2)+输出时长×单价计算</li><li><span class="info-pending">【待验证】</span> 官方消费者定价尚未公布，企业版需询价</li></ul>'
-        },
-        {
-          label: '数字人场景适配',
-          content: '<ul><li><strong>数字人带货视频</strong>：30秒原生时长+50参考图，可固定产品+人物形象，生成多版本口播素材，无需拼接</li><li><strong>唇形同步</strong>：音视频联合生成架构，音素级口型同步，比单独后处理更自然</li><li><strong>批量视频生产</strong>：局部编辑可快速换SKU/背景/服装，大幅降低批量变体成本</li><li><strong>虚拟直播素材</strong>：支持动作参考+音色参考，可生成直播切片和预热视频</li><li><strong>跨境电商</strong>：原生10+语言，一键生成多语种口播版本，适配海外多市场</li><li><strong>3D白模预演</strong>：先验证镜头走位和产品展示角度，避免浪费算力在废片上</li></ul>'
-        }
-      ],
-    demoImages: [
-      'https://s.coze.cn/image/IIY3ADShR2k/',
-      'https://s.coze.cn/image/ixcxy8r5nXQ/',
-      'https://s.coze.cn/image/zRBjAv9bmIg/',
-    ],
-    demoVideoUrl: 'https://seed.bytedance.com/seedance2_5',
-    },
-    {
-      id: 'qwen-image-3',
-      title: '阿里 Qwen-Image 3.0 上线，超长提示词 + 精细文字渲染',
-      date: '2026-08-05',
-      type: 'image',
-      badge: 'update',
-      badgeText: '版本更新',
-      tags: ['图像生成', '文字渲染', '多语言', '阿里云', 'API'],
-      source: '阿里云官方文档',
-      sourceUrl: 'https://help.aliyun.com/en/model-studio/image-model/',
-      summary: '千问图像生成模型 Qwen-Image-3.0 正式上线，支持4.5K token超长提示词和10px级精细文字渲染。',
-      sections: [
-        {
-          label: '核心技术参数',
-          content: '<ul><li>支持 <strong>4.5K token</strong> 超长提示词</li><li><strong>10px级</strong> 精细文字渲染</li><li>支持 <strong>12种语言</strong></li><li>最高 <strong>2048×2048</strong> 分辨率输出</li><li>生成与编辑集成于同一模型</li></ul>'
-        },
-        {
-          label: '第三方测评',
-          content: '<p>Arena.ai 国际文生图排行榜 <strong>国内排名第一</strong>。 <a href="https://arena.ai/" target="_blank">查看来源</a></p>'
-        },
-        {
-          label: '接入成本与方式',
-          content: '<ul><li>国内文生图：<strong>0.18元/张</strong>起（1K分辨率）</li><li>海外 API：Standard ¥0.22/张（约$0.03），Pro ¥0.29/张（约$0.04）</li><li>接入方式：阿里云百炼 / Qwen Cloud</li><li>海外用户可通过 Qwen Cloud 接入 <a href="https://help.aliyun.com/en/model-studio/image-model/" target="_blank">官方文档</a></li></ul>'
-        },
-        {
-          label: '数字人场景适配',
-          content: '<p><strong>优势：</strong>精细文字渲染能力适合电商产品图、海报生成；多语言支持出海场景；成本极低。</p><p><strong>不足：</strong>图像生成模型，不直接生成视频，需配合视频模型使用。</p>'
-        }
-      ],
-    demoImages: [
-      'https://s.coze.cn/image/Fpepr0bCpQQ/',
-      'https://s.coze.cn/image/xSWmYQtb6tA/',
-      'https://s.coze.cn/image/_I0Wl-wdtRo/',
-    ],
-    },
-    {
-      id: 'sensetime-u15',
-      title: '商汤 SenseNova U1.5-Lite-Preview 开源，8B轻量多模态',
-      date: '2026-08-05',
-      type: 'image',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['图像生成', '开源', '轻量模型', '商汤', '私有化部署'],
-      source: 'IT之家 / 凤凰网科技',
-      sourceUrl: 'https://www.ithome.com/0/986/059.htm',
-      summary: '商汤开源 8B-MoT 轻量多模态模型，原生4K图像生成编辑，质量媲美闭源模型。',
-      sections: [
-        {
-          label: '核心技术参数',
-          content: '<ul><li>基于 <strong>NEO-Unify 架构</strong></li><li><strong>8B-MoT 参数</strong>，轻量级</li><li>支持原生 <strong>4K</strong> 图像生成与编辑</li><li>生成与编辑质量媲美闭源模型</li><li>面向全球开发者开源</li></ul>'
-        },
-        {
-          label: '第三方测评',
-          content: '<p>暂无第三方权威排行榜数据，官方宣称生成与编辑质量<strong>媲美闭源模型</strong>。 <a href="https://www.ithome.com/0/986/059.htm" target="_blank">IT之家报道</a> | <a href="https://tech.ifeng.com/c/8vLGLuQYDyh" target="_blank">凤凰科技</a></p>'
-        },
-        {
-          label: '接入成本与方式',
-          content: '<ul><li><strong>开源免费</strong>，可自行部署</li><li><strong>部署门槛低</strong>：8B模型可在消费级GPU上运行</li><li>适合私有化部署需求</li></ul>'
-        },
-        {
-          label: '数字人场景适配',
-          content: '<p><strong>优势：</strong>轻量级、部署成本低、可私有化，适合出海产品的本地化部署需求；生成编辑一体化。</p><p><strong>不足：</strong>图像模型，非视频生成；轻量模型在细节质量上可能不及大参数闭源模型。</p>'
-        }
-      ],
-    demoImages: [
-      'https://s.coze.cn/image/n4sYfn73gJM/',
-      'https://s.coze.cn/image/pYDhhIp-HNw/',
-      'https://s.coze.cn/image/OIb03Us-NDI/',
-    ],
-    },
-    {
-      id: 'flux3video',
-      title: 'FLUX 3 Video 正式发布，多语言唇形同步 + 原生音频',
-      date: '2026-08-04',
-      type: 'video',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['视频生成', '唇形同步', '多语言', 'BFL', '闭源'],
-      source: 'Black Forest Labs 官方博客',
-      sourceUrl: 'https://bfl.ai/blog/flux-3-video',
-      summary: 'Black Forest Labs 正式开放 FLUX 3 Video 视频生成模型，支持14+种语言精准唇形同步，登顶自有排行榜。',
-      sections: [
-        {
-          label: '核心技术参数',
-          content: '<ul><li>最长 <strong>20秒</strong> 视频生成，720p 原生输出 + 1080p 放大输出</li><li>支持 <strong>原生音频</strong> 同步生成（对话、音效、环境音）</li><li>交互模式：文生视频、图生视频（关键帧控制）、视频续写、多镜头切换</li><li><strong>14+种语言唇形同步</strong>：英语（多方言）、中文、西班牙语、法语、德语、日语等</li></ul>'
-        },
-        {
-          label: '第三方测评',
-          content: '<p>BFL 自有 Elo 排行榜中文生视频第一（<strong>1135分</strong>）、图生视频第一（<strong>1051分</strong>），领先 Gemini Omni Flash、Minimax H3 和 Seedance 2.0。 <a href="https://bfl.ai/blog/flux-3-video" target="_blank">官方博客</a> | <a href="https://the-decoder.com/black-forest-labs-makes-flux-3-video-generally-available-and-claims-it-beats-seedance-2-0/" target="_blank">The Decoder 报道</a></p><p>注意：此为厂方自有排行榜数据，第三方独立测评待验证</p>'
-        },
-        {
-          label: '接入成本与方式',
-          content: '<ul><li><strong>API 按秒计费</strong>（含音频）：</li><li>720p Draft: ¥0.43/秒（约$0.06）</li><li>720p 全质量: ¥1.23/秒（约$0.17）</li><li>1080p: ¥2.10/秒（约$0.29）</li><li>视频续写：720p ¥2.97/秒（约$0.41），1080p ¥3.84/秒（约$0.53）</li><li>接入方式：BFL API，需注册账号获取API Key</li></ul>'
-        },
-        {
-          label: '数字人场景适配',
-          content: '<p><strong>优势：</strong>多语言唇形同步能力强，原生音频生成，适合跨境电商多语种口播视频场景。</p><p><strong>不足：</strong>单条最长20秒，批量生成带货短视频需拼接；成本较高，1分钟720p全质量视频约¥73.95（约$10.2）。</p>'
-        }
-      ],
-    demoImages: [
-      'https://s.coze.cn/image/gU0ALTJodbw/',
-      'https://s.coze.cn/image/oxAVhnSVrm8/',
-      'https://s.coze.cn/image/B2Dl-yhsYHU/',
-    ],
-    demoVideoUrl: 'https://blackforestlabs.ai/',
-    },
-    {
-      id: 'minimax-h3',
-      title: 'MiniMax H3 开源登顶 HuggingFace，多模态统一架构',
-      date: '2026-08-03',
-      type: 'video',
-      badge: 'new',
-      badgeText: '新发布',
-      tags: ['视频生成', '开源', '多模态', 'MiniMax', '私有化部署'],
-      source: 'IndexBox / HuggingFace',
-      sourceUrl: 'https://www.indexbox.io/blog/minimax-releases-h3-video-model-weights-with-regional-restrictions/',
-      summary: 'MiniMax 开源 H3 通用多模态生成模型（33B参数），文本/图像/视频/音频统一架构，HuggingFace 热度登顶。',
-      sections: [
-        {
-          label: '核心技术参数',
-          content: '<ul><li><strong>33B参数</strong>，多模态统一架构</li><li>支持 <strong>2K分辨率</strong> 视频、原生立体声</li><li>最长视频 <strong>15秒</strong></li><li>ComfyUI 原生支持</li></ul>'
-        },
-        {
-          label: '第三方测评',
-          content: '<ul><li>HuggingFace 热度榜 <strong>第一</strong>（超过 DeepSeek V4 Flash） <a href="https://huggingface.co/MiniMaxAI" target="_blank">查看</a></li><li>Artificial Analysis 视频编辑评测榜 <strong>全球第一</strong> <a href="https://artificialanalysis.ai/" target="_blank">查看</a></li><li>Arena 图生视频排行榜 <strong>全球第一</strong> <a href="https://arena.ai/" target="_blank">查看</a></li></ul>'
-        },
-        {
-          label: '接入成本与方式',
-          content: '<ul><li><strong>开源权重</strong>：HuggingFace 可下载</li><li><strong>API定价</strong>：0.8元/秒</li><li><strong>部署门槛</strong>：需 GPU 服务器，33B模型建议 A100/H100 级别</li><li><strong>地区限制</strong>：美国、欧盟、英国、韩国用户需向 MiniMax 申请正式许可方可免费使用，其他地区开发者可自由部署</li></ul>'
-        },
-        {
-          label: '数字人场景适配',
-          content: '<p><strong>优势：</strong>开源可私有化部署，成本可控；多模态统一架构，适合二次开发数字人定制方案。</p><p><strong>不足：</strong>部署门槛高，需要专业GPU资源；美欧等主流出海市场有地区限制。</p>'
-        }
-      ],
-    demoImages: [
-      'https://s.coze.cn/image/rxGHefNd2ic/',
-      'https://s.coze.cn/image/YMH_l77hiDM/',
-      'https://s.coze.cn/image/Gvo_uXsKKFQ/',
-    ],
-    demoVideoUrl: 'https://minimaxh3.art/zh',
-    }
   ],
 
   competitors: [
