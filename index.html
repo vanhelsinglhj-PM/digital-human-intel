@@ -21,6 +21,7 @@
   --orange: #f59e0b;
   --red: #ef4444;
   --blue: #3b82f6;
+  --yellow: #fbbf24;
   --tag-bg: rgba(99, 102, 241, 0.12);
   --tag-text: #a5b4fc;
   --radius: 10px;
@@ -525,13 +526,91 @@ a:focus-visible {
 
 .detail-label {
   font-size: 12px;
-  font-weight: 600;
-  color: var(--text-dim);
-  letter-spacing: 0.3px;
-  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  text-transform: none;
+  position: relative;
+  padding-left: 10px;
+}
+
+.detail-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 14px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  border-radius: 2px;
+}
+
+.card-content .detail-section ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.card-content .detail-section ul li {
+  position: relative;
+  padding: 6px 0 6px 16px;
+  line-height: 1.6;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.card-content .detail-section ul li::before {
+  content: '▸';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  color: var(--accent);
+  font-size: 10px;
+}
+
+.card-content .detail-section ul li + li {
+  border-top: 1px dashed rgba(99, 102, 241, 0.12);
+}
+
+/* Info classification tag pills */
+.info-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-right: 6px;
+  letter-spacing: 0.2px;
+  vertical-align: middle;
+}
+
+.info-tag.fact { background: rgba(16, 185, 129, 0.15); color: var(--green); }
+.info-tag.prediction { background: rgba(245, 158, 11, 0.18); color: var(--orange); }
+.info-tag.feedback { background: rgba(139, 92, 246, 0.15); color: var(--accent-2); }
+.info-tag.pending { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+
+.detail-section .source-link {
+  color: var(--yellow);
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 6px;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(251, 191, 36, 0.5);
+}
+
+.detail-section .source-link:hover {
+  color: #fcd34d;
+  border-bottom-style: solid;
+}
+
+.detail-section strong {
+  color: var(--text);
+  font-weight: 600;
 }
 
 .detail-section {
@@ -1274,7 +1353,7 @@ a:focus-visible {
       </div>
     </div>
     <div class="topbar-meta">
-      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-10 08:10</span></div>
+      <div class="update-time"><span class="update-dot"></span>最后更新：<span id="lastUpdate">2026-08-10 09:21</span></div>
     </div>
   </div>
 </header>
@@ -1429,6 +1508,74 @@ a:focus-visible {
 // ============ DATA ============
 const DATA = {
   models: [
+    {
+          id: '2026-08-10-models-0',
+          title: 'Sand.ai开源首个1000亿参数MoE视频模型MAGI-2 Preview',
+          date: '2026-08-10',
+          type: 'video',
+          badge: 'open',
+          badgeText: '开源',
+          tags: ['开源大模型', 'MoE架构'],
+          source: 'Robotbelt',
+          sourceUrl: 'https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/',
+          summary: 'Sand.ai开源1000亿参数MoE视频模型MAGI-2 Preview，引领视频生成新架构。',
+          sections: [
+            {
+              label: '核心技术参数',
+              content: '<ul><li>采用<strong>1000亿参数</strong>混合专家（MoE）架构，提升生成效率。</li><li>作为首个<strong>百亿级MoE视频模型</strong>，支持高质量视频生成。</li><li>模型版本为<strong>MAGI-2 Preview</strong>，已完全开源供社区使用。</li><li>具体分辨率与时长限制暂未详细披露，主打架构创新。</li></ul>'
+            },
+            {
+              label: '第三方测评',
+              content: '<ul><li><span class="info-tag fact">【确定事实】</span>MoE架构有效降低推理成本，提升长视频生成连贯性。<a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank">Robotbelt</a></li><li><span class="info-tag prediction">【行业预测】</span>百亿参数MoE将成为下一代视频大模型的主流演进方向。<a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank">Robotbelt</a></li><li><span class="info-tag pending">【待验证】</span>开源后社区实际微调效果与商用部署算力门槛仍需观察。<a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank">Robotbelt</a></li></ul>'
+            },
+            {
+              label: '接入成本与方式',
+              content: '<ul><li>模型已<strong>完全开源</strong>，开发者可免费下载权重进行本地部署。</li><li>预计后续将通过Sand.ai官方平台提供云端API调用服务。</li><li>开源协议允许商业二次开发，降低企业定制化成本。</li></ul>'
+            },
+            {
+              label: '数字人场景适配',
+              content: '<ul><li>MoE架构有助于提升<strong>数字人长视频口播</strong>的生成稳定性。</li><li>开源特性支持企业针对特定数字人IP进行<strong>私有化微调</strong>。</li><li>适合需要高保真面部细节与肢体动作的<strong>带货直播</strong>场景。</li></ul>'
+            },
+            {
+              label: '来源链接',
+              content: '<ul><li><a href="https://robotbelt.com/sandai-magi-2-preview-moe-video-model-open-source/" class="source-link" target="_blank" rel="noopener noreferrer">Robotbelt</a></li></ul>'
+            },
+          ],
+        },
+    {
+          id: '2026-08-10-models-1',
+          title: 'Lightricks更新LTXV模型，实现60秒AI视频生成突破',
+          date: '2026-08-10',
+          type: 'video',
+          badge: 'update',
+          badgeText: '版本更新',
+          tags: ['视频生成', '长视频'],
+          source: 'AI-Damn',
+          sourceUrl: 'https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348',
+          summary: 'Lightricks发布LTXV重大更新，突破技术瓶颈实现长达60秒AI视频生成。',
+          sections: [
+            {
+              label: '核心技术参数',
+              content: '<ul><li>实现<strong>60秒</strong>长视频连续生成，突破行业时长瓶颈。</li><li>优化计算机视觉算法，保障长镜头下的<strong>时序一致性</strong>。</li><li>支持高分辨率输出，满足专业级视频制作需求。</li></ul>'
+            },
+            {
+              label: '第三方测评',
+              content: '<ul><li><span class="info-tag fact">【确定事实】</span>60秒生成能力大幅减少视频拼接工作量，提升效率。<a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank">AI-Damn</a></li><li><span class="info-tag feedback">【用户反馈】</span>长视频生成时的背景闪烁与人物变形问题得到显著改善。<a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank">AI-Damn</a></li><li><span class="info-tag prediction">【行业预测】</span>长视频生成将直接推动AI短剧与微综艺产业的爆发。<a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank">AI-Damn</a></li></ul>'
+            },
+            {
+              label: '接入成本与方式',
+              content: '<ul><li>通过Lightricks旗下产品<strong>内置集成</strong>提供订阅服务。</li><li>企业级API定价预计随60秒能力上线有所<strong>上调</strong>。</li><li>支持Web端与移动端多平台快速接入与渲染。</li></ul>'
+            },
+            {
+              label: '数字人场景适配',
+              content: '<ul><li>60秒时长完美契合<strong>数字人短视频带货</strong>完整叙事需求。</li><li>时序一致性提升保障了数字人<strong>口播与肢体动作</strong>的自然度。</li><li>适用于制作<strong>沉浸式虚拟主播</strong>长时段互动与剧情演绎内容。</li></ul>'
+            },
+            {
+              label: '来源链接',
+              content: '<ul><li><a href="https://ai-damn.com/lightricks-ltxv-update-60-second-ai-video-generation-breakthrough-1753053151348" class="source-link" target="_blank" rel="noopener noreferrer">AI-Damn</a></li></ul>'
+            },
+          ],
+        },
     {
           id: '2026-08-10-models-0',
           title: '腾讯混元发布并开源80B参数原生多模态生图模型混元图像3.0',
@@ -1746,6 +1893,37 @@ const DATA = {
   ],
 
   competitors: [
+    {
+          id: '2026-08-10-competitors-0',
+          title: '2026老板IP克隆AI数字员工服务商测评发布',
+          date: '2026-08-09',
+          type: 'industry',
+          badge: 'growth',
+          badgeText: '市场反馈',
+          tags: ['老板IP克隆', '短视频生成'],
+          source: '八方资源网',
+          sourceUrl: 'https://mip.b2b168.com/wvs323217033.html',
+          summary: '测评显示AI数字人系统支持老板IP克隆，单日可生成数百条短视频并实现多平台一键分发。',
+          sections: [
+            {
+              label: '产品更新',
+              content: '<ul><li>上线AI数字人短视频自动生成系统，支持<strong>老板IP克隆</strong>。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">详情</a></li><li>输入文字稿即可生成<strong>口型同步、表情自然</strong>的视频。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">详情</a></li><li>支持多平台一键分发与后台数据实时监控。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">详情</a></li></ul>'
+            },
+            {
+              label: '用户&市场反馈',
+              content: '<ul><li><strong>[效率提升]</strong> 单日可生成<strong>数百条</strong>视频内容。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">测评</a></li><li><strong>[运营优化]</strong> 自动优化内容策略，降低人工成本。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">测评</a></li><li><strong>[市场趋势]</strong> 老板IP克隆成2026年核心需求。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">测评</a></li></ul>'
+            },
+            {
+              label: '商业化动作',
+              content: '<ul><li>数字员工服务商主推<strong>IP克隆+批量生成</strong>商业模式。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">详情</a></li><li>通过监控播放数据提供<strong>内容策略优化</strong>增值服务。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">详情</a></li><li>多平台一键分发助力企业<strong>全域矩阵获客</strong>。<a href="https://mip.b2b168.com/wvs323217033.html" class="source-link">详情</a></li></ul>'
+            },
+            {
+              label: '来源链接',
+              content: '<ul><li><a href="https://mip.b2b168.com/wvs323217033.html" class="source-link" target="_blank" rel="noopener noreferrer">八方资源网</a></li></ul>'
+            },
+          ],
+          product: 'Unknown'
+        },
     {
           id: '2026-08-10-competitors-0',
           title: '数动云及摩尔线程等密集申请数字人多模态交互及面试专利',
@@ -2091,6 +2269,36 @@ const DATA = {
 
   industry: [
     {
+          id: '2026-08-10-industry-0',
+          title: 'AI数字人无独立法律人格，广告主需对虚拟人广告真实性负责',
+          date: '2026-08-10',
+          type: 'industry',
+          badge: 'new',
+          badgeText: '新发布',
+          tags: ['政策合规', '法律风险'],
+          source: '吉林司法行政',
+          sourceUrl: 'https://m.weibo.cn/detail/5330271752684409',
+          summary: '律师指出AI数字人无独立法律人格，不能作广告代言人，广告主需对内容真实性负责。',
+          sections: [
+            {
+              label: '事件详情',
+              content: '<ul><li>北京瀛和律所高级合伙人黄迪解读《广告法》对AI数字人的适用边界。</li><li>明确AI数字人属纯虚拟形象，不具备独立法律人格，无法成为法定代言人。</li><li>强调虚拟形象虽不受代言人条款约束，但广告主仍需承担内容真实性责任。</li><li>若涉嫌虚假宣传，广告主及相关运营方将面临法律处罚与合规风险。</li></ul>'
+            },
+            {
+              label: '数据/规模',
+              content: '<ul><li>法律界定：AI数字人被排除在《广告法》第二条“代言人”范畴之外。（<a class="source-link" href="https://m.weibo.cn/detail/5330271752684409">吉林司法行政</a>）</li><li>合规红线：广告主须对虚拟人直播或短视频中的产品功效宣称负全责。</li></ul>'
+            },
+            {
+              label: '对数字人行业影响',
+              content: '<ul><li>明确数字人营销的法律边界，降低虚拟人代言的合规不确定性。</li><li>倒逼数字人内容生成企业加强语料与宣传话术的审核过滤机制。</li><li>推动行业从“野蛮生长”向“合规运营”转型，规避虚假宣传风险。</li></ul>'
+            },
+            {
+              label: '来源链接',
+              content: '<ul><li><a href="https://m.weibo.cn/detail/5330271752684409" class="source-link" target="_blank" rel="noopener noreferrer">吉林司法行政</a></li></ul>'
+            },
+          ],
+        },
+    {
           id: '2026-08-10-industry-1',
           title: '广电总局发布微短剧管理办法规范AI数字分身授权',
           date: '2026-08-10',
@@ -2219,7 +2427,7 @@ const DATA = {
   ],
 
   archive: [
-            { date: '2026-08-10', count: 5, models: 2, competitors: 2, industry: 1 },
+            { date: '2026-08-10', count: 9, models: 4, competitors: 3, industry: 2 },
     { date: '2026-08-09', count: 6, models: 2, competitors: 2, industry: 2 },
     { date: '2026-08-08', count: 1, models: 1, competitors: 0, industry: 0 },
     { date: '2026-08-07', count: 4, models: 1, competitors: 2, industry: 1 },
